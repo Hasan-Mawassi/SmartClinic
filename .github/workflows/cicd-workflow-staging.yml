@@ -38,10 +38,10 @@ jobs:
             cd /home/${{ secrets.SERVER_USER }}/SmartClinic
 
             # Pull the latest images for backend and frontend
-            docker compose pull
+            docker-compose pull
 
             # Stop and remove any old containers
-            docker compose down
+            docker-compose down
 
             # Rebuild the containers (if needed) and start them in detached mode
-            docker compose up -d
+            docker-compose up -d
