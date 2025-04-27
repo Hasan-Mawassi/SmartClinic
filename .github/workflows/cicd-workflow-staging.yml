@@ -24,7 +24,7 @@ jobs:
       - name: Push frontend image
         run: docker push hasanmawasi/smartclinic-frontend:latest
   deploy:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     needs: build  # This makes sure 'deploy' runs AFTER 'build' finishes
     steps:
       - name: SSH into server and deploy
