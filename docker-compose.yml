@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+      build:
+        context: ./SmartClinic-Server
+        dockerfile: Dockerfile
+      container_name: node-server
+      restart: always
+      # environment:
+      #   DATABASE_URL: postgres://postgres:postgres@db:5432/smartclinicdb
+      #   NODE_ENV: production
+      ports:
+        - "5000:5000"
+      # depends_on:
+      #   - db
+  frontend:
+    build:
+      context: ./SmartClinic-Web/doctor-app
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
