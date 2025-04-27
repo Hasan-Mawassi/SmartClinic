@@ -14,7 +14,7 @@ services:
     ports:
       - "5432:5432"
   backend:
-      image: hasamawasi/smartclinic-backend:latest
+      image: hasanmawasi/smartclinic-backend:latest
       build:
         context: ./SmartClinic-Server
         dockerfile: Dockerfile
@@ -28,7 +28,7 @@ services:
       depends_on:
         - db
   frontend:
-    image: hasamawasi/smartclinic-frontend:latest
+    image: hasanmawasi/smartclinic-frontend:latest
     build:
       context: ./SmartClinic-Web/doctor-app
       dockerfile: Dockerfile
