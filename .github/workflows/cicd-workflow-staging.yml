@@ -24,16 +24,24 @@ jobs:
       - name: Push frontend image
         run: docker push hasanmawasi/smartclinic-frontend:latest
   deploy:
-    runs-on: ubuntu-latest
-    needs: build  # This makes sure 'deploy' runs AFTER 'build' finishes
+    needs: build
+    runs-on: [aws-ec2]
     steps:
-      - name: SSH into server and deploy
+      - name: SSH into EC2 instance and deploy with Docker Compose
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASSWORD }}
+          key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           script: |
+            # Navigate to the project directory
             cd /home/ubuntu/SmartClinic
-            docker compose pull  # Pull latest images
-            docker compose up -d  # Restart containers with new images
+
+            # Pull the latest images for backend and frontend
+            docker compose pull
+
+            # Stop and remove any old containers
+            docker compose down
+
+            # Rebuild the containers (if needed) and start them in detached mode
+            docker compose up -d
