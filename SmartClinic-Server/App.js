@@ -1,6 +1,15 @@
 import express from 'express';
+import db from './Database/connection/connection.js';
 const app = express();
-
+db.connect()
+  .then(client => {
+    console.log("Database connected successfully!");
+    client.release(); 
+  })
+  .catch(err => {
+    console.error("Database connection error:", err.stack);
+    process.exit(1); 
+  });
 // Route to test if it's running
 app.get('/', (req, res) => {
   res.send('Hello world');
