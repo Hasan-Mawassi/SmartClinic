@@ -1,0 +1,29 @@
+name: CICD
+
+on:
+  push:
+    branches: [stage]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build all services using docker-compose
+        run: docker-compose build
+
+      - name: Tag and Push backend image
+        run: |
+          docker tag node-server hasamawasi/smartclinic-backend:latest
+          docker push hasamawasi/smartclinic-backend:latest
+
+      - name: Tag and Push frontend image
+        run: |
+          docker tag frontend hasamawasi/smartclinic-frontend:latest
+          docker push hasamawasi/smartclinic-frontend:latest
