@@ -1,18 +1,18 @@
 # Use Node.js image
-FROM 22.15.0-alpine3.21
+FROM node:22.15.0-alpine3.21
 
 # Set working directory
 WORKDIR /app
 
 # Copy package.json and install dependencies
-COPY package.json package-lock.json ./
+COPY ./package*.json ./
 RUN npm install
 
 # Copy the rest of the app
 COPY . .
 
 # Expose backend port
-EXPOSE 3000
+EXPOSE 5000
 
 # Run the server
 CMD ["npm", "start"]
