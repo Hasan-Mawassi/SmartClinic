@@ -19,7 +19,7 @@ jobs:
         run: docker compose build
 
       - name: Push backend image
-        run: docker push hasamawasi/smartclinic-backend:latest
+        run: sudo docker push hasamawasi/smartclinic-backend:latest
 
       - name: Push frontend image
         run: docker push hasamawasi/smartclinic-frontend:latest
