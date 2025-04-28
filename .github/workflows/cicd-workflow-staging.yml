@@ -43,7 +43,7 @@ jobs:
       - name: SSH into EC2 instance and deploy with Docker Compose
         run: |
           ssh -i ${{ secrets.SERVER_SSH_PRIVATE_KEY }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << EOF
-            cd /path/to/your/project
+            cd /home/${{ secrets.SERVER_USER }}/SmartClinic
             docker-compose down
             docker-compose up --build -d
           EOF
