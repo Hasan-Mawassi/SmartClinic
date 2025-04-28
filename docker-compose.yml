@@ -23,10 +23,11 @@ services:
       environment:
         DATABASE_URL: postgres://postgres:postgres@db:5432/smartclinicdb
         NODE_ENV: production
-      ports:
+      ports: 
         - "5000:5000"
       depends_on:
         - db
+      command: sh -c "sleep 10 && npm start"
   frontend:
     image: hasanmawasi/smartclinic-frontend:latest
     build:
