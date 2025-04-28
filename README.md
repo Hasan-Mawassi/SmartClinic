@@ -23,10 +23,11 @@
 <!-- Project Highlights -->
 <img src="./readme/title4.svg"/>
 
-### Add Title Here
+### Project Features
 
-- List the sexy features.
-
+- **AI-Driven Clinical Decision Support:** Combines intelligent diagnostic assistance with automated report generation, enhancing accuracy in symptom evaluation while producing structured patient summaries to streamline physician workflows.
+- **Anemia Detection Model:** Machine learning-powered tool that analyzes medical data to identify anemia risks, and improved patient outcomes.
+- **Voice/Text Appointment System:** Allow patients to schedule consultations via voice commands or text messages, improving accessibility and reducing administrative workload for clinic staff.
 <br><br>
 
 <!-- Demo -->

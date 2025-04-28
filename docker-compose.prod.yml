@@ -14,10 +14,7 @@ services:
     ports:
       - "5432:5432"
   backend:
-      image: hasanmawasi/smartclinic-backend:latest
-      build:
-        context: ./SmartClinic-Server
-        dockerfile: Dockerfile
+      image: hasanmawasi/smartclinic-backend:${TAG}
       container_name: node-server
       restart: always
       environment:
@@ -29,10 +26,7 @@ services:
         - db
       command: sh -c "sleep 10 && npm start"
   frontend:
-    image: hasanmawasi/smartclinic-frontend:latest
-    build:
-      context: ./SmartClinic-Web/doctor-app
-      dockerfile: Dockerfile
+    image: hasanmawasi/smartclinic-frontend:${TAG}
     container_name: frontend
     restart: always
     ports:
