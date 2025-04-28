@@ -20,12 +20,14 @@ jobs:
 
 
       - name: Push backend image
+        working-directory: ./SmartClinic-Server 
         run: |
           docker build -t hasanmawasi/smartclinic-backend:${{ github.sha }} .
           docker push hasanmawasi/smartclinic-backend:${{ github.sha }}
 
 
       - name: Push frontend image
+        working-directory: ./SmartClinic-Web/doctor-app 
         run: |
           docker build -t hasanmawasi/smartclinic-frontend:${{ github.sha }} .
           docker push hasanmawasi/smartclinic-frontend:${{ github.sha }}
