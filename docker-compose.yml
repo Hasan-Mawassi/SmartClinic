@@ -15,9 +15,9 @@ services:
       - "5432:5432"
   backend:
       image: hasanmawasi/smartclinic-backend:latest
-      # build:
-      #   context: ./SmartClinic-Server
-      #   dockerfile: Dockerfile
+      build:
+        context: ./SmartClinic-Server
+        dockerfile: Dockerfile
       container_name: node-server
       restart: always
       environment:
@@ -29,9 +29,9 @@ services:
         - db
   frontend:
     image: hasanmawasi/smartclinic-frontend:latest
-    # build:
-    #   context: ./SmartClinic-Web/doctor-app
-    #   dockerfile: Dockerfile
+    build:
+      context: ./SmartClinic-Web/doctor-app
+      dockerfile: Dockerfile
     container_name: frontend
     restart: always
     ports:
