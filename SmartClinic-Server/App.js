@@ -12,7 +12,7 @@ db.connect()
   });
 // Route to test if it's running
 app.get('/', (req, res) => {
-  res.send('Hello from the server');
+  res.send('Hello from the server!!');
 });
 
 // Set the server to listen on a port
