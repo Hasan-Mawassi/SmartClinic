@@ -21,7 +21,7 @@ services:
       container_name: node-server
       restart: always
       environment:
-        DATABASE_URL: postgres://postgres:postgres@db:5432/smartclinicdb
+        DATABASE_URL: postgres://postgres:password@db:5432/smartclinicdb
         NODE_ENV: production
       ports:
         - "5000:5000"
