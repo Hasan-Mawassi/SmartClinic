@@ -51,21 +51,9 @@ jobs:
           docker pull hasanmawasi/smartclinic-frontend:${{ github.sha }}
           docker pull hasanmawasi/smartclinic-backend:${{ github.sha }}
       - name: Stop and Remove Old Containers
-        run: docker-compose -f docker-compose.yml down
+        run: docker-compose -f docker-compose.prod.yml down
       - name: Start Services
         run: |
-          TAG=${{ github.sha }} docker-compose -f docker-compose.yml up -d
-      # - name: SSH into EC2 instance and deploy with Docker Compose
-      #   uses: appleboy/ssh-action@v1
-      #   with:
-      #     host: ${{ secrets.SERVER_IP }}
-      #     username: ${{ secrets.SERVER_USER }}
-      #     key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-      #     script: |
-      #         cd /home/ubuntu/SmartClinic   # wherever your project is
-      #         git fetch origin
-      #         git reset --hard origin/stage         # update latest code and docker-compose.yml
-      #         docker-compose pull           # pull latest backend and frontend images
-      #         docker-compose down
-      #         docker-compose up -d --build          # recreate containers with new images
+          TAG=${{ github.sha }} docker-compose -f docker-compose.prod.yml up -d
+      
 
