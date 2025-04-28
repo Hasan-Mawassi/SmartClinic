@@ -40,5 +40,5 @@ jobs:
               git reset --hard origin/stage         # update latest code and docker-compose.yml
               docker-compose pull           # pull latest backend and frontend images
               docker-compose down
-              docker-compose up -d          # recreate containers with new images
+              docker-compose up -d --build          # recreate containers with new images
 
