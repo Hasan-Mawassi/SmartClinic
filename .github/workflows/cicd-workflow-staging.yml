@@ -36,7 +36,8 @@ jobs:
           key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           script: |
               cd /home/ubuntu/SmartClinic   # wherever your project is
-              git pull origin stage         # update latest code and docker-compose.yml
-              docker compose pull           # pull latest backend and frontend images
-              docker compose up -d          # recreate containers with new images
+              git fetch origin
+              git reset --hard origin/stage         # update latest code and docker-compose.yml
+              docker-compose pull           # pull latest backend and frontend images
+              docker-compose up -d          # recreate containers with new images
 
