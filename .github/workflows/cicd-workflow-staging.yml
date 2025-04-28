@@ -44,4 +44,4 @@ jobs:
             docker-compose down
 
             # Rebuild the containers (if needed) and start them in detached mode
-            docker-compose up -d
+            docker-compose up --build
