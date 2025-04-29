@@ -44,71 +44,89 @@ class SignupScreen extends StatelessWidget {
               ),
             ),
             // Center login card
-            Center(
-              child: RoundedCard(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      "Welcome Back",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
                     ),
-                    SizedBox(height: 20),
-                    CustomInputField(
-                      hintText: 'Enter your email',
-                      icon: Icons.email_outlined,
-                      keyboardType: TextInputType.emailAddress,
-                    ),
-                    SizedBox(height: 20),
-                    CustomInputField(
-                      hintText: 'Enter your password',
-                      icon: Icons.lock_outlined,
-                      keyboardType: TextInputType.visiblePassword,
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 10.0,
-                        right: 30.0,
-                        bottom: 15.0,
-                      ),
-                      child: GestureDetector(
-                        onTap: () {
-                          context.go('/login'); // <- uses go_router to navigate
-                        },
-                        child: Text(
-                          "Have an Account. Login ",
-                          style: TextStyle(
-                            color: Colors.black,
-                            // decoration: TextDecoration.underline,
+                    child: IntrinsicHeight(
+                      child: Center(
+                        child: RoundedCard(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                "Register",
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              CustomInputField(
+                                hintText: 'Enter Username',
+                                icon: Icons.person_outlined,
+                                keyboardType: TextInputType.emailAddress,
+                              ),
+                              SizedBox(height: 20),
+                              CustomInputField(
+                                hintText: 'Enter your email',
+                                icon: Icons.email_outlined,
+                                keyboardType: TextInputType.emailAddress,
+                              ),
+                              SizedBox(height: 20),
+                              CustomInputField(
+                                hintText: 'Enter your password',
+                                icon: Icons.lock_outlined,
+                                keyboardType: TextInputType.text,
+                                obscureText: true,
+                              ),
+                              SizedBox(height: 20),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                  top: 10.0,
+                                  right: 30.0,
+                                  bottom: 15.0,
+                                ),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    context.go('/login');
+                                  },
+                                  child: Text(
+                                    "Have an Account? Login",
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.primary,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 40,
+                                    vertical: 12,
+                                  ),
+                                ),
+                                child: Text(
+                                  "Register",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.white,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.primary,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 40,
-                          vertical: 12,
-                        ),
-                      ),
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
           ],
         ),
