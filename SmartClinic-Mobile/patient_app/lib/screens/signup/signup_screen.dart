@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/utils/arc_painter.dart';
+import 'package:patient_app/widgets/basic/custom_button.dart';
 import 'package:patient_app/widgets/basic/custom_input_field.dart';
 import 'package:patient_app/widgets/basic/rounded_card.dart';
 import 'package:patient_app/constants/app_colors.dart';
@@ -101,23 +102,15 @@ class SignupScreen extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.primary,
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: 40,
-                                    vertical: 12,
-                                  ),
-                                ),
-                                child: Text(
-                                  "Register",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.white,
-                                  ),
-                                ),
+                              CustomButton(
+                                text: "Register",
+                                onPressed: () {
+                                  print("Register Pressed!");
+                                },
+                                backgroundColor: AppColors.primary,
+                                textColor: AppColors.white,
+                                isFullWidth: false,
+                                width: 150,
                               ),
                             ],
                           ),
