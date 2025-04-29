@@ -1,6 +1,7 @@
 // import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:patient_app/screens/login/login_screen.dart';
+import 'package:patient_app/screens/signup/signup_screen.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/login',
@@ -9,9 +10,9 @@ final GoRouter router = GoRouter(
       path: '/login',
       builder: (context, state) => LoginScreen(),
     ),
-    // GoRoute(
-    //   path: '/signup',
-    //   // builder: (context, state) => HomePage(),
-    // ),
+    GoRoute(
+      path: '/signup',
+       builder: (context, state) => SignupScreen(),
+    ),
   ],
 );
