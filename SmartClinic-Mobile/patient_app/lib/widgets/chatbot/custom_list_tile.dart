@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patient_app/widgets/basic/rounded_card.dart';
 
 class DoctorListTile extends StatelessWidget {
   final String doctorName;
@@ -12,15 +13,14 @@ class DoctorListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+    return RoundedCard(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Doctor Photo
           Container(
-            width: 80,
-            height: 100,
+            width: 70,
+            height: 70,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
