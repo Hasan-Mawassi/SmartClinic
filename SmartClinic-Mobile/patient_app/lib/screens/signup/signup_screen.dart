@@ -5,7 +5,7 @@ import 'package:patient_app/widgets/basic/rounded_card.dart';
 import 'package:patient_app/constants/app_colors.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
+class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -77,12 +77,10 @@ class LoginScreen extends StatelessWidget {
                       ),
                       child: GestureDetector(
                         onTap: () {
-                          context.go(
-                            '/signup',
-                          ); // <- uses go_router to navigate
+                          context.go('/login'); // <- uses go_router to navigate
                         },
                         child: Text(
-                          "Create an Account. Sign Up",
+                          "Have an Account. Login ",
                           style: TextStyle(
                             color: Colors.black,
                             // decoration: TextDecoration.underline,
