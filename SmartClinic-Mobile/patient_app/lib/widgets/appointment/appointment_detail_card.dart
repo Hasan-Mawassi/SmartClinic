@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patient_app/widgets/basic/custom_button_outlined.dart';
 
 class AppointmentTile extends StatelessWidget {
   final String photoUrl;
@@ -43,7 +44,10 @@ class AppointmentTile extends StatelessWidget {
                 children: [
                   Text(
                     doctorName,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(height: 4),
                   const Text("You have an appointment"),
@@ -53,13 +57,22 @@ class AppointmentTile extends StatelessWidget {
                       Text(date, style: const TextStyle(color: Colors.grey)),
                       const Text(" | "),
                       Text(time, style: const TextStyle(color: Colors.grey)),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 14),
+                        child: CustomOutlinedButton(
+                          text: "Cancel",
+                          onPressed: () {
+                            print("Cancel tapped");
+                          },
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 8),
-                  OutlinedButton(
-                    onPressed: onCancel,
-                    child: const Text("Cancel"),
-                  ),
+                  // OutlinedButton(
+                  //   onPressed: onCancel,
+                  //   child: const Text("Cancel"),
+                  // ),
                 ],
               ),
             ),
