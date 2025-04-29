@@ -97,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                       CustomButton(
                         text: "Login",
                         onPressed: () {
-                          print("Login Pressed!");
+                          context.go('/');
                         },
                         backgroundColor: AppColors.primary,
                         textColor: AppColors.white,
