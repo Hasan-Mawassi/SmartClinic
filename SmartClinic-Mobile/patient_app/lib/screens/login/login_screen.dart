@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/utils/arc_painter.dart';
+import 'package:patient_app/widgets/basic/custom_input_field.dart';
 
 class LoginScreen extends StatelessWidget {
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue[100],
+      backgroundColor: const Color.fromARGB(255, 121, 188, 255),
       body: Stack(
         children: [
           // Top-right arc (240° to 330°)
@@ -53,26 +54,23 @@ class LoginScreen extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "Login",
+                      "Welcome Back",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(height: 20),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        border: OutlineInputBorder(),
-                      ),
+                    CustomInputField(
+                      hintText: 'Enter your email',
+                      icon: Icons.email_outlined,
+                      keyboardType: TextInputType.emailAddress,
                     ),
-                    SizedBox(height: 15),
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: "Password",
-                        border: OutlineInputBorder(),
-                      ),
+                    SizedBox(height: 20),
+                    CustomInputField(
+                      hintText: 'Enter your password',
+                      icon: Icons.lock_outlined,
+                      keyboardType: TextInputType.visiblePassword,
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
@@ -96,4 +94,3 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
-
