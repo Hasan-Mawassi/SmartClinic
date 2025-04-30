@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:patient_app/widgets/basic/input_field_border.dart';
 class ProfileFormChronic extends StatelessWidget {
   final TextEditingController controller;
 
@@ -7,10 +7,9 @@ class ProfileFormChronic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return InputFieldBorder(
       controller: controller,
-      decoration: const InputDecoration(labelText: "Chronic Disease Details"),
-      maxLines: 3,
+      hintText: "Chronic Disease Details",
     );
   }
 }

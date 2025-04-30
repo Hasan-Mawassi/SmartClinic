@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patient_app/widgets/basic/input_field_border.dart';
 
 class ProfileFormAllergy extends StatelessWidget {
   final TextEditingController controller;
@@ -7,10 +8,6 @@ class ProfileFormAllergy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: controller,
-      decoration: const InputDecoration(labelText: "Allergy Info"),
-      maxLines: 3,
-    );
+    return InputFieldBorder(controller: controller, hintText: "Allergy Info");
   }
 }
