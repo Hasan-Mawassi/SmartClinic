@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/widgets/basic/custom_button_outlined.dart';
 import 'package:patient_app/widgets/basic/confirmation_dialog.dart';
+import 'package:patient_app/widgets/basic/rounded_card.dart';
 
 class AppointmentTile extends StatelessWidget {
   final String photoUrl;
@@ -20,10 +21,10 @@ class AppointmentTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.symmetric(vertical: 8),
+    return RoundedCard(
+      margin: const EdgeInsets.symmetric(vertical: 3),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
             // Doctor photo
@@ -36,7 +37,7 @@ class AppointmentTile extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(width: 12),
+            const SizedBox(width: 9),
 
             // Doctor info
             Expanded(
@@ -59,7 +60,7 @@ class AppointmentTile extends StatelessWidget {
                       const Text(" | "),
                       Text(time, style: const TextStyle(color: Colors.grey)),
                       Padding(
-                        padding: const EdgeInsets.only(left: 14),
+                        padding: const EdgeInsets.only(left: 2),
                         child: CustomOutlinedButton(
                           text: "Cancel",
                           onPressed: () {
