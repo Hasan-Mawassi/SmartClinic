@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/widgets/basic/custom_button_outlined.dart';
+import 'package:patient_app/widgets/basic/confirmation_dialog.dart';
 
 class AppointmentTile extends StatelessWidget {
   final String photoUrl;
@@ -62,7 +63,13 @@ class AppointmentTile extends StatelessWidget {
                         child: CustomOutlinedButton(
                           text: "Cancel",
                           onPressed: () {
-                            print("Cancel tapped");
+                            showCancelConfirmationDialog(
+                              context: context,
+                              onConfirm: () {
+                                print("Appointment cancelled");
+                                // Add your cancellation logic here
+                              },
+                            );
                           },
                         ),
                       ),

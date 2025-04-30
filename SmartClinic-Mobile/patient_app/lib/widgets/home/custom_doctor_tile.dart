@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/constants/app_colors.dart';
 import 'package:patient_app/widgets/basic/custom_button.dart';
+import 'package:patient_app/widgets/basic/custom_button_outlined.dart';
 
 class DoctorCard extends StatelessWidget {
   final String name;
@@ -92,9 +93,9 @@ class DoctorCard extends StatelessWidget {
                       Expanded(
                         child: SizedBox(
                           height: 40,
-                          child: OutlinedButton(
-                            onPressed: onView,
-                            child: const Text("View"),
+                          child: CustomOutlinedButton(
+                            onPressed: onView ?? () {},
+                            text: "View",
                           ),
                         ),
                       ),
