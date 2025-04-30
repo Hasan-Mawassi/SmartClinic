@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patient_app/widgets/basic/input_field_border.dart';
 
 class ProfileFormBasicInfo extends StatelessWidget {
   final TextEditingController nameController;
@@ -14,14 +15,12 @@ class ProfileFormBasicInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextField(
-          controller: nameController,
-          decoration: const InputDecoration(labelText: "Name"),
-        ),
-        TextField(
-          controller: ageController,
-          decoration: const InputDecoration(labelText: "Age"),
+        InputFieldBorder(controller: nameController, hintText: "Name"),
+        const SizedBox(height: 10),
+        InputFieldBorder(
+          hintText: "Age",
           keyboardType: TextInputType.number,
+          controller: ageController,
         ),
       ],
     );
