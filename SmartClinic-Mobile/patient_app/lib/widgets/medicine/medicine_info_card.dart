@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:patient_app/constants/app_colors.dart';
 import 'package:patient_app/widgets/basic/custom_button.dart';
+import 'package:patient_app/widgets/basic/rounded_card.dart';
 
 class MedicineInfoCard extends StatelessWidget {
   final String medicineName;
@@ -21,8 +23,9 @@ class MedicineInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return RoundedCard(
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
@@ -36,10 +39,13 @@ class MedicineInfoCard extends StatelessWidget {
                     "Medicine",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 15),
                   Text("Name: $medicineName"),
+                  const SizedBox(height: 4),
                   Text("Quantity: $quantity"),
+                  const SizedBox(height: 4),
                   Text("Frequency: $frequency"),
+                  const SizedBox(height: 4),
                   Text("Duration: $duration"),
                 ],
               ),
@@ -61,7 +67,11 @@ class MedicineInfoCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  CustomButton(text: "I took it", onPressed: onTookIt),
+                  CustomButton(
+                    text: "I took it",
+                    onPressed: onTookIt,
+                    backgroundColor: AppColors.secandary,
+                  ),
                 ],
               ),
             ),

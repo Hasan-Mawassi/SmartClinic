@@ -29,6 +29,7 @@ Future<void> showCancelConfirmationDialog({
             text: 'Confirm',
             isFullWidth: false,
             width: 100,
+            backgroundColor: Colors.red,
           ),
         ],
       );

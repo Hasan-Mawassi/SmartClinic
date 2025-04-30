@@ -20,6 +20,7 @@ class RoundedCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius),
       ),
+      color: Colors.white,
       elevation: 0, // No shadow
       margin: margin ?? EdgeInsets.all(18.0),
       child: Padding(
