@@ -3,7 +3,7 @@ import { seedPatients } from "./seeders/patientSeeder.js"
 try {
     console.log('Seeding started...')
   
-    await seedPatients()
+    await seedPatients(10)
   
     console.log('✅ Seeding finished.')
     process.exit(0)
