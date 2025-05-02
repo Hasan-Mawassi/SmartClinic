@@ -1,15 +1,11 @@
 import express from 'express';
-import db from './Database/connection/connection.js';
+import env from 'dotenv';
+import Routes from './Routes/route.js';
 const app = express();
-db.connect()
-  .then(client => {
-    console.log("Database connected successfully!!!");
-    client.release(); 
-  })
-  .catch(err => {
-    console.error("Database connection error:", err.stack);
-    process.exit(1); 
-  });
+env.config();
+app.use(express.json()); 
+
+app.use(Routes)
 // Route to test if it's running
 app.get('/', (req, res) => {
   res.send('Hello from the server !!!!');
