@@ -15,3 +15,4 @@ app.get('/', (req, res) => {
 app.listen(5000,'0.0.0.0', () => {
   console.log('Server is running ...');
 });
+export default app;
