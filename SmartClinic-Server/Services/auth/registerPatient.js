@@ -30,7 +30,6 @@ export const registerPatient = async({ name, email, password }) => {
           })
       
           return {
-            message: 'User registered successfully',
             token,
             user: { id: user.id, name: user.name, email: user.email },
           }
