@@ -10,9 +10,9 @@ RUN npm install
 
 # Copy the rest of the app
 COPY . .
-
+RUN chmod +x ./shell.sh
 # Expose backend port
 EXPOSE 5000
 
 # Run the server
-CMD ["npm", "start"]
+# CMD ["sh", "./shell.sh"]
