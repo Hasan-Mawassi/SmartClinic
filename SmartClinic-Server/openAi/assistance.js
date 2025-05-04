@@ -4,52 +4,15 @@ import { extractDateFromText, bookAppointmentByIndex, generateAppointmentList } 
 import { generateAvailableSlots } from '../Services/openAi/slots.js';
 import { getSession, clearSession } from '../Services/openAi/sessionManager.js';
 import { timeList } from '../utils/timeList.js';
+import functionsTool from './functionCalls.js';
+
 const openai =  new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
     maxRetries: 3 
   });
 
 // Updated to tools array with nested function declarations
-const tools = [
-  {
-    type: "function",
-    function: {
-      name: 'getAvailableSlots',
-      description: 'Extract date from message and fetch available appointment slots',
-      parameters: {
-        type: 'object',
-        properties: {
-          text: { 
-            type: 'string', 
-            description: 'The user message which may contain a date',
-          
-          }
-        },
-        required: ['text'],
-        strict: true // Enforce schema compliance :cite[2]
-      }
-    }
-  },
-  {
-    type: "function",
-    function: {
-      name: 'bookAppointment',
-      description: 'Book an appointment by choosing a slot index',
-      parameters: {
-        type: 'object',
-        properties: {
-          index: { 
-            type: 'number', 
-            description: 'Index of the chosen slot (0-based)',
-            minimum: 1 // Added validation
-          }
-        },
-        required: ['index'],
-        additionalProperties: false // Prevent unexpected args :cite[8]
-      }
-    }
-  }
-];
+const tools = functionsTool;
 
 export async function chatWithBot(req, res) {
   const { userName, message, doctor} = req.body;
