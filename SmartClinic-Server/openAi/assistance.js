@@ -14,8 +14,7 @@ const openai =  new OpenAI({
 // Updated to tools array with nested function declarations
 const tools = functionsTool;
 
-export async function chatWithBot(req, res) {
-  const { userName, message, doctor} = req.body;
+export const chatWithBot= async(userName, message, doctor)=> {
   const session = getSession(userName);
 
   // Initialize conversation history with JSON mode requirement :cite[2]
@@ -102,11 +101,11 @@ export async function chatWithBot(req, res) {
       const assistantMsg = finalResponse.choices[0].message;
       session.history.push(assistantMsg);
 
-      return res.json({ message: assistantMsg.content });
+      return { message: assistantMsg.content };
     }
   }
 
   // Fallback for non-tool responses
-  return res.json({ message: msg.content });
+  return { message: msg.content };
 }
 
