@@ -6,6 +6,7 @@ env.config();
 app.use(express.json()); 
 
 app.use(Routes)
+
 // Route to test if it's running
 app.get('/', (req, res) => {
   res.send('Hello from the server !!!!');
