@@ -8,7 +8,7 @@ npx prisma migrate deploy
 
 echo "Running Prisma Sedder..."
 npx prisma generate
-npx prisma db seed
+# npx prisma db seed
 
 echo "Starting server..."
-npm serve
+npm run start:prod
