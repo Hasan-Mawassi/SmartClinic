@@ -11,4 +11,4 @@ npx prisma generate
 npx prisma db seed
 
 echo "Starting server..."
-npm start
+npm serve

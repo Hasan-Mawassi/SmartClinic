@@ -4,6 +4,7 @@
   "description": "",
   "main": "App.js",
   "scripts": {
+    "serve" : "node App.js",
     "start": "nodemon App.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest.config.mjs"
   },
