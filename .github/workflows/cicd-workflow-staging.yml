@@ -51,7 +51,7 @@ jobs:
         run: |
           docker compose -f docker-compose.prod.yml down || true
           docker system prune -af    
-          
+
       - name: Pull Latest Images
         run: |
           docker pull hasanmawasi/smartclinic-frontend:${{ github.sha }}
@@ -59,6 +59,8 @@ jobs:
       - name: Stop and Remove Old Containers
         run: docker compose -f docker-compose.prod.yml down
       - name: Start Services
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           TAG=${{ github.sha }} docker compose -f docker-compose.prod.yml up -d
       
