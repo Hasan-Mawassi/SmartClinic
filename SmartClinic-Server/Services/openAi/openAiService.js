@@ -1,6 +1,7 @@
 import OpenAI from 'openai';
 import dotenv from 'dotenv';
 import prisma from '../../lib/prisma.js';
+import fs from 'fs';
 dotenv.config();
 const client  = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
 
@@ -53,4 +54,12 @@ export const bookAppointmentByIndex=async (available, index, userName)=> {
           symptoms:null,
         },
       });
+  }
+
+  export const transcribeWithWhisper = async (filePath) =>{
+    const response = await client.audio.translations.create({
+      file: fs.createReadStream(filePath),
+      model: 'whisper-1'
+    });
+    return response.text;
   }
