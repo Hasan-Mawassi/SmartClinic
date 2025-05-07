@@ -3,7 +3,9 @@ import 'package:patient_app/constants/app_colors.dart';
 import 'package:patient_app/widgets/chatbot/custom_list_tile.dart';
 import 'package:patient_app/widgets/chatbot/chat_input_field.dart';
 import 'package:patient_app/widgets/chatbot/message_widget.dart';
-
+import 'package:provider/provider.dart';
+import 'package:patient_app/providers/chat_provider.dart';
+import 'package:patient_app/models/messages.dart';
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({Key? key}) : super(key: key);
 
@@ -49,21 +51,22 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
           ),
 
           // Chat messages list
-          Expanded(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              children: const [
-                ChatMessageWidget(
-                  message: "Hello, how can I help you?",
-                  svgAsset: "assets/icons/boot.svg",
-                  isFromBot: true,
-                ),
-                ChatMessageWidget(
-                  message: "I have a headache.",
-                  svgAsset: "assets/icons/boot.svg",
-                  isFromBot: false,
-                ),
-              ],
+           Expanded(
+            child: Consumer<ChatProvider>( 
+              builder: (context, chatProvider, _) {
+                return ListView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  itemCount: chatProvider.messages.length,
+                  itemBuilder: (context, index) {
+                    final msg = chatProvider.messages[index];
+                    return ChatMessageWidget(
+                      message: msg.text,
+                      svgAsset: "assets/icons/boot.svg",
+                      isFromBot: msg.sender == Sender.ai, 
+                    );
+                  },
+                );
+              },
             ),
           ),
 
@@ -73,8 +76,12 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             child: ChatInputField(
               controller: _chatController,
               onSend: () {
-                print("Send: ${_chatController.text}");
-                _chatController.clear();
+                final text = _chatController.text.trim();
+                if (text.isNotEmpty) {
+                  Provider.of<ChatProvider>(context, listen: false)
+                      .addUserMessage(text); // SEND TO PROVIDER
+                  _chatController.clear();
+                }
               },
               onVoice: () {
                 print("Voice input activated");
