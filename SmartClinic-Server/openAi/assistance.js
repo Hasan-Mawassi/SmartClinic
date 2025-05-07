@@ -17,7 +17,7 @@ const tools = functionsTool;
 export const chatWithBot= async(userName, message, doctor)=> {
   const session = getSession(userName);
 
-  // Initialize conversation history with JSON mode requirement :cite[2]
+  // Initialize conversation history with JSON mode requirement 
   if (!session.history) {
     session.history = [
       { 
@@ -31,79 +31,88 @@ export const chatWithBot= async(userName, message, doctor)=> {
 
   // Updated API call with tools parameter
   const firstResponse = await openai.chat.completions.create({
-    model: 'gpt-4.1-mini', // Updated to latest model :cite[2]
+    model: 'gpt-4.1', 
     messages: session.history,
     tools: tools,
-    tool_choice: 'required', // Force tool usage when applicable :cite[6]
+    tool_choice: 'required', // Force tool usage when applicable 
     
   });
 
   const msg = firstResponse.choices[0].message;
   session.history.push(msg);
 
-  if (msg.tool_calls) { // Changed from function_call to tool_calls :cite[1]
+  if (msg.tool_calls) {
     for (const toolCall of msg.tool_calls) {
       const { name, arguments: argsJson } = toolCall.function;
-      const args = JSON.parse(argsJson);
       let result;
-
-      switch (name) {
-        case 'getAvailableSlots': {
-         
-          const dateISO = await extractDateFromText(args.text);
-          session.date = dateISO;
-
-          const slots = await generateAvailableSlots({
-            doctorId: doctor.id ,
-            dateISO,
-            startTime: doctor.startTime,
-            endTime: doctor.endTime ,
-            slotDurationMinutes: doctor.slotDuration
-          });
-          session.available = slots;
-          const listSlots =timeList(slots) 
-          const aiText = await generateAppointmentList(dateISO, listSlots);
-          result = { dateISO, listSlots, aiText };
-          break;
-        }
-        case 'bookAppointment': {
-          if (!session.available?.[args.index]) {
-            throw new Error("Invalid slot index");
+  
+      try {
+        const args = JSON.parse(argsJson);
+  
+        switch (name) {
+          case 'getAvailableSlots': {
+            const dateISO = await extractDateFromText(args.text);
+            session.date = dateISO;
+  
+            const slots = await generateAvailableSlots({
+              doctorId: doctor.id,
+              dateISO,
+              startTime: doctor.startTime,
+              endTime: doctor.endTime,
+              slotDurationMinutes: doctor.slotDuration
+            });
+  
+            session.available = slots;
+            const listSlots = timeList(slots);
+            const aiText = await generateAppointmentList(dateISO, listSlots);
+            result = { dateISO, listSlots, aiText };
+            break;
           }
-          
-          const booked = await bookAppointmentByIndex(
-            session.available, 
-            args.index, 
-            userName
-          );
-          clearSession(userName);
-          result = { booked };
-          break;
+  
+          case 'bookAppointment': {
+            if (!session.available?.[args.index]) {
+              result = { error: "Invalid slot index. Please choose a valid number from the list." };
+              break;
+            }
+  
+            const booked = await bookAppointmentByIndex(
+              session.available,
+              args.index,
+              userName
+            );
+            clearSession(userName);
+            result = { booked };
+            break;
+          }
+  
+          default:
+            result = { error: `Unknown function: ${name}` };
         }
-        default:
-          result = { error: `Unknown function: ${name}` };
+      } catch (err) {
+        result = { error: `Execution error: ${err.message}` };
       }
-
-      // Updated function response format with tool_call_id :cite[6]
+  
+      // ALWAYS respond to tool_call_id, even on error
       session.history.push({
         role: "tool",
         content: JSON.stringify(result),
-        tool_call_id: toolCall.id // Required for context tracking
+        tool_call_id: toolCall.id
       });
-
-      // Final response generation
-      const finalResponse = await openai.chat.completions.create({
-        model: 'gpt-4.1-mini',
-        messages: session.history,
-        response_format: { type: "text" } // Force natural language response
-      });
-
-      const assistantMsg = finalResponse.choices[0].message;
-      session.history.push(assistantMsg);
-
-      return { message: assistantMsg.content };
     }
+  
+    // Generate final response after all tool calls responded
+    const finalResponse = await openai.chat.completions.create({
+      model: 'gpt-4.1',
+      messages: session.history,
+      response_format: { type: "text" }
+    });
+  
+    const assistantMsg = finalResponse.choices[0].message;
+    session.history.push(assistantMsg);
+  
+    return { message: assistantMsg.content };
   }
+  
 
   // Fallback for non-tool responses
   return { message: msg.content };
