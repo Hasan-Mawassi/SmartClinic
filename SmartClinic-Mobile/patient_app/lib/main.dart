@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'routes/app_router.dart';
+import 'package:patient_app/providers/chat_provider.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => ChatProvider())],
+      child: const MyApp(),
+    ), 
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,4 +24,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
