@@ -58,6 +58,7 @@ model Schedule {
   id           Int       @id @default(autoincrement())
   startTime    String
   endTime      String
+  offdays      String[]   // e.g., ["Monday", "Wednesday"]
   slotDuration Int       // duration in minutes
   doctorId     Int
   doctor       Doctor    @relation(fields: [doctorId], references: [id])

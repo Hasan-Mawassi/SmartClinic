@@ -8,9 +8,22 @@ export class Doctor {
 
       static async allWithSchedules() {
         return await prisma.doctor.findMany({
-          include: {
-            schedules: true,
-          },
-        });
+            select: {
+              id: true,
+              name: true,
+              email: true,
+              yearsExperience: true,
+              profilePicture: true,
+              schedules: {
+                select: {
+                  id: true,
+                  startTime: true,
+                  endTime: true,
+                  slotDuration: true,
+                  offdays: true,
+                },
+              },
+            },
+          });
       }
 } 
