@@ -7,7 +7,7 @@ class RequestClient {
     dio = Dio();
 
     final options = BaseOptions(
-      baseUrl: "http://10.0.2.2:5000/api/v1/",
+      baseUrl: "http://192.168.1.15:5000/api/v1/",
       headers: {Headers.contentTypeHeader: "application/json"},
     );
 
