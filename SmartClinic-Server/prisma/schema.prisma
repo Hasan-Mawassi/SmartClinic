@@ -22,6 +22,8 @@ model Patient {
   date_of_birth DateTime
   profile_pic   String?     
   created_at    DateTime @default(now())
+
+  @@map("patients")
 }
 
 model Doctor {
@@ -34,6 +36,8 @@ model Doctor {
   createdAt       DateTime? @default(now())
   updatedAt       DateTime? @updatedAt
   appointments    Appointment[]
+  schedules Schedule[]
+   @@map("doctors")
 }
 
 model Appointment {
@@ -47,4 +51,16 @@ model Appointment {
   createdAt  DateTime  @default(now())
 
   @@index([doctorId])
+  @@map("appointments")
+}
+
+model Schedule {
+  id           Int       @id @default(autoincrement())
+  startTime    String
+  endTime      String
+  slotDuration Int       // duration in minutes
+  doctorId     Int
+  doctor       Doctor    @relation(fields: [doctorId], references: [id])
+
+  @@map("schedules")
 }
