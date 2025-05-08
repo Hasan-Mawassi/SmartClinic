@@ -7,12 +7,7 @@ import 'package:patient_app/widgets/chatbot/voice_message.dart';
 import 'package:provider/provider.dart';
 import 'package:patient_app/providers/chat_provider.dart';
 import 'package:patient_app/models/messages.dart';
-// import 'dart:convert';
-// import 'package:flutter_sound/flutter_sound.dart';
-// import 'dart:typed_data';
-// import 'package:permission_handler/permission_handler.dart';
-// import 'dart:io';
-// import 'package:path_provider/path_provider.dart';
+
 import 'package:patient_app/services/voice_record.dart';
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({Key? key}) : super(key: key);
@@ -23,65 +18,9 @@ class ChatBotScreen extends StatefulWidget {
 
 class _ChatBotScreenState extends State<ChatBotScreen> {
   final TextEditingController _chatController = TextEditingController();
-  // late FlutterSoundRecorder _audioRecorder;
-  // bool _isRecording = false;
-  // String? _audioPath;
+  
   bool _isRecording = false;
 
-//   Future<void> _initRecorder() async {
-//    _audioRecorder = FlutterSoundRecorder();
-
-//   await _audioRecorder.openRecorder();
-//   await _audioRecorder.setSubscriptionDuration(
-//     const Duration(milliseconds: 500),
-//   );
-
-//   await Permission.microphone.request(); // Request permission once
-// }
-// Future<void> _startRecording() async {
-//   try {
-//     if (_audioRecorder.isRecording) return;
-
-//     final directory = await getApplicationDocumentsDirectory();
-//     _audioPath = '${directory.path}/${DateTime.now().millisecondsSinceEpoch}.m4a';
-
-//     await _audioRecorder.startRecorder(
-//       toFile: _audioPath!,
-//        codec: Codec.aacMP4,
-//     );
-
-//     setState(() => _isRecording = true);
-//   } catch (e) {
-//     print('Recording error: $e');
-//   }
-// }
-
-// Future<void> _stopRecording() async {
-//   try {
-//     if (_isRecording) {
-//       await _audioRecorder.stopRecorder();
-//       setState(() => _isRecording = false);
-
-//       if (_audioPath != null) {
-//   File audioFile = File(_audioPath!);
-//   if (await audioFile.exists()) {
-//     int length = await audioFile.length();
-//     print('Audio file length: $length bytes');
-    
-//     Uint8List bytes = await audioFile.readAsBytes();
-//     String base64Audio = base64Encode(bytes);
-//     print('base64Audio (===================: ${base64Audio}');
-    
-//     Provider.of<ChatProvider>(context, listen: false)
-//         .addUserMessage(base64Audio, isVoice: true);
-//   } else {
-//     print('Audio file does not exist at $_audioPath');
-//   }}
-//     }
-//   } catch (e) {
-//     print('Stop recording error: $e');
-//   }
-// }
  Future<void> _handleVoiceInput() async {
      if (_isRecording) {
 
@@ -103,7 +42,6 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
 @override
 void initState() {
   super.initState();
-  //  _initRecorder();
   VoiceRecorderService.instance.init().catchError((e) {
       debugPrint("Recorder init error: $e");
     });
@@ -111,7 +49,6 @@ void initState() {
   @override
   void dispose() {
     _chatController.dispose();
-    //  _audioRecorder.closeRecorder();
     VoiceRecorderService.instance.dispose(); 
     super.dispose();
   }
