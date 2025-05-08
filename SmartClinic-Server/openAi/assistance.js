@@ -65,7 +65,12 @@ export const chatWithBot= async(userName, message, doctor)=> {
             session.available = slots;
             const listSlots = timeList(slots);
             const aiText = await generateAppointmentList(dateISO, listSlots);
-            result = { dateISO, listSlots, aiText };
+            // result = { dateISO, listSlots, aiText };
+            result = {
+              available_slots: listSlots,
+              message: aiText,
+              date: dateISO,
+            };
             break;
           }
   
@@ -81,7 +86,14 @@ export const chatWithBot= async(userName, message, doctor)=> {
               userName
             );
             clearSession(userName);
-            result = { booked };
+            // result = {  booked };
+                result = {
+                   appointment_details: {
+                    date: new Date(booked.dateTime).toISOString().split("T")[0],
+                    time: new Date(booked.dateTime).toISOString().split("T")[1],
+                    status: booked.status
+                  }, };
+            console.log("Booked appointment:", booked);
             break;
           }
   

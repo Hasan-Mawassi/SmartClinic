@@ -10,8 +10,7 @@
           text: { 
             type: 'string', 
             description: 'The user message which may contain a date',
-          
-          }
+         },  
         },
         required: ['text'],
         strict: true // Enforce schema compliance :cite[2]
