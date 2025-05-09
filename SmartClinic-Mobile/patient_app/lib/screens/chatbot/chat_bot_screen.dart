@@ -9,6 +9,7 @@ import 'package:patient_app/providers/chat_provider.dart';
 import 'package:patient_app/models/messages.dart';
 
 import 'package:patient_app/services/voice_record.dart';
+
 class ChatBotScreen extends StatefulWidget {
   const ChatBotScreen({Key? key}) : super(key: key);
 
@@ -18,40 +19,58 @@ class ChatBotScreen extends StatefulWidget {
 
 class _ChatBotScreenState extends State<ChatBotScreen> {
   final TextEditingController _chatController = TextEditingController();
-  
+
   bool _isRecording = false;
 
- Future<void> _handleVoiceInput() async {
-     if (_isRecording) {
-
+  Future<void> _handleVoiceInput() async {
+    if (_isRecording) {
       final base64 = await VoiceRecorderService.instance.stop();
-       setState(() => _isRecording = false);
- 
+      setState(() => _isRecording = false);
 
-     if (base64.isNotEmpty) {
-         Provider.of<ChatProvider>(context, listen: false)
-
-           .addUserMessage(base64, isVoice: true);
-       }
-     } else {
-
+      if (base64.isNotEmpty) {
+        Provider.of<ChatProvider>(
+          context,
+          listen: false,
+        ).addUserMessage(base64, isVoice: true);
+      }
+    } else {
       await VoiceRecorderService.instance.start();
-       setState(() => _isRecording = true);
-     }
-   }
-@override
-void initState() {
-  super.initState();
-  VoiceRecorderService.instance.init().catchError((e) {
+      setState(() => _isRecording = true);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    VoiceRecorderService.instance.init().catchError((e) {
       debugPrint("Recorder init error: $e");
     });
-}
+  }
+
   @override
   void dispose() {
     _chatController.dispose();
-    VoiceRecorderService.instance.dispose(); 
+    VoiceRecorderService.instance.dispose();
     super.dispose();
   }
+
+  String? doctorName;
+  String? doctorPhoto;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final doctor =
+        Provider.of<ChatProvider>(context, listen: false).selectedDoctor;
+    if (doctor != null) {
+      setState(() {
+        doctorName = "Dr. ${doctor['name'] ?? 'Unknown'}";
+        doctorPhoto = doctor['profilePic'] ?? "";
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,14 +94,14 @@ void initState() {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: DoctorListTile(
-              doctorName: "Dr. John Doe",
-              photoUrl: "https://picsum.photos/200/300",
+              doctorName: doctorName ?? "Dr. Unknown",
+              photoUrl: doctorPhoto ?? "Dr. Unknown",
             ),
           ),
 
           // Chat messages list
-           Expanded(
-            child: Consumer<ChatProvider>( 
+          Expanded(
+            child: Consumer<ChatProvider>(
               builder: (context, chatProvider, _) {
                 return ListView.builder(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -90,32 +109,31 @@ void initState() {
                   itemBuilder: (context, index) {
                     final msg = chatProvider.messages[index];
                     return msg.type == MessageType.voice
-                    ? VoiceMessageWidget(
-                        base64Audio: msg.text,
-                        // isFromBot: msg.sender == Sender.ai,
-                      )
-                    : ChatMessageWidget(
-                        svgAsset: "assets/icons/boot.svg",
-                        message: msg.text,
-                        isFromBot: msg.sender == Sender.ai,
-                      );
+                        ? VoiceMessageWidget(
+                          base64Audio: msg.text,
+                          // isFromBot: msg.sender == Sender.ai,
+                        )
+                        : ChatMessageWidget(
+                          svgAsset: "assets/icons/boot.svg",
+                          message: msg.text,
+                          isFromBot: msg.sender == Sender.ai,
+                        );
                   },
                 );
               },
-              
             ),
           ),
-if (_isRecording)
-  Padding(
-    padding: EdgeInsets.all(8.0),
-    child: Row(
-      children: [
-        Icon(Icons.mic, color: Colors.red),
-        SizedBox(width: 8),
-        Text('Recording...'),
-      ],
-    ),
-  ),
+          if (_isRecording)
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Icon(Icons.mic, color: Colors.red),
+                  SizedBox(width: 8),
+                  Text('Recording...'),
+                ],
+              ),
+            ),
           // Chat input field pinned at bottom
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -124,13 +142,15 @@ if (_isRecording)
               onSend: () {
                 final text = _chatController.text.trim();
                 if (text.isNotEmpty) {
-                  Provider.of<ChatProvider>(context, listen: false)
-                      .addUserMessage(text); // SEND TO PROVIDER
+                  Provider.of<ChatProvider>(
+                    context,
+                    listen: false,
+                  ).addUserMessage(text); // SEND TO PROVIDER
                   _chatController.clear();
                 }
               },
               onVoice: () {
-               _handleVoiceInput(); // Handle voice input
+                _handleVoiceInput(); // Handle voice input
               },
               onVoiceStart: () async {
                 await VoiceRecorderService.instance.start();

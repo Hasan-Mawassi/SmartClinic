@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:io';
 
@@ -6,11 +5,11 @@ import 'package:flutter_sound/flutter_sound.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 
-class VoiceRecorderService { 
- VoiceRecorderService._();
+class VoiceRecorderService {
+  VoiceRecorderService._();
   static final instance = VoiceRecorderService._();
 
-  late final FlutterSoundRecorder _recorder;
+  late FlutterSoundRecorder _recorder;
   bool _isInitialized = false;
 
   /// Call once at app start (e.g. in initState).
@@ -25,6 +24,7 @@ class VoiceRecorderService {
       throw Exception('Microphone permission not granted');
     }
   }
+
   /// Starts recording to a temp file.
   Future<void> start() async {
     if (!_isInitialized) throw Exception('Recorder not initialized');
@@ -33,7 +33,8 @@ class VoiceRecorderService {
     final path = '${dir.path}/${DateTime.now().millisecondsSinceEpoch}.m4a';
     await _recorder.startRecorder(toFile: path, codec: Codec.aacMP4);
   }
-   Future<String> stop() async {
+
+  Future<String> stop() async {
     if (!_isInitialized) throw Exception('Recorder not initialized');
     if (!_recorder.isRecording) return '';
     final path = await _recorder.stopRecorder();
@@ -45,7 +46,7 @@ class VoiceRecorderService {
   }
 
   /// Release resources; call in dispose().
- Future<void> dispose() async {
+  Future<void> dispose() async {
     await _recorder.closeRecorder();
   }
 }

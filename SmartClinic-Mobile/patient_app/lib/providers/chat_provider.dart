@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:patient_app/utils/request.dart';
 import 'package:patient_app/utils/handle_ai_response.dart';
@@ -12,12 +11,21 @@ class ChatProvider with ChangeNotifier {
 
   // These could be set during user login/init
   String username = "john_doe";
-  Map<String, dynamic> doctor = {
-    "id": "1",
-    "startTime": "09:00",
-    "endTime": "17:00",
-    "slotDuration": 30,
-  };
+  // Map<String, dynamic> doctor = {
+  //   "id": "1",
+  //   "startTime": "09:00",
+  //   "endTime": "17:00",
+  //   "slotDuration": 30,
+  // };
+  Map<String, dynamic>? _selectedDoctor;
+
+  Map<String, dynamic>? get selectedDoctor => _selectedDoctor;
+
+  void setSelectedDoctor(Map<String, dynamic> doctor) {
+    _selectedDoctor = doctor;
+    print('selected doctor ---============= $_selectedDoctor');
+    notifyListeners();
+  }
 
   void addUserMessage(String text, {bool isVoice = false}) {
     final message = Message(
@@ -34,13 +42,21 @@ class ChatProvider with ChangeNotifier {
   Future<void> _sendToApi(String userInput) async {
     final requestClient = RequestClient().dio;
     try {
+      print(
+        'reqquestClient: $username  userInput: $userInput  doctor: $_selectedDoctor',
+      );
       final response = await requestClient.post(
         "ai/chat",
-        data: {"userName": username, "message": userInput, "doctor": doctor},
+        data: {
+          "userName": username,
+          "message": userInput,
+          "doctor": _selectedDoctor,
+        },
       );
-     handleAIResponse(response, _messages);
-     
+      print(response);
+      handleAIResponse(response, _messages);
     } catch (e) {
+      print("Request failed:========================= $e");
       _messages.add(
         Message(text: "Failed to connect to server.", sender: Sender.ai),
       );
@@ -61,22 +77,19 @@ class ChatProvider with ChangeNotifier {
         data: {
           "userName": username,
           "audioBase64": base64Audio,
-          "doctor": doctor,
+          "doctor": _selectedDoctor,
           "fileType": "m4a",
         },
       );
       print("Response: ${response.data}");
-       handleAIResponse(response, _messages);
+      handleAIResponse(response, _messages);
     } catch (e) {
+      print("Request failed:========================= $e");
       _messages.add(
         Message(text: "Failed to connect to server.", sender: Sender.ai),
       );
-      print("Request failed: $e");
     }
-    
 
     notifyListeners();
   }
 }
-
-
