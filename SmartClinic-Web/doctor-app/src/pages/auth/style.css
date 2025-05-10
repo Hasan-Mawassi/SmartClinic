@@ -32,7 +32,10 @@
     border-radius: 0 100% 0 0;   
 }
 
-
+.link{
+    display: flex;
+    gap: 5px;
+}
 
 @media (min-width: 0px) and (  max-width: 600px) {
     .bottom-left-circle , .top-right-circle {
