@@ -60,7 +60,17 @@ export default function Sidebar() {
           px: 1,
         }}
       >
-        
+        <Box
+    component="img"
+    src="logo.png" 
+    alt="Logo"
+    sx={{
+      height: 150,
+      width: collapsed ? 40 : 120,
+      objectFit: 'contain',
+      transition: 'width 0.3s',
+    }}
+  />
         <IconButton onClick={toggleCollapsed}>
           {collapsed ? <ChevronRightIcon /> : <ChevronLeftIcon />}
         </IconButton>
