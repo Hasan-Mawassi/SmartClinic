@@ -1,0 +1,15 @@
+:root {
+  /* Colors */
+  --primary: #1A75FF;
+  --secondary: #8BE65E;
+  --background: #E0E8F0;
+  --text-color: #000000;
+
+  /* Border Radius */
+  ---border-radius-container: 28px;
+  ---border-radius-element: 12px;
+  ---border-radius-base: 6px;
+
+  
+
+}

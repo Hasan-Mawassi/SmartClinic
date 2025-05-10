@@ -1,4 +1,4 @@
 .custom-button{
-    background-color: #6592b7;
+    background-color: var(--primary);
     font-size: 18px;
 }

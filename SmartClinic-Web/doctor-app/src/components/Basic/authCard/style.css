@@ -18,7 +18,7 @@
 .card-title{
     font-size: 38px;
     font-weight: 900;
-    color: #1c56dc;
+    color: var(--primary);
     margin-bottom: 20px;
 }
 .stack-width{

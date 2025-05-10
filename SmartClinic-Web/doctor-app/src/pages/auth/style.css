@@ -1,6 +1,6 @@
 
 .auth-body {
-  background-color: #81B2FB;
+  background-color: var(--background);
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -10,7 +10,7 @@
 
 .register-button{
     align-self: center;
-    background-color: #1A75FF !important;
+    background-color: var(--primary) !important;
 }
 
 .top-right-circle{
@@ -19,7 +19,7 @@
     right: 0;
     width:38%;
     height: 48%;
-    background-color: #1A75FF; 
+    background-color:var(--primary); 
     border-radius: 0 0 0 100%;
     z-index: 4;
 }
@@ -29,7 +29,7 @@
     left: 0;
     width:38%;
     height: 48%;
-    background-color: #1A75FF; 
+    background-color: var(--primary); 
     border-radius: 0 100% 0 0;   
 }
 
