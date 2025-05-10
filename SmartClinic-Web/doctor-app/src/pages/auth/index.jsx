@@ -1,9 +1,9 @@
 import React from 'react';
-
+import InputField from '../../components/Basic/inputField';
 const Auth = () => {
     return (
         <div>
-            <h1>login</h1>
+           <InputField label="Email" type="email" variant="outlined" fullWidth={true} />
         </div>
     );
 };
