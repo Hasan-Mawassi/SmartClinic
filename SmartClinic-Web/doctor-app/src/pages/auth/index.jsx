@@ -7,7 +7,7 @@ import CustomButton from '../../components/Basic/Button';
 const Auth = () => {
     return (
         <div className='auth-body'>
-            
+            <div className='top-right-circle'></div>
         <CustomCard title='Login'>
               <InputField inputLabel='Email' type="email" variant="outlined" fullWidth={true} icon={EmailIcon} />
               <InputField inputLabel='Email' type="email" variant="outlined" fullWidth={true} icon={EmailIcon} />
@@ -21,7 +21,7 @@ const Auth = () => {
                 />
         </CustomCard>
                     
-
+                <div className="bottom-left-circle"></div>
           
         </div>
     );
