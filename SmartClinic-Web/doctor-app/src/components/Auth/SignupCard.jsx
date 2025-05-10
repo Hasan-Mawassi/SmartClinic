@@ -9,9 +9,9 @@ import { Link } from '@mui/material';
 const SignupCard = ({linkClick , SignupClick}) => {
     return (
         <CustomCard title='Register'>
-        <InputField inputLabel='Username' type="text" variant="outlined" fullWidth={true} icon={PersonIcon} />
-        <InputField inputLabel='Email' type="email" variant="outlined" fullWidth={true} icon={EmailIcon} />
-        <InputField inputLabel='Password' type="password" variant="outlined" fullWidth={true} icon={LockIcon} />
+        <InputField inputLabel='Username' placeholder="Enter your username" type="text" variant="outlined" fullWidth={true} icon={PersonIcon} />
+        <InputField inputLabel='Email' placeholder="Enter your email" type="email" variant="outlined" fullWidth={true} icon={EmailIcon} />
+        <InputField inputLabel='Password' placeholder="Enter your password" type="password" variant="outlined" fullWidth={true} icon={LockIcon} />
        
         <CustomButton
           className='register-button'
