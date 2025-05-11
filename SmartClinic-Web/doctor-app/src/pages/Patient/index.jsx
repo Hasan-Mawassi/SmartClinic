@@ -30,7 +30,10 @@ const Patient = () => {
                 '2025-05-10': ['Amoxicillin', 'Vitamin D', 'Aspirin'],
               }}
             />
-            
+            <NewMedicineCard
+            medicines={['Metformin 500mg', 'Atorvastatin 20mg', 'Lisinopril 10mg']}
+            />
+
         </div>
     );
 };
