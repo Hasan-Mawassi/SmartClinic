@@ -1,0 +1,33 @@
+.auth-card{
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 40%;
+    max-width: 450px;
+    min-width: 280px;
+    min-height: 490px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #919191;
+    box-shadow: none;
+    z-index: 2;
+}
+
+.card-title{
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+.stack-width{
+    width: 90%;
+}
+
+@media (min-width: 0px) and (  max-width: 600px) {
+    .auth-card{
+        min-height: 390px;
+        width: 70%;
+    }
+  }
