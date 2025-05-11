@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid2, Paper, Typography } from '@mui/material';
 import {
   BarChart,
   PieChart,
@@ -27,10 +27,10 @@ const ageData = [
 
 const DoctorDashboardCharts = () => {
   return (
-    <Grid container spacing={3} mt={1} p={0}>
+    <Grid2 container spacing={3} mt={1} p={0}>
       
       {/* Patients Bar Chart */}
-      <Grid item xs={12} sm={6} md sx={{ flexGrow: 1, minWidth: 200 }}>
+      <Grid2   size={{ xs: 12, sm: 6 , sx:{flexGrow: 1, minWidth: 200 }}}>
         <Paper elevation={3} sx={{ p: 2 }}>
           <Typography variant="h6" gutterBottom>
             Patients Analysis
@@ -41,10 +41,10 @@ const DoctorDashboardCharts = () => {
             height={250}
           />
         </Paper>
-      </Grid>
+      </Grid2>
 
       {/* Gender Pie Chart */}
-      <Grid item xs={12} sm={6} md sx={{ flexGrow: 1, minWidth: 200 }}>
+      <Grid2  size={{ xs: 12, sm: 6 , sx:{flexGrow: 1, minWidth: 200 }}}>
         <Paper elevation={3} sx={{ p: 2 , height: 350 }}>
           <Typography variant="h6" gutterBottom>
             Gender Analysis
@@ -54,10 +54,10 @@ const DoctorDashboardCharts = () => {
             height={250}
           />
         </Paper>
-      </Grid>
+      </Grid2>
 
       {/* Age Line Chart */}
-      <Grid item xs={12} sm={6} md sx={{ flexGrow: 1, minWidth: 200 }}>
+      <Grid2  size={{ xs: 12, sm: 6 , sx:{flexGrow: 1, minWidth: 200 }}}>
         <Paper elevation={3} sx={{ p: 2 }}>
           <Typography variant="h6" gutterBottom>
             Age Analysis
@@ -68,9 +68,9 @@ const DoctorDashboardCharts = () => {
             height={250}
           />
         </Paper>
-      </Grid>
+      </Grid2>
 
-    </Grid>
+    </Grid2>
   );
 };
 
