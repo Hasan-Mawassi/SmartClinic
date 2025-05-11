@@ -27,7 +27,7 @@ const ageData = [
 
 const DoctorDashboardCharts = () => {
   return (
-    <Grid container spacing={3} mt={1} p={1}>
+    <Grid container spacing={3} mt={1} p={0}>
       
       {/* Patients Bar Chart */}
       <Grid item xs={12} sm={6} md sx={{ flexGrow: 1, minWidth: 200 }}>

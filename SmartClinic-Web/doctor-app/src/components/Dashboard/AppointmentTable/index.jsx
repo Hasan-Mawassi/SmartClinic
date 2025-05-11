@@ -45,6 +45,7 @@ const AppointmentsTable = () => {
         '& .MuiDataGrid-root': {
           borderRadius: 2,
           boxShadow: 2,
+          mt: 2,
         },
         '& .MuiDataGrid-columnHeaders': {
           backgroundColor: 'rgb(155, 1, 37)',
