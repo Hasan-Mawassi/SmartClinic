@@ -21,7 +21,7 @@ const MedicineCard = ({ availableDates, medicinesByDate }) => {
   };
 
   return (
-    <Card sx={{ width: '100%', maxWidth: 300, borderRadius: 3 }}>
+    <Card sx={{ width: '100%', maxWidth: 300, borderRadius: 3 , border: '1px solid #a0a0a0',boxShadow: 0}}>
       <CardContent>
         {/* Date Dropdown */}
         <FormControl fullWidth sx={{ mb: 2 }}>
