@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { Grid2,Box, CircularProgress } from '@mui/material';
 import KpiCard from '../../components/Basic/KPICard';
-
+import WelcomeSection from '../../components/Dashboard/Welcome';
 import PeopleIcon from '@mui/icons-material/People';
 import EventIcon from '@mui/icons-material/Event';
 import ReportIcon from '@mui/icons-material/Description';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
-
+import DoctorDashboardCharts from '../../components/Dashboard/DoctorCharts';
 const Dashboard = () => {
   const [kpis, setKpis] = useState(null);
 
@@ -32,7 +32,9 @@ const Dashboard = () => {
   }
 
   return (
-    <Box p={3}>
+    <> 
+    <WelcomeSection />
+    <Box p={2}>
       <Grid2 container spacing={3}>
     <Grid2 xs={12} sm={6} md sx={{ flexGrow: 1, minWidth: 200 }}>
       <KpiCard
@@ -64,6 +66,8 @@ const Dashboard = () => {
     </Grid2>
   </Grid2>
     </Box>
+    <DoctorDashboardCharts />
+    </>
   );
 };
 
