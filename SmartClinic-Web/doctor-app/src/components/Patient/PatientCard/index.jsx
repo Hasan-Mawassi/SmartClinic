@@ -5,10 +5,10 @@ const PatientCard = ({ patient }) => {
   return (
     <Paper
       elevation={3}
-      sx={{ p: 2, borderRadius: 3, maxWidth: 600, width: "100%" , boxShadow: 0,border: "1px solid #ccc",}}
+      sx={{ p: 2, borderRadius: 3, width: "100%" , boxShadow: 0,border: "1px solid #ccc",}}
     >
       {/* Header */}
-      <Box display="flex" justifyContent="space-between" mb={2}>
+      <Box display="flex" justifyContent="space-between" mb={2} flexWrap={"wrap"}>
         <Typography variant="h6" fontWeight="bold">
           Patient Info:
         </Typography>
@@ -18,8 +18,9 @@ const PatientCard = ({ patient }) => {
       </Box>
 
       {/* Content */}
-      <Grid2 container spacing={2} alignItems="center">
+      <Grid2 container spacing={2} alignItems="center" display="flex" flexDirection="row" justifyContent={"space-between"} wrap="wrap" >
         {/* Image */}
+         <Box display="flex" flexDirection="row" gap={3} flexWrap={"wrap"}> 
         <Grid2 >
           <Box
             component="img"
@@ -54,7 +55,7 @@ const PatientCard = ({ patient }) => {
             </Typography>
           </Box>
         </Grid2>
-
+        </Box>
         {/* Past Surgery Status */}
         <Grid2 >
           <Box
