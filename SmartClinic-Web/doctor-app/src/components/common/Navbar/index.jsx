@@ -27,7 +27,7 @@ export default function Navbar() {
           width: '100%',
         }}
       >
-        <Typography variant="h6" color="text.primary">
+        <Typography variant="h4" color="text.primary">
           {pageName}
         </Typography>
         <Typography variant="body1" color="text.secondary">
