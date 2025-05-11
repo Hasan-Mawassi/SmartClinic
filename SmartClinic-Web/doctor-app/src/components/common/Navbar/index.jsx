@@ -27,7 +27,11 @@ export default function Navbar() {
           width: '100%',
         }}
       >
-        <Typography variant="h4" color="text.primary">
+        <Typography variant="h4" color="text.primary" sx={{
+    fontSize: {
+      xs: '1.5rem', 
+    },
+  }}>
           {pageName}
         </Typography>
         <Typography variant="body1" color="text.secondary">
