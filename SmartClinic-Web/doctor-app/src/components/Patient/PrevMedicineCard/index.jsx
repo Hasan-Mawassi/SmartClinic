@@ -44,6 +44,7 @@ const MedicineCard = ({ availableDates, medicinesByDate }) => {
         <Typography variant="h6" gutterBottom>
           Previous Medicines List
         </Typography>
+        <Box sx={{ maxHeight: 120, overflow: 'auto' }}> 
         <List>
           {(medicinesByDate[selectedDate] || []).map((medicine, index) => (
             <ListItem key={index}>
@@ -51,6 +52,7 @@ const MedicineCard = ({ availableDates, medicinesByDate }) => {
             </ListItem>
           ))}
         </List>
+        </Box>
       </CardContent>
     </Card>
   );
