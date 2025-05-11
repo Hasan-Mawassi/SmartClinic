@@ -21,9 +21,11 @@ const TextCard = ({ title, description }) => {
         </Typography>
       </Box>
 
-      <Typography variant="body1" color="text.secondary">
-        {description}
-      </Typography>
+      <Box sx={{ maxHeight: 300, overflow: 'auto' }}>
+        <Typography variant="body1" color="text.secondary" sx={{ whiteSpace: 'pre-wrap' }}>
+            {description}
+        </Typography>
+       </Box>
     </Paper>
   );
 };
