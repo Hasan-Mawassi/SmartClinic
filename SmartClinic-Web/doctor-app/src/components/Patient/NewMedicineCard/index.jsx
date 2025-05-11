@@ -24,13 +24,15 @@ const NewMedicineCard = ({ title = "New Prescription", medicines = [] }) => {
 
         {/* Numbered List */}
         {medicines.length > 0 ? (
-          <List>
+          <Box sx={{ maxHeight: 190, overflow: 'auto' }}>
+          <List dense>
             {medicines.map((medicine, index) => (
               <ListItem key={index}>
                 <ListItemText primary={`${index + 1}. ${medicine}`} />
               </ListItem>
             ))}
           </List>
+        </Box>
         ) : (
           <Typography variant="body2" color="textSecondary">
             No new medicines added.

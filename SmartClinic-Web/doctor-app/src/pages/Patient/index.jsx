@@ -33,7 +33,7 @@ const Patient = () => {
                 }}
               />
               <NewMedicineCard
-                medicines={['Metformin 500mg', 'Atorvastatin 20mg', 'Lisinopril 10mg']}
+                medicines={['Metformin 500mg', 'Atorvastatin 20mg', 'Lisinopril 10mg', 'Lisinopril 10mg', 'Lisinopril 10mg']}
               />
               < DoctorVitalsCard />
               </Box>
