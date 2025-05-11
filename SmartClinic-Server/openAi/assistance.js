@@ -5,7 +5,8 @@ import { generateAvailableSlots } from '../Services/openAi/slots.js';
 import { getSession, clearSession } from '../Services/openAi/sessionManager.js';
 import { timeList } from '../utils/timeList.js';
 import functionsTool from './functionCalls.js';
-
+import dotenv from 'dotenv';
+dotenv.config();
 const openai =  new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
     maxRetries: 3 
