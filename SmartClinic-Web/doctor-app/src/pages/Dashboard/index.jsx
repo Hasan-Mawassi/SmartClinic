@@ -8,6 +8,7 @@ import EventIcon from '@mui/icons-material/Event';
 import ReportIcon from '@mui/icons-material/Description';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 import DoctorDashboardCharts from '../../components/Dashboard/DoctorCharts';
+import AppointmentTable from '../../components/Dashboard/AppointmentTable';
 const Dashboard = () => {
   const [kpis, setKpis] = useState(null);
 
@@ -65,8 +66,9 @@ const Dashboard = () => {
       />
     </Grid2>
   </Grid2>
-    </Box>
     <DoctorDashboardCharts />
+    <AppointmentTable />
+    </Box>
     </>
   );
 };
