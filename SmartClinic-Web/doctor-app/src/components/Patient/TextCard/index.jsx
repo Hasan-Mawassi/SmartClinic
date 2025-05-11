@@ -8,8 +8,9 @@ const TextCard = ({ title, description }) => {
       elevation={0}
       sx={{
         border: '1px solid #a0a0a0',
-        width: { xs: '100%', md: '50%' },
-        p: 3,
+        width: { xs: '100%' },
+        height: '400px',
+        p: 2,
         boxSizing: 'border-box',
       }}
     >
