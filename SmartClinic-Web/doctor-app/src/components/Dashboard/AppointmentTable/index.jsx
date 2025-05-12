@@ -41,7 +41,9 @@ const AppointmentsTable = () => {
     <Box
       sx={{
         height: 400,
-        width: '100%',
+        width: '90%',
+        mx: 'auto',
+        p: 2,
         '& .MuiDataGrid-root': {
           borderRadius: 2,
           boxShadow: 2,
