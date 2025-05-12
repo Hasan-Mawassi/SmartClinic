@@ -9,7 +9,7 @@ const getFormattedDate = () => {
 };
 
 const getPageName = (pathname) => {
-  const page = pathname.split('/')[1] || 'dashboard';
+  const page = pathname.split('/doctor/')[1] || 'dashboard';
   return page.charAt(0).toUpperCase() + page.slice(1);
 };
 
