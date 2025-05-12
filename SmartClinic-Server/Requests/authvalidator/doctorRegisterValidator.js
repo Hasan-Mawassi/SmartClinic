@@ -1,6 +1,6 @@
 const { body } = require('express-validator');
 
-const validateDoctor = [
+const doctorRegisterValidator = [
   body('name')
     .notEmpty().withMessage('Name is required')
     .isString().withMessage('Name must be a string'),
@@ -21,4 +21,4 @@ const validateDoctor = [
     .isString().withMessage('Profile picture must be a string'),
 ];
 
-export default validateDoctor;
+export default doctorRegisterValidator;
