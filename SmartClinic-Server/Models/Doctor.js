@@ -26,4 +26,17 @@ export class Doctor {
             },
           });
       }
+
+      static async CreateDoctor(data) {
+        const { name, email, password, yearsExperience, profilePicture } = data;
+        return await prisma.doctor.create({
+          data: {
+            name,
+            email,
+            password,
+            yearsExperience,
+            profilePicture,
+          },
+        });
+      }
 } 
