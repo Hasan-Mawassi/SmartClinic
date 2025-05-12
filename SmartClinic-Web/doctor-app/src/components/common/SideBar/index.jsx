@@ -19,6 +19,7 @@ import {
   People as PeopleIcon,
   EventNote as EventNoteIcon,
 } from '@mui/icons-material';
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 
 import { Link, useLocation } from 'react-router-dom';
 
@@ -29,6 +30,7 @@ const navItems = [
   { text: 'Dashboard', path: '/doctor/dashboard', icon: <DashboardIcon /> },
   { text: 'Patients', path: '/doctor/patients', icon: <PeopleIcon /> },
   { text: 'Schedule', path: '/doctor/schedule', icon: <EventNoteIcon /> },
+  { text: 'Appointment', path: '/doctor/Appointment', icon: <EventAvailableIcon /> },
 ];
 
 export default function Sidebar() {
