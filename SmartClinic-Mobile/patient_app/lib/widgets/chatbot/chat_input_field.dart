@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 
-class ChatInputField extends StatelessWidget {
+class ChatInputField extends StatefulWidget {
   final TextEditingController controller;
   final VoidCallback onSend;
   final VoidCallback onVoice;
+  final VoidCallback onVoiceStart;
+  final VoidCallback onVoiceStop;
 
   const ChatInputField({
     Key? key,
     required this.controller,
     required this.onSend,
     required this.onVoice,
+    required this.onVoiceStart,
+    required this.onVoiceStop,
   }) : super(key: key);
 
+  @override
+  _ChatInputFieldState createState() => _ChatInputFieldState();
+}
+
+class _ChatInputFieldState extends State<ChatInputField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +34,7 @@ class ChatInputField extends StatelessWidget {
           // Text input
           Expanded(
             child: TextField(
-              controller: controller,
+              controller: widget.controller,
               decoration: const InputDecoration(
                 hintText: "Type a message",
                 border: InputBorder.none,
@@ -37,7 +46,9 @@ class ChatInputField extends StatelessWidget {
 
           // Voice button
           GestureDetector(
-            onTap: onVoice,
+            onTap: widget.onVoice,
+             onLongPressStart: (_) => widget.onVoiceStart(),
+             onLongPressEnd: (_) => widget.onVoiceStop(),
             child: const CircleAvatar(
               backgroundColor: Colors.blue,
               radius: 20,
@@ -49,7 +60,7 @@ class ChatInputField extends StatelessWidget {
 
           // Send button
           GestureDetector(
-            onTap: onSend,
+            onTap: widget.onSend,
             child: const CircleAvatar(
               backgroundColor: Colors.blue,
               radius: 20,

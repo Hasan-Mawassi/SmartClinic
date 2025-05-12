@@ -22,14 +22,14 @@ jobs:
       - name: Push backend image
         working-directory: ./SmartClinic-Server 
         run: |
-          docker build -t hasanmawasi/smartclinic-backend:${{ github.sha }} .
+          docker build --no-cache -t hasanmawasi/smartclinic-backend:${{ github.sha }} .
           docker push hasanmawasi/smartclinic-backend:${{ github.sha }}
 
 
       - name: Push frontend image
         working-directory: ./SmartClinic-Web/doctor-app 
         run: |
-          docker build -t hasanmawasi/smartclinic-frontend:${{ github.sha }} .
+          docker build --no-cache -t hasanmawasi/smartclinic-frontend:${{ github.sha }} .
           docker push hasanmawasi/smartclinic-frontend:${{ github.sha }}
 
       
@@ -46,6 +46,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Cleanup old containers
+        run: |
+          docker compose -f docker-compose.prod.yml down || true
+          docker system prune -af    
+
       - name: Pull Latest Images
         run: |
           docker pull hasanmawasi/smartclinic-frontend:${{ github.sha }}
@@ -53,6 +59,8 @@ jobs:
       - name: Stop and Remove Old Containers
         run: docker compose -f docker-compose.prod.yml down
       - name: Start Services
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           TAG=${{ github.sha }} docker compose -f docker-compose.prod.yml up -d
       

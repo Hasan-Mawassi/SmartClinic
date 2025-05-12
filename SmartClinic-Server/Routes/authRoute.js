@@ -1,0 +1,14 @@
+import { Router } from "express";
+import * as authController from "../Controllers/authController.js";
+import { registerValidator } from "../Requests/authvalidator/registerValidator.js";
+import { validate } from "../Middleware/validate.js";
+const AuthRouter = Router();
+
+AuthRouter.post("/register", registerValidator, validate, authController.register);
+
+
+
+
+
+
+export default AuthRouter;

@@ -1,45 +1,27 @@
-import {  useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-// import axios from 'axios';
+import Auth from './pages/auth'
+import { Route, Routes} from 'react-router-dom'
+import Dashboard from './pages/Dashboard'
+import Layout from './layout/DoctorLayout'
+import Patient from './pages/Patient'
+import Schedule from './pages/Schedule'
+import Appointment from './pages/Apointment'
+import Profile from './pages/Profile'
 function App() {
-  const [count, setCount] = useState(0)
-  // const test = async () => {
-  //     try {
-  //       const response = await axios.get('http://13.38.83.235:5000/');
-  //       console.log('Response from backend:', response.data);
-  //     } catch (error) {
-  //       console.error('Error connecting to backend:', error);
-  //     }
-  //   };
-  // useEffect(()=>{
-  //   test()
-  // },[])
+
+  
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite +Staging + React + Smart Clinic</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is + {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route path="/" element={<Auth />} />
+        <Route path="doctor" element={<Layout />}> 
+          <Route path="dashboard" element={<Dashboard/>} />
+          <Route path='patients' element={<Patient />} />
+          <Route path='schedule' element={<Schedule />} />
+          <Route path='appointment' element={<Appointment />} />
+          <Route path='profile' element={<Profile />} />
+        </Route>
+  </Routes>
   )
 }
 
