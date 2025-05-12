@@ -28,3 +28,13 @@ export const getMonthlyPatientsData = async (doctorId) => {
 
   return monthlyData;
 };
+export const getGenderStats = async () => {
+    
+    const femaleCount = await prisma.patient.count({ where: { gender: 0 } });
+    const maleCount = await  prisma.patient.count({ where: { gender: 1 } });
+    
+    return {
+      female: femaleCount,
+      male: maleCount,
+    };
+  };
