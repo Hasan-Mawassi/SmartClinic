@@ -5,6 +5,7 @@ import Dashboard from './pages/Dashboard'
 import Layout from './layout/DoctorLayout'
 import Patient from './pages/Patient'
 import Schedule from './pages/Schedule'
+import Appointment from './pages/Apointment'
 function App() {
 
   
@@ -16,7 +17,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard/>} />
           <Route path='patients' element={<Patient />} />
           <Route path='schedule' element={<Schedule />} />
-
+          <Route path='Appointment' element={<Appointment />} />
         </Route>
   </Routes>
   )
