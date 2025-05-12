@@ -29,6 +29,7 @@ const columns = [
       );
     },
   },
+  
 ];
 
 const rows = [
@@ -40,17 +41,17 @@ const AppointmentsTable = () => {
   return (
     <Box
       sx={{
-        height: 400,
-        width: '90%',
+        height: '80vh',
         mx: 'auto',
-        p: 2,
+        width: '95%',
+        boxShadow: 0,
         '& .MuiDataGrid-root': {
           borderRadius: 2,
           boxShadow: 2,
-          mt: 2,
+          mt: 3,
         },
         '& .MuiDataGrid-columnHeaders': {
-          backgroundColor: 'rgb(155, 1, 37)',
+          backgroundColor: '#f5f5f5',
           color: 'Black',
           fontWeight: 'bold',
         },
