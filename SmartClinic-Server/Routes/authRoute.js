@@ -7,6 +7,7 @@ const AuthRouter = Router();
 
 AuthRouter.post("/register", registerValidator, validate, authController.register);
 AuthRouter.post("/doctor/register",doctorRegisterValidator,validate,  authController.doctorRegister);
+AuthRouter.post("/doctor/login",  authController.loginDoctor);
 
 
 
