@@ -6,6 +6,14 @@ export class Doctor {
         return await prisma.doctor.findMany();
       }
 
+      static async findUniqueDoctor(email) {
+        return prisma.doctor.findUnique({
+          where: {
+            email,
+          },
+        });
+      }
+
       static async allWithSchedules() {
         return await prisma.doctor.findMany({
             select: {
