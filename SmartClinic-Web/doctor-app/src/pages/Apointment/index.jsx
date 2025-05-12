@@ -1,9 +1,9 @@
 import React from 'react';
-
+import AppointmentsTable from '../../components/Appointment/Table';
 const Appointment = () => {
     return (
         <div>
-                <h1>Appoiorntemnt</h1>
+                < AppointmentsTable />
         </div>
     );
 };
