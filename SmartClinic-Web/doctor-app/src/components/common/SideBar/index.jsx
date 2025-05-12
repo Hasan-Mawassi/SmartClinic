@@ -18,6 +18,7 @@ import {
   Dashboard as DashboardIcon,
   People as PeopleIcon,
   EventNote as EventNoteIcon,
+  Person as PersonIcon,
 } from '@mui/icons-material';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 
@@ -30,7 +31,8 @@ const navItems = [
   { text: 'Dashboard', path: '/doctor/dashboard', icon: <DashboardIcon /> },
   { text: 'Patients', path: '/doctor/patients', icon: <PeopleIcon /> },
   { text: 'Schedule', path: '/doctor/schedule', icon: <EventNoteIcon /> },
-  { text: 'Appointment', path: '/doctor/Appointment', icon: <EventAvailableIcon /> },
+  { text: 'Appointment', path: '/doctor/appointment', icon: <EventAvailableIcon /> },
+  { text: 'Profile', path: '/doctor/profile', icon: <PersonIcon /> },
 ];
 
 export default function Sidebar() {
