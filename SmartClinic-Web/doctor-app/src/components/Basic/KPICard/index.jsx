@@ -1,4 +1,3 @@
-// components/KpiCard.jsx
 import { Card, CardContent, Typography, Box } from '@mui/material';
 
 const KpiCard = ({ title, value, icon }) => {

@@ -34,39 +34,47 @@ const Dashboard = () => {
 
   return (
     <> 
+    <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, p: 2 }}> 
     <WelcomeSection />
-    <Box p={2}>
-      <Grid2 container spacing={3}>
-    <Grid2  size={{ xs: 12, sm: 6 ,sx:{flexGrow: 1, minWidth: 200 }}}>
+    <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'} >
+    <Box  sx={{flexGrow: 1, minWidth: 140 }}  size={{ xs: 12, sm: 6 ,md:3}}>
       <KpiCard
         title="Total Patients"
         value={kpis.totalPatients}
         icon={<PeopleIcon fontSize="large" color="primary" />}
       />
-    </Grid2>
-    <Grid2 size={{ xs: 12, sm: 6 ,sx:{flexGrow: 1, minWidth: 200 }}}>
+    </Box>
+    <Box sx={{flexGrow: 1, minWidth: 140 }} size={{ xs: 12, sm: 6,md:3 }}>
       <KpiCard
         title="Upcoming Appointments"
         value={kpis.upcomingAppointments}
         icon={<EventIcon fontSize="large" color="secondary" />}
       />
-    </Grid2>
-    <Grid2 size={{ xs: 12, sm: 6 ,sx:{flexGrow: 1, minWidth: 200 }}}>
+    </Box>
+    <Box sx={{flexGrow: 1, minWidth: 140 }} size={{ xs: 12, sm: 6,md:3 }}>
       <KpiCard
         title="Pending Reports"
         value={kpis.pendingReports}
         icon={<ReportIcon fontSize="large" sx={{ color: '#fb8c00' }} />}
       />
-    </Grid2>
-    <Grid2 size={{ xs: 12, sm: 6 ,sx:{flexGrow: 1, minWidth: 200 }}}>
+    </Box>
+    <Box sx={{flexGrow: 1, minWidth: 140 }} size={{ xs: 12, sm: 6,md:4 }}>
       <KpiCard
         title="Completed This Month"
         value={kpis.completedConsultations}
         icon={<DoneAllIcon fontSize="large" sx={{ color: '#4caf50' }} />}
       />
-    </Grid2>
-  </Grid2>
+    </Box>
+  
+    </Box>
+    <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'}>
+
     <DoctorDashboardCharts />
+    </Box>
+    
+    </Box>
+    <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'}>
+
     <AppointmentTable />
     </Box>
     </>
