@@ -21,7 +21,7 @@ export const registerDoctor = async({
           const hashedPassword = await bcrypt.hash(password, saltRounds)
 
           // Create user
-          const doctor =Doctor.CreateDoctor(
+          const doctor =await Doctor.CreateDoctor(
            {
               name,
               email,
