@@ -26,11 +26,14 @@ export class Appointment {
           });
     }
     static async totalPatients (doctorId){
-        return  await prisma.appointment.count({
+        return  await prisma.appointment.findMany({
             where: {
-              doctorId: doctorId,
+                doctorId,
             },
             distinct: ['patientId'],
+            select: {
+              patientId: true,
+            },
           });
     }
 }
