@@ -1,10 +1,18 @@
 import React from 'react';
+import ProfilePhotoCard from '../../components/Profile/ProfilePhotoCard';
+import { Box } from '@mui/material';
+import DoctorProfileCard from '../../components/Profile/DoctorProfileCard';
 
 const Profile = () => {
     return (
-        <div>
-            <h1>Profile</h1>
-        </div>
+        <Box sx={{ mt: 2, p:2 }}>
+            
+            < ProfilePhotoCard />
+            <Box sx={{ mt: 2 }}>
+
+            < DoctorProfileCard sx={{mt:2}} />
+            </Box>
+        </Box>
     );
 };
 
