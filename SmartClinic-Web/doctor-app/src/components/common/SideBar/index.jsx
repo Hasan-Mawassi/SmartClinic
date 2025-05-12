@@ -26,9 +26,9 @@ const drawerWidth = 240;
 const collapsedWidth = 72;
 
 const navItems = [
-  { text: 'Dashboard', path: '/dashboard', icon: <DashboardIcon /> },
-  { text: 'Patients', path: '/patients', icon: <PeopleIcon /> },
-  { text: 'Schedule', path: '/schedule', icon: <EventNoteIcon /> },
+  { text: 'Dashboard', path: '/doctor/dashboard', icon: <DashboardIcon /> },
+  { text: 'Patients', path: '/doctor/patients', icon: <PeopleIcon /> },
+  { text: 'Schedule', path: '/doctor/schedule', icon: <EventNoteIcon /> },
 ];
 
 export default function Sidebar() {
@@ -62,7 +62,7 @@ export default function Sidebar() {
       >
         <Box
     component="img"
-    src="logo.png" 
+    src="/logo.png" 
     alt="Logo"
     sx={{
       height: 150,

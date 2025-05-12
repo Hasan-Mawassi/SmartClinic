@@ -4,16 +4,19 @@ import { Route, Routes} from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
 import Layout from './layout/DoctorLayout'
 import Patient from './pages/Patient'
+import Schedule from './pages/Schedule'
 function App() {
 
   
 
   return (
     <Routes>
-      <Route path="/auth" element={<Auth />} />
-        <Route path="/" element={<Layout />}> 
-          <Route path="/dashboard" element={<Dashboard/>} />
-          <Route path='/patients' element={<Patient />} />
+      <Route path="/" element={<Auth />} />
+        <Route path="doctor" element={<Layout />}> 
+          <Route path="dashboard" element={<Dashboard/>} />
+          <Route path='patients' element={<Patient />} />
+          <Route path='schedule' element={<Schedule />} />
+
         </Route>
   </Routes>
   )

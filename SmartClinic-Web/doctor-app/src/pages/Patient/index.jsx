@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PatientCard from '../../components/Patient/PatientCard'
 import TextCard from '../../components/Patient/TextCard';
 import MedicineCard from '../../components/Patient/PrevMedicineCard';
 import NewMedicineCard from '../../components/Patient/NewMedicineCard';
 import { Grid, Box } from '@mui/material';
 import DoctorVitalsCard from '../../components/Patient/VitalCard';
+import CustomButton from '../../components/Basic/Button';
+import MedicineModal from '../../components/Patient/MedicineModal';
 const Patient = () => {
     const patient = {
         name: 'John Doe',
@@ -16,9 +18,12 @@ const Patient = () => {
         surgeryName: 'Appendectomy surgery',
         surgeryDate: '2024-08-15'
       };
-      
+      const [open, setOpen] = useState(false);
+
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
+            < CustomButton label="Add Medicine" onClick={() => setOpen(true)} variant="contained" color="primary" sx={{ mb: 2,width: '200px',fontSize: '18px' }} />
+            <MedicineModal open={open} onClose={() => setOpen(false)} />
         <Grid container spacing={3}>
           {/* Left Column */}
           <Grid item xs={12} md={6}>
