@@ -5,4 +5,5 @@ const doctorRouter = Router();
 
 doctorRouter.get("/app/getdoctors", doctorController.getAllDoctors);
 doctorRouter.get("/doctor/getkpi/:id",dashboardController.kpiData )
+doctorRouter.get("/doctor/graph/:id",dashboardController.graphsData )
 export default doctorRouter;
