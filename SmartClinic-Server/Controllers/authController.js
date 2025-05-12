@@ -1,3 +1,4 @@
+import { loginDoctorService } from "../Services/auth/loginDoctor.js";
 import { registerDoctor } from "../Services/auth/registerDoctor.js";
 import { registerPatient } from "../Services/auth/registerPatient.js";
 import { successResponse } from "../Traits/response.js";
@@ -24,3 +25,14 @@ export const doctorRegister =async (req, res) => {
   }
 
    }
+
+  export const loginDoctor = async (req, res) => {
+    try {
+      const { email, password } = req.body;
+      const result = await loginDoctorService( email, password );
+      successResponse(res, result, 'Login successful', 200);
+    } catch (error) {
+      console.error('Login error:', error);
+      res.status(error.status || 500).json({ error: error.message || 'Internal server error' });
+    }
+  } 
