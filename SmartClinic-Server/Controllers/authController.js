@@ -1,3 +1,4 @@
+import { registerDoctor } from "../Services/auth/registerDoctor.js";
 import { registerPatient } from "../Services/auth/registerPatient.js";
 import { successResponse } from "../Traits/response.js";
 
@@ -13,3 +14,13 @@ export const register =async (req, res) => {
   }
 }
 
+export const doctorRegister =async (req, res) => {
+  try {
+    const result = await registerDoctor(req.body);
+    successResponse(res, result, 'Doctor registered successfully', 201)
+  } catch (error) {
+    console.error('Register error:', error.message)
+    res.status(error.status || 500).json({ error: error.message || 'Internal server error' })
+  }
+
+   }
