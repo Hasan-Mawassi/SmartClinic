@@ -21,6 +21,7 @@ model Patient {
   weight        Float
   date_of_birth DateTime
   profile_pic   String?     
+  gender    Int      // 0 = Female, 1 = Male
   created_at    DateTime @default(now())
   appointments  Appointment[]
 
