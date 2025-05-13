@@ -5,12 +5,17 @@ import LockIcon from '@mui/icons-material/Lock';
 import CustomCard from '../../components/Basic/authCard';
 import CustomButton from '../../components/Basic/Button';
 import { Link , Typography} from '@mui/material';
+
+
 const LoginCard = ({ onLogin, onLinkClick, loading ,message, showMessage}) => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
     const handleLoginClick = () => {
         onLogin({ email, password });
     };
+    
     return (
         <CustomCard title='Login'>
               {showMessage && (

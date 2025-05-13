@@ -6,7 +6,10 @@ import PersonIcon from "@mui/icons-material/Person";
 import CustomCard from "../../components/Basic/authCard";
 import CustomButton from "../../components/Basic/Button";
 import { Link,Typography  } from "@mui/material";
+
+
 const SignupCard = ({ onSignup, onLinkClick, loading  ,message, showMessage}) => {
+
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +17,7 @@ const SignupCard = ({ onSignup, onLinkClick, loading  ,message, showMessage}) =>
   const handleSignupClick = () => {
     onSignup({ name, email, password });
   };
+  
   return (
     <CustomCard title="Register">
         {showMessage && (
