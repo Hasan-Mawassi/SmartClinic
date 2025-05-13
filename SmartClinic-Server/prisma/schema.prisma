@@ -25,7 +25,7 @@ model Patient {
   bloodGroup String?
   created_at    DateTime @default(now())
   appointments  Appointment[]
-
+  prescriptions Prescription[]
   @@map("patients")
 }
 
@@ -40,9 +40,24 @@ model Doctor {
   updatedAt       DateTime? @updatedAt
   appointments    Appointment[]
   schedules Schedule[]
+    prescriptions Prescription[]
    @@map("doctors")
 }
+model Prescription {
+  id           Int       @id @default(autoincrement())
+  doctorId     Int
+  patientId    Int
+  medicineName String
+  duration     String
+  frequency    String
+  quantity     Int
+  createdAt    DateTime  @default(now())
 
+  
+  doctor       Doctor    @relation(fields: [doctorId], references: [id])
+  patient      Patient   @relation(fields: [patientId], references: [id])
+   @@map("prescriptions")
+}
 model Appointment {
   id         Int       @id @default(autoincrement())
   doctorId   Int
