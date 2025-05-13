@@ -5,9 +5,12 @@ import LockIcon from '@mui/icons-material/Lock';
 import CustomCard from '../../components/Basic/authCard';
 import CustomButton from '../../components/Basic/Button';
 import { Link } from '@mui/material';
-const LoginCard = ({linkClick , loginClick}) => {
+const LoginCard = ({ onLogin, onLinkClick, loading }) => {
     const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+    const [password, setPassword] = useState('');
+    const handleLoginClick = () => {
+        onLogin({ email, password });
+    };
     return (
         <CustomCard title='Login'>
               <InputField inputLabel='Email' placeholder="Enter your email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} variant="outlined" fullWidth={true} icon={EmailIcon} />
@@ -16,15 +19,15 @@ const LoginCard = ({linkClick , loginClick}) => {
               <CustomButton
                 className='register-button'
                 label="Login"
-                onClick={loginClick}
-                loading={false}
+                onClick={handleLoginClick}
+                loading={loading}
                 />
                <div className='link'>
                Create an account?{' '}
                 <Link
                 component="button"
                 variant="body2"
-                onClick={linkClick}
+                onClick={onLinkClick}
                 sx={{ textDecoration: 'underline', cursor: 'pointer' }}
                 >
                 Sign up
