@@ -20,6 +20,7 @@ export const getPatientPrescription =async (req , res)=>{
         const prescritions = await Perscription.getPrescriptions(id)
        successResponse(res, prescritions, 'prescritions info', 200);
     } catch (error) {
+         console.error('Error get prescription:', error);
         errorResponse(res,error,500)
     }
 }
@@ -27,9 +28,9 @@ export const getPatientPrescription =async (req , res)=>{
 export const addPatientPrescription = async (req, res)=>{
     try {
     const prescription =await Perscription.createPrescription(req.body)
-    res.status(201).json(prescription);
+    successResponse(res, prescription, 'prescritions info', 200);
     } catch (error) {
-          console.error('Error creating prescription:', error);
-    res.status(500).json({ error: error.message });
+     console.error('Error creating prescription:', error);
+      errorResponse(res,error,500)
     }
 }
