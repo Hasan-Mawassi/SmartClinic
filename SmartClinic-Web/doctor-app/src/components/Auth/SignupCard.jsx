@@ -5,20 +5,29 @@ import LockIcon from "@mui/icons-material/Lock";
 import PersonIcon from "@mui/icons-material/Person";
 import CustomCard from "../../components/Basic/authCard";
 import CustomButton from "../../components/Basic/Button";
-import { Link } from "@mui/material";
-const SignupCard = ({ onSignup, onLinkClick, loading }) => {
-  const [username, setUsername] = useState("");
+import { Link,Typography  } from "@mui/material";
+const SignupCard = ({ onSignup, onLinkClick, loading  ,message, showMessage}) => {
+  const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignupClick = () => {
-    onSignup({ username, email, password });
+    onSignup({ name, email, password });
   };
   return (
     <CustomCard title="Register">
+        {showMessage && (
+        <Typography
+          variant="body2"
+          color="error"
+          sx={{  textAlign: "center" }}
+        >
+          {message}
+        </Typography>
+      )}
       <InputField
         inputLabel="Username"
-        value={username}
+        value={name}
         onChange={(e) => setUsername(e.target.value)}
         placeholder="Enter your username"
         type="text"
@@ -46,6 +55,7 @@ const SignupCard = ({ onSignup, onLinkClick, loading }) => {
         fullWidth={true}
         icon={LockIcon}
       />
+       
 
       <CustomButton
         className="register-button"
