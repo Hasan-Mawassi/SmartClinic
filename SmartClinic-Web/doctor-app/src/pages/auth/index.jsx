@@ -8,6 +8,14 @@ const Auth = () => {
     const navigate = useNavigate();
     const [isLogin, setIsLogin] = useState(true);
     const [loading, setLoading] = useState(false)
+
+    const [message, setMessage] = useState("");
+    const [showMessage, setShowMessage] = useState(false);
+    const displayMessage = (msg) => {
+        setMessage(msg);
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 3000);
+      };
     const handleLogin = async ({ email, password }) => {
         try {
           setLoading(true);
@@ -29,8 +37,31 @@ const Auth = () => {
           setLoading(false);
         }
       };
+      const  handleSignup = async ({ name, email, password })=>{
+        try {
+            setLoading(true);
+            const response = await request({
+              method: "POST",
+              route: `/auth/doctor/register`,
+              body: { name, email, password ,yearsExperience:0, profilePicture:'null' },
+              auth: false,
+            })
+            if(response.success){
+              localStorage.setItem('access_token',response.data.token )
+              navigate('/doctor/dashboard')
+            }else{
+                displayMessage(response?.message?.error || response?.message?.errors[0].msg );
+            }
+            console.log(response)
+          } catch (error) {
+            displayMessage(error.message || "An error occurred.");
+            console.error("Unexpected error:", error);
+          } finally {
+            setLoading(false);
+          }
+      }
       const handleLinkClick = () => {
-        setIsLogin(false)
+        setIsLogin(()=>{ setIsLogin(!isLogin)})
       }
     return (
         <div className='auth-body'>
@@ -39,7 +70,13 @@ const Auth = () => {
       onLinkClick={handleLinkClick}
       loading={loading}  />) 
             : (
-               <SignupCard linkClick={() => setIsLogin(true)} SignupClick={() => console.log('signup clicked')}/>
+               <SignupCard 
+                onLinkClick={handleLinkClick}
+                 onSignup={handleSignup}
+                  loading={loading} 
+                  message={message}
+                 showMessage={showMessage}
+                  />
             )  
         }
                     
