@@ -1,6 +1,6 @@
 // pages/Dashboard.jsx
 import React, { useEffect, useState } from 'react';
-import { Grid2,Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import KpiCard from '../../components/Basic/KPICard';
 import WelcomeSection from '../../components/Dashboard/Welcome';
 import PeopleIcon from '@mui/icons-material/People';
@@ -9,11 +9,37 @@ import ReportIcon from '@mui/icons-material/Description';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 import DoctorDashboardCharts from '../../components/Dashboard/DoctorCharts';
 import AppointmentTable from '../../components/Dashboard/AppointmentTable';
+import { useSelector } from 'react-redux'
+import { request } from '../../utils/request';
 const Dashboard = () => {
   const [kpis, setKpis] = useState(null);
+  const doctor = useSelector((state) => state.doctorInfo)
+  const doctorId = doctor.id;
+  const doctorName = doctor.name;
+
+  const getKpiData = async (doctorId)=>{
+    try {
+        const response = await request({
+          method: "GET",
+          route: `/doctor/getkpi/${doctorId}`,
+          auth: true, // if the endpoint is protected
+        });
+    
+        if (response.error) {
+          console.error("Error fetching KPI data:", response.message);
+          return null;
+        }
+        
+        console.log(response.data) ; // adjust based on your actual backend structure
+      } catch (err) {
+        console.error("Unexpected error:", err);
+        return null;
+      }
+    };
+  
 
   useEffect(() => {
-   
+     getKpiData(doctorId)
     setTimeout(() => {
       setKpis({
         totalPatients: 124,
@@ -35,7 +61,9 @@ const Dashboard = () => {
   return (
     <> 
     <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, p: 2 }}> 
-    <WelcomeSection />
+    <WelcomeSection
+    name={doctorName}
+    />
     <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'} >
     <Box  sx={{flexGrow: 1, minWidth: 140 }}  size={{ xs: 12, sm: 6 ,md:3}}>
       <KpiCard
