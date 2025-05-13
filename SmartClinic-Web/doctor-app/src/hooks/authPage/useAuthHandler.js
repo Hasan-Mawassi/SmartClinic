@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { request } from '../../utils/request.js'; 
+import { useDispatch } from 'react-redux';
+import { setDoctorInfo } from '../../redux/Slices/doctorInfoSlice.js';
 
 export const useAuthHandler = () => {
+   
+  const dispatch = useDispatch(); 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -25,6 +29,8 @@ export const useAuthHandler = () => {
       });
 
       if (response.success) {
+        const { name, email, id } = response.data.doctor;
+        dispatch(setDoctorInfo({ name, email, id }));
         localStorage.setItem("access_token", response.data.token);
         navigate("/doctor/dashboard");
       } else {
@@ -49,6 +55,8 @@ export const useAuthHandler = () => {
       });
 
       if (response.success) {
+        const { name, email, id } = response.data.doctor;
+        dispatch(setDoctorInfo({ name, email, id }));
         localStorage.setItem("access_token", response.data.token);
         navigate("/doctor/dashboard");
       } else {
