@@ -18,7 +18,7 @@ export class Perscription {
             'createdAt', p."createdAt"
           )
         ) AS prescriptions
-      FROM "Prescription" p
+      FROM prescriptions p
       WHERE p."patientId" = ${patientId}
       GROUP BY DATE(p."createdAt")
       ORDER BY DATE(p."createdAt") DESC;
