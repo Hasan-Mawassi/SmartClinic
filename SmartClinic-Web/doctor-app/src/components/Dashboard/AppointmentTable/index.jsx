@@ -31,12 +31,12 @@ const columns = [
   },
 ];
 
-const rows = [
-  { id: 1, patient: 'John Doe', date: '2025-05-10', time: '10:00 AM', status: 'Confirmed' },
-  { id: 2, patient: 'Jane Smith', date: '2025-05-11', time: '12:00 PM', status: 'Pending' },
-];
+// const rows = [
+//   { id: 1, patient: 'John Doe', date: '2025-05-10', time: '10:00 AM', status: 'Confirmed' },
+//   { id: 2, patient: 'Jane Smith', date: '2025-05-11', time: '12:00 PM', status: 'Pending' },
+// ];
 
-const AppointmentsTable = () => {
+const AppointmentsTable = ({rows}) => {
   return (
     <Box
       sx={{
