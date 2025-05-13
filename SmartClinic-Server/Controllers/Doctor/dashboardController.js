@@ -20,7 +20,8 @@ export const graphsData = async (req, res) => {
         const data = await getMonthlyPatientsData()
         const genderData = await getGenderStats()
         const ageAnalysis = await getPatientAgeAnalysis(id)
-        res.json({data,genderData,ageAnalysis})
+        const graphsRecord ={data,genderData,ageAnalysis}
+        successResponse(res, graphsRecord, 'graphs Data', 200);
     } catch (error) {
         console.error('graphsData error:', error);
         errorResponse(res,error,500)
