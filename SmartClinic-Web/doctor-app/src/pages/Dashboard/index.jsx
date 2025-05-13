@@ -1,5 +1,4 @@
-// pages/Dashboard.jsx
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, CircularProgress } from '@mui/material';
 import KpiCard from '../../components/Basic/KPICard';
 import WelcomeSection from '../../components/Dashboard/Welcome';
@@ -23,11 +22,6 @@ const { kpiLoading } = useKpiData(doctorId);
 const { graphloading } = useGraphData(doctorId);
 const kpiData = useSelector((state) => state.kpisData);
   
-
-  useEffect(() => {
-  
-   
-  }, []);
 
   if (kpiLoading && graphloading) {
     return (
