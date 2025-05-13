@@ -22,7 +22,6 @@ model Patient {
   date_of_birth DateTime
   profile_pic   String?     
   gender    Int      // 0 = Female, 1 = Male
-  age       Int
   created_at    DateTime @default(now())
   appointments  Appointment[]
 

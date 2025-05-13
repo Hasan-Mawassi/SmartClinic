@@ -1,5 +1,5 @@
 import { DoctorKPIsService } from "../../Services/Doctor/dashboardKpi.js";
-import { getMonthlyPatientsData ,getGenderStats} from "../../Services/Doctor/graphData.js";
+import { getMonthlyPatientsData ,getGenderStats, getPatientAgeAnalysis} from "../../Services/Doctor/graphData.js";
 import { successResponse ,errorResponse } from "../../Traits/response.js";
 
 export const kpiData =async (req, res)=>{
@@ -16,9 +16,11 @@ export const kpiData =async (req, res)=>{
 
 export const graphsData = async (req, res) => {
     try {
+        const {id} = req.body;
         const data = await getMonthlyPatientsData()
         const genderData = await getGenderStats()
-        res.json({data,genderData})
+        const ageAnalysis = await getPatientAgeAnalysis(id)
+        res.json({data,genderData,ageAnalysis})
     } catch (error) {
         console.error('graphsData error:', error);
         errorResponse(res,error,500)
