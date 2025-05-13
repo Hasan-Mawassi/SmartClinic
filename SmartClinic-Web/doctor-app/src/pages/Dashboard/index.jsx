@@ -10,16 +10,17 @@ import DoneAllIcon from '@mui/icons-material/DoneAll';
 import DoctorDashboardCharts from '../../components/Dashboard/DoctorCharts';
 import AppointmentTable from '../../components/Dashboard/AppointmentTable';
 import { useSelector } from 'react-redux'
-// import { request } from '../../utils/request';
 import { useKpiData } from '../../hooks/dashboard/useKpiData.js';
+import { useGraphData } from '../../hooks/dashboard/useGraphData.js';
 
 const Dashboard = () => {
   
   const doctor = useSelector((state) => state.doctorInfo)
   const doctorId = doctor.id;
   const doctorName = doctor.name;
-
- const { loading } = useKpiData(doctorId);
+  const grapsData = useSelector((state) => state.grapsData)
+const { kpiLoading } = useKpiData(doctorId);
+const { graphloading } = useGraphData(doctorId);
 const kpiData = useSelector((state) => state.kpisData);
   
 
@@ -28,7 +29,7 @@ const kpiData = useSelector((state) => state.kpisData);
    
   }, []);
 
-  if (loading) {
+  if (kpiLoading && graphloading) {
     return (
       <Box display="flex" justifyContent="center" mt={5}>
         <CircularProgress />
@@ -75,7 +76,11 @@ const kpiData = useSelector((state) => state.kpisData);
     </Box>
     <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'}>
 
-    <DoctorDashboardCharts />
+    <DoctorDashboardCharts 
+    patientsData={grapsData.patientsData}
+    genderData={grapsData.genderData}
+    ageData={grapsData.ageData}
+    />
     </Box>
     
     </Box>
