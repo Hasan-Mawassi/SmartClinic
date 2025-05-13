@@ -18,8 +18,8 @@ export const getPatientPrescription =async (req , res)=>{
     try {
         const { id } = req.body;
         const prescritions = await Perscription.getPrescriptions(id)
-        res.json(prescritions)
+       successResponse(res, prescritions, 'prescritions info', 200);
     } catch (error) {
-        res.send(error)
+        errorResponse(res,error,500)
     }
 }
