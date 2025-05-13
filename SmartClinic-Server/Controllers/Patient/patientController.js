@@ -34,7 +34,7 @@ export const addPatientPrescription = async (req, res)=>{
     //   frequency,
     //   quantity,
     // } = req.body;
-    const prescription = Perscription.createPrescription(req.body)
+    const prescription =await Perscription.createPrescription(req.body)
   res.status(201).json(prescription);
     } catch (error) {
           console.error('Error creating prescription:', error);
