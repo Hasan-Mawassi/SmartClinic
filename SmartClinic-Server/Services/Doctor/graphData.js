@@ -33,10 +33,12 @@ export const getGenderStats = async () => {
     const femaleCount = await prisma.patient.count({ where: { gender: 0 } });
     const maleCount = await  prisma.patient.count({ where: { gender: 1 } });
 
-    return {
-      female: femaleCount,
-      male: maleCount,
-    };
+    return [
+      {label: 'female', value: femaleCount},
+      {label: 'male', value: maleCount}
+    
+    ]
+      
   };
 
  export const getPatientAgeAnalysis = async (doctorId) =>{

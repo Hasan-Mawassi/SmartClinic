@@ -3,8 +3,7 @@ import React from 'react';
 import DoctorsSvg from '../../../assets/doctors.svg'; // Adjust the path as needed
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-const WelcomeSection = () => {
-    const patients = 9;
+const WelcomeSection = ({name="", patients=0}) => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   return (
@@ -27,10 +26,10 @@ const WelcomeSection = () => {
       mt={{ xs: 2, sm: 0 }}
     >
       <Typography variant="h5" fontWeight="bold" color="var(--primary)">
-        Welcome, John
+        Welcome, {name}
       </Typography>
       <Typography variant="subtitle1" color="textSecondary">
-        You have "{patients}" patients
+        You have {patients} patients
       </Typography>
     </Box>
 

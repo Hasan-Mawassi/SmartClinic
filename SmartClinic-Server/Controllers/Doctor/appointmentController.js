@@ -3,7 +3,7 @@ import { successResponse ,errorResponse } from "../../Traits/response.js";
 
 export const getAppointments = async (req, res) => {
     try {
-      const{ doctorId } = req.body
+      const{ doctorId } = req.params
       const formattedAppointments = await getDoctorAppointments(doctorId);
       successResponse(res, formattedAppointments, 'get Appointment successfully', 200);
     } catch (err) {
