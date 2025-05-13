@@ -16,7 +16,7 @@ export const kpiData =async (req, res)=>{
 
 export const graphsData = async (req, res) => {
     try {
-        const {id} = req.body;
+        const {id} = req.params;
         const data = await getMonthlyPatientsData()
         const genderData = await getGenderStats()
         const ageAnalysis = await getPatientAgeAnalysis(id)
