@@ -23,3 +23,21 @@ export const getPatientPrescription =async (req , res)=>{
         errorResponse(res,error,500)
     }
 }
+
+export const addPatientPrescription = async (req, res)=>{
+    try {
+    //     const {
+    //   patientId,
+    //   doctorId,
+    //   medicineName,
+    //   duration,
+    //   frequency,
+    //   quantity,
+    // } = req.body;
+    const prescription = Perscription.createPrescription(req.body)
+  res.status(201).json(prescription);
+    } catch (error) {
+          console.error('Error creating prescription:', error);
+    res.status(500).json({ error: error.message });
+    }
+}
