@@ -11,6 +11,7 @@ import AppointmentTable from '../../components/Dashboard/AppointmentTable';
 import { useSelector } from 'react-redux'
 import { useKpiData } from '../../hooks/dashboard/useKpiData.js';
 import { useGraphData } from '../../hooks/dashboard/useGraphData.js';
+import { useAppointmentsData } from '../../hooks/dashboard/useAppointmentsData.js';
 
 const Dashboard = () => {
   
@@ -18,12 +19,15 @@ const Dashboard = () => {
   const doctorId = doctor.id;
   const doctorName = doctor.name;
   const grapsData = useSelector((state) => state.grapsData)
-const { kpiLoading } = useKpiData(doctorId);
-const { graphloading } = useGraphData(doctorId);
-const kpiData = useSelector((state) => state.kpisData);
-  
 
-  if (kpiLoading && graphloading) {
+  const { kpiLoading } = useKpiData(doctorId);
+  const { graphloading } = useGraphData(doctorId);
+
+  const kpiData = useSelector((state) => state.kpisData);
+  const { loading } = useAppointmentsData(doctorId);
+  const appointments = useSelector(state => state.appointments.rows);
+
+  if (kpiLoading && graphloading && loading) {
     return (
       <Box display="flex" justifyContent="center" mt={5}>
         <CircularProgress />
@@ -36,6 +40,7 @@ const kpiData = useSelector((state) => state.kpisData);
     <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, p: 2 }}> 
     <WelcomeSection
     name={doctorName}
+    patients={kpiData.upcomingAppointments}
     />
     <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'} >
     <Box  sx={{flexGrow: 1, minWidth: 140 }}  size={{ xs: 12, sm: 6 ,md:3}}>
@@ -80,7 +85,9 @@ const kpiData = useSelector((state) => state.kpisData);
     </Box>
     <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'}>
 
-    <AppointmentTable />
+    <AppointmentTable 
+    rows={appointments}
+    />
     </Box>
     </>
   );
