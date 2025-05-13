@@ -21,7 +21,9 @@ model Patient {
   weight        Float
   date_of_birth DateTime
   profile_pic   String?     
+  gender    Int      // 0 = Female, 1 = Male
   created_at    DateTime @default(now())
+  appointments  Appointment[]
 
   @@map("patients")
 }
@@ -44,15 +46,19 @@ model Appointment {
   id         Int       @id @default(autoincrement())
   doctorId   Int
   doctor     Doctor    @relation(fields: [doctorId], references: [id])
+  patientId  Int?
+  patient    Patient?  @relation(fields: [patientId], references: [id])
   dateTime   DateTime
-  status     String    // e.g., "pending", "confirmed", "cancelled"
-  bookedVia  String    // e.g., "chatbot", "mobile"
+  status     String    // e.g., "pending", "confirmed", 
+  bookedVia  String    // e.g., "text", "voice"
   symptoms   String?
   createdAt  DateTime  @default(now())
 
   @@index([doctorId])
+  @@index([patientId])
   @@map("appointments")
 }
+
 
 model Schedule {
   id           Int       @id @default(autoincrement())
