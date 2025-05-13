@@ -38,7 +38,8 @@ export const request = async ({
 
     return {
       error: true,
-      message: error.message,
+      message: error.response?.data || "Something went wrong",
+      status: error.response?.status || 500,
     };
   }
 };
