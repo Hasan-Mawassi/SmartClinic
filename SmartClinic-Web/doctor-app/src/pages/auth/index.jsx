@@ -28,7 +28,9 @@ const Auth = () => {
           if(response.success){
             localStorage.setItem('access_token',response.data.token )
             navigate('/doctor/dashboard')
-          }
+          }else{
+            displayMessage(response?.message?.error || response?.message?.errors[0].msg );
+        }
           console.log(response)
         } catch (error) {
           // show error
@@ -66,9 +68,14 @@ const Auth = () => {
     return (
         <div className='auth-body'>
         <div className='top-right-circle'></div>
-          {isLogin ? (<LoginCard  onLogin={handleLogin}
+          {isLogin ? (
+            <LoginCard 
+             onLogin={handleLogin}
       onLinkClick={handleLinkClick}
-      loading={loading}  />) 
+      loading={loading} 
+      message={message}
+      showMessage={showMessage}
+       />) 
             : (
                <SignupCard 
                 onLinkClick={handleLinkClick}
