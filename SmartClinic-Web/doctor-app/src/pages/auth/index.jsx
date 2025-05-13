@@ -2,14 +2,34 @@ import React, { useState } from 'react';
 import './style.css';
 import LoginCard from '../../components/Auth/LoginCard';
 import SignupCard from '../../components/Auth/SignupCard';
+import { useAuthHandler } from '../../hooks/authPage/useAuthHandler';
+
 const Auth = () => {
     const [isLogin, setIsLogin] = useState(true);
+    const { handleLogin, handleSignup, loading, message, showMessage } = useAuthHandler();
+
+  const handleLinkClick = () => setIsLogin((prev) => !prev);
     return (
         <div className='auth-body'>
         <div className='top-right-circle'></div>
-          {isLogin ? (<LoginCard linkClick={() => setIsLogin(false)} loginClick={() => console.log('login clicked')}/>) 
-            : (
-               <SignupCard linkClick={() => setIsLogin(true)} SignupClick={() => console.log('signup clicked')}/>
+          {isLogin ? (
+            <LoginCard 
+             onLogin={handleLogin}
+            onLinkClick={handleLinkClick}
+            loading={loading} 
+            message={message}
+            showMessage={showMessage}
+            />
+           ) 
+            : 
+            (
+               <SignupCard 
+                  onLinkClick={handleLinkClick}
+                  onSignup={handleSignup}
+                  loading={loading} 
+                  message={message}
+                  showMessage={showMessage}
+                  />
             )  
         }
                     
