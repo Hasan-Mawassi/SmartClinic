@@ -1,4 +1,5 @@
 import { Patient } from "../../Models/Patient.js";
+import { Perscription } from "../../Models/Perscription.js";
 import { successResponse ,errorResponse } from "../../Traits/response.js";
 
 
@@ -11,6 +12,14 @@ export const  getPatientInfo =  async (req , res)=>{
     console.error('Error getting patient info:', error);
     errorResponse(res,error,500)
   }
-       
+}
 
+export const getPatientPrescription =async (req , res)=>{
+    try {
+        const { id } = req.body;
+        const prescritions = await Perscription.getPrescriptions(id)
+        res.json(prescritions)
+    } catch (error) {
+        res.send(error)
+    }
 }
