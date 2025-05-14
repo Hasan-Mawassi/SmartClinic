@@ -12,6 +12,6 @@ doctorRouter.get("/doctor/graphsdata",dashboardController.graphsData );
 doctorRouter.get("/doctor/appointments",appointmentController.getAppointments );
 doctorRouter.post("/doctor/createprescription",patientController.addPatientPrescription );
 doctorRouter.post("/doctor/createvital",doctorController.createVital );
-doctorRouter.post("/doctor/ai/generatedreport",reportGeneratorAi.generatePatientReport);
+doctorRouter.post("/doctor/ai/generatereport",reportGeneratorAi.generatePatientReport);
 
 export default doctorRouter;
