@@ -1,4 +1,5 @@
 import { Doctor } from '../Models/Doctor.js';
+import { createPatientVital } from '../Services/Doctor/patientpage.js';
 
 export const getAllDoctors = async (req, res) => {
     try {
@@ -8,4 +9,14 @@ export const getAllDoctors = async (req, res) => {
         console.error('Error fetching doctors:', error.message);
         res.status(error.status || 500).json({ error: error.message || 'Internal server error' });
     }
+}
+
+export const createVital = async (req , res)=>{
+ try {
+    const vital = await createPatientVital(req.body)
+     res.json(vital)
+ } catch (error) {
+    console.log(error)
+    res.send(error)
+ }
 }
