@@ -43,7 +43,7 @@ export const patientDataSlice = createSlice({
       state.aiReport = action.payload;
     },
     setNewMedicine: (state, action) => {
-      state.newMedicine = action.payload;
+       state.newMedicine.push(action.payload);;
     },
   },
 })
