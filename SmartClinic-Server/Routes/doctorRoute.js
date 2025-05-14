@@ -10,5 +10,6 @@ doctorRouter.get("/doctor/getkpi/:id",dashboardController.kpiData );
 doctorRouter.get("/doctor/graphsdata",dashboardController.graphsData );
 doctorRouter.get("/doctor/appointments",appointmentController.getAppointments );
 doctorRouter.post("/doctor/createprescription",patientController.addPatientPrescription );
+doctorRouter.post("/doctor/createvital",doctorController.createVital );
 
 export default doctorRouter;
