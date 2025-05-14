@@ -49,7 +49,9 @@ export default function MedicineModal({ open, onClose ,onSaveClick}) {
           <InputField
             inputLabel="Medicine"
             placeholder="Enter Medicine name"
-            type="email"
+            type="text"
+             value={form.medicineName}
+            onChange={handleChange("medicineName")}
             variant="outlined"
             fullWidth={true}
           />
@@ -57,6 +59,8 @@ export default function MedicineModal({ open, onClose ,onSaveClick}) {
             inputLabel="Frequency"
             placeholder="Enter frequency per day"
             type="text"
+             value={form.frequency}
+            onChange={handleChange("frequency")}
             variant="outlined"
             fullWidth={true}
           />
@@ -64,6 +68,8 @@ export default function MedicineModal({ open, onClose ,onSaveClick}) {
             inputLabel="Quantity"
             placeholder="Enter quantity"
             type="text"
+             value={form.quantity}
+            onChange={handleChange("quantity")}
             variant="outlined"
             fullWidth={true}
           />
@@ -71,12 +77,14 @@ export default function MedicineModal({ open, onClose ,onSaveClick}) {
             inputLabel="Duration"
             placeholder="Enter medicine duration"
             type="text"
+             value={form.duration}
+            onChange={handleChange("duration")}
             variant="outlined"
             fullWidth={true}
           />
           <Box  justifySelf={'center'}>
 
-          <CustomButton label={"Save"} onClick={onSaveClick} sx={{ mt: 2 }}  />
+          <CustomButton label={"Save"}onClick={handleSave}  sx={{ mt: 2 }}  />
           </Box>
         </Box>
       </Box>
