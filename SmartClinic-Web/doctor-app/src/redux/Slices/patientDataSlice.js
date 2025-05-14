@@ -23,6 +23,6 @@ export const patientDataSlice = createSlice({
 })
 
 
-export const {setPatientId ,setPatientInfo  } = patientDataSlice.actions
+export const {setPatientId ,setPatientInfo ,setPatientPastMedicines } = patientDataSlice.actions
 
 export default patientDataSlice.reducer
