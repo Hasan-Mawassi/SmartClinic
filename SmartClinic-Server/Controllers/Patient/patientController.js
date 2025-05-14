@@ -40,7 +40,7 @@ export const getPatietnVital = async (req , res)=>{
     try {
         const {id} = req.query
         const patientVitalData = await Vital.latestPatientVital(parseInt(id))
-        res.json(patientVitalData)
+         successResponse(res, patientVitalData, 'patient Vital Data', 200);
     } catch (error) {
         console.log(error)
         errorResponse(res, error, 500)
