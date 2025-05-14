@@ -10,14 +10,17 @@ import MedicineModal from '../../components/Patient/MedicineModal';
 import { usePatientInfo } from '../../hooks/patient/usePatientInfo';
 import { useSelector } from 'react-redux';
 import { usePatientPastMedicines } from '../../hooks/patient/usePatientPastMedicines';
+import { transformPrescriptionsData } from '../../utils/transformPrescriptionsData';
 const Patient = () => {
   const patientId = useSelector((state)=> state.patientData.patientId);
   console.log(patientId)
    const{patientLoading}= usePatientInfo(patientId)
-  usePatientPastMedicines(patientId)
+    usePatientPastMedicines(patientId)
     const patient = useSelector((state)=> state.patientData.patientInfo );
+
     const pastMedicines = useSelector((state)=> state.patientData.pastMedicines );
-    console.log(pastMedicines)
+    const { availableDates, medicinesByDate } = transformPrescriptionsData(pastMedicines);
+
     const [open, setOpen] = useState(false);
 
     return (
@@ -31,11 +34,8 @@ const Patient = () => {
               <PatientCard patient={patient} loading={patientLoading} />
               <Box display="flex" flexDirection="row" gap={2} flexWrap={"wrap"}> 
               <MedicineCard
-                availableDates={['2025-05-09', '2025-05-10']}
-                medicinesByDate={{
-                  '2025-05-09': ['Paracetamol', 'Ibuprofen'],
-                  '2025-05-10': ['Amoxicillin', 'Vitamin D', 'Aspirin'],
-                }}
+                availableDates={availableDates }
+                medicinesByDate={medicinesByDate }
               />
               <NewMedicineCard
                 medicines={['Metformin 500mg', 'Atorvastatin 20mg', 'Lisinopril 10mg', 'Lisinopril 10mg', 'Lisinopril 10mg']}
