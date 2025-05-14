@@ -11,8 +11,8 @@ export const usePatientInfo = (patientId) => {
     const fetchPatientInfo = async () => {
       try {
         const response = await request({
-          method: 'GET',
-          route: `/patient/info`,
+          method: 'POST',
+          route: `/patient/getinfo`,
           body:{id:patientId},
           auth: true,
         });
