@@ -2,6 +2,7 @@ import { Patient } from "../../Models/Patient.js";
 import { Perscription } from "../../Models/Perscription.js";
 import { successResponse ,errorResponse } from "../../Traits/response.js";
 import { Vital } from '../../Models/Vital.js';
+import { getPatientReport } from "../../Services/Doctor/patientReport.js";
 
 export const  getPatientInfo =  async (req , res)=>{
    try {
@@ -45,3 +46,15 @@ export const getPatietnVital = async (req , res)=>{
         errorResponse(res, error, 500)
     }
 }
+
+export const generatePatientReport = async (req, res) => {
+  const { patientId } = req.body;
+
+  try {
+    const report = await getPatientReport(patientId);
+    res.status(200).json({ success: true, report });
+  } catch (err) {
+    console.log(err)
+    res.status(404).json({ success: false, message: err.message });
+  }
+};
