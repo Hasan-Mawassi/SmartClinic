@@ -1,8 +1,8 @@
 import prisma from "../lib/prisma.js";
 
 export class Vital {
-    
-  async createVital({
+
+  static async createVital({
     patientId,
     doctorId,
     healthPercent,
