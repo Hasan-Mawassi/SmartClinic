@@ -5,7 +5,7 @@ export class Vital {
   static async createVital({
     patientId,
     doctorId,
-    healthPercent,
+    healthPercentage,
     heartRate,
     bloodPressure,
     temperature,
@@ -15,7 +15,7 @@ export class Vital {
       data: {
         patientId,
         doctorId,
-        healthPercent,
+        healthPercentage,
         heartRate,
         bloodPressure,
         temperature,
