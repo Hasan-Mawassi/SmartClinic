@@ -13,16 +13,8 @@ const Patient = () => {
   const patientId = useSelector((state)=> state.patientData.patientId);
   console.log(patientId)
    const{patientLoading}= usePatientInfo(patientId)
-    const patient = {
-        name: 'John Doe',
-        age: 45,
-        weight: 72,
-        gender: 'Male',
-        bloodGroup: 'O+',
-        image: '/logo.png',
-        surgeryName: 'Appendectomy surgery',
-        surgeryDate: '2024-08-15'
-      };
+   console.log(patientLoading)
+    const patient = useSelector((state)=> state.patientData.patientInfo );
       const [open, setOpen] = useState(false);
 
     return (
