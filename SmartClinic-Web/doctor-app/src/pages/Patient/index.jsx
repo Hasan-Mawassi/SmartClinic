@@ -24,15 +24,6 @@ const Patient = () => {
     usePatientVitalData(patientId)
     const vitalData =  useSelector((state)=> state.patientData.vitalData );
     const [open, setOpen] = useState(false);
-//     const data = {
-    
-//     "healthPercentage": 90.2,
-//     "heartRate": 90,
-//     "bloodPressure": "120/80",
-//     "temperature": 36.5,
-//     "bloodGlucose": 95,
-//     "createdAt": "2025-05-14T11:14:53.916Z"
-// }
 
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
