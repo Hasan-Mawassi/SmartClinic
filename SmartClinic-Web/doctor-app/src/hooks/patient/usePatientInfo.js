@@ -12,7 +12,8 @@ export const usePatientInfo = (patientId) => {
       try {
         const response = await request({
           method: 'GET',
-          route: `/patient/info/${patientId}`,
+          route: `/patient/info`,
+          body:{id:patientId},
           auth: true,
         });
 
