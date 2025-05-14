@@ -26,6 +26,7 @@ model Patient {
   created_at    DateTime @default(now())
   appointments  Appointment[]
   prescriptions Prescription[]
+  vitals  Vital[]
   @@map("patients")
 }
 
@@ -41,6 +42,7 @@ model Doctor {
   appointments    Appointment[]
   schedules Schedule[]
   prescriptions Prescription[]
+  vitals  Vital[]
    @@map("doctors")
 }
 model Prescription {
