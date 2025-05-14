@@ -1,5 +1,4 @@
 import { Doctor } from '../Models/Doctor.js';
-import { Vital } from '../Models/Vital.js';
 import { createPatientVital } from '../Services/Doctor/patientpage.js';
 import { successResponse ,errorResponse } from "../Traits/response.js";
 export const getAllDoctors = async (req, res) => {
@@ -20,14 +19,4 @@ export const createVital = async (req , res)=>{
     console.log(error)
    errorResponse(res,error,500)
  }
-}
-export const getPatietnVital = async (req , res)=>{
-    try {
-        const {patientId} = req.body
-        const patientVitalData = await Vital.latestPatientVital(patientId)
-        res.json(patientVitalData)
-    } catch (error) {
-        console.log(error)
-        errorResponse(res, error, 500)
-    }
 }

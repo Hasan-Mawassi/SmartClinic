@@ -1,7 +1,7 @@
 import { Patient } from "../../Models/Patient.js";
 import { Perscription } from "../../Models/Perscription.js";
 import { successResponse ,errorResponse } from "../../Traits/response.js";
-
+import { Vital } from '../Models/Vital.js';
 
 export const  getPatientInfo =  async (req , res)=>{
    try {
@@ -32,5 +32,16 @@ export const addPatientPrescription = async (req, res)=>{
     } catch (error) {
      console.error('Error creating prescription:', error);
       errorResponse(res,error,500)
+    }
+}
+
+export const getPatietnVital = async (req , res)=>{
+    try {
+        const {patientId} = req.body
+        const patientVitalData = await Vital.latestPatientVital(patientId)
+        res.json(patientVitalData)
+    } catch (error) {
+        console.log(error)
+        errorResponse(res, error, 500)
     }
 }
