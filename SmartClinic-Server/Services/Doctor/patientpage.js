@@ -6,7 +6,7 @@ export const createPatientVital = async (data)=>{
     const {
       patientId,
       doctorId,
-      healthPercent,
+      healthPercentage,
       heartRate,
       bloodPressure,
       temperature,
@@ -16,7 +16,7 @@ export const createPatientVital = async (data)=>{
     return await Vital.createVital({
       patientId,
       doctorId,
-      healthPercent,
+      healthPercentage,
       heartRate,
       bloodPressure,
       temperature,
