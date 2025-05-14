@@ -10,7 +10,7 @@ import MedicineModal from '../../components/Patient/MedicineModal';
 import { usePatientInfo } from '../../hooks/patient/usePatientInfo';
 import { useSelector } from '@mui/x-charts/internals';
 const Patient = () => {
-  const patientId = useSelector((state)=> state.patientIfo.patientId);
+  const patientId = useSelector((state)=> state.patientData.patientId);
    const{patientLoading}= usePatientInfo(patientId)
     const patient = {
         name: 'John Doe',
