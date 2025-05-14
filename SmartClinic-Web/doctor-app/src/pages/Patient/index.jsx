@@ -25,7 +25,9 @@ const Patient = () => {
     usePatientVitalData(patientId)
     const vitalData =  useSelector((state)=> state.patientData.vitalData );
     const [open, setOpen] = useState(false);
-   useAiReport(patientId)
+    const aiReport =useAiReport(patientId) 
+    
+   console.log(aiReport)
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
             < CustomButton label="Add Medicine" onClick={() => setOpen(true)} variant="contained" color="primary" sx={{ mb: 2,width: '200px',fontSize: '18px' }} />
@@ -52,8 +54,8 @@ const Patient = () => {
           <Grid item xs={12} md={6}>
             <Box display="flex" flexDirection="column" gap={2}>
               <TextCard
-                title="AI Diagnosis Insight"
-                description="Patient Ahmed Nasser, a Fifty-year-old male with a known history of Type 2 Diabetes and Hyperlipidemia, presented on April 10, 2025, reporting increased shortness of breath on exertion and occasional dizziness. His vital signs revealed blood pressure of 135/85 mmHg and a fasting glucose level of 155 mg/dL. He is currently managed with Metformin and Atorvastatin. Recent laboratory results showed elevated triglycerides, low HDL cholesterol, and an HbA1c of 8.2%. AI-based risk assessment indicates a mod"
+                title="AI Report Generator"
+                description={aiReport}
               />
               <TextCard
                 title="AI Diagnosis Insight"

@@ -1,10 +1,11 @@
 import {  useEffect } from 'react';
-
+import { useDispatch } from 'react-redux';
 import { request } from '../../utils/request.js';
+import { setAiReport } from '../../redux/Slices/patientDataSlice.js';
 
 
 export const useAiReport = (patientId) => {
-
+  const dispatch = useDispatch();
  
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export const useAiReport = (patientId) => {
         });
 
         if (!response.error) {
+             dispatch(setAiReport(response.data));
          return response.data
         } else {
           console.error('Error fetching AI Report:', response.message);
@@ -33,7 +35,7 @@ export const useAiReport = (patientId) => {
     if (patientId) {
       fetchAiReport();
     }
-  }, [patientId]);
+  }, [patientId, dispatch]);
 
   
 };
