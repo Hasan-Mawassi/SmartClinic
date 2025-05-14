@@ -1,7 +1,7 @@
 import { Patient } from "../../Models/Patient.js";
 import { Perscription } from "../../Models/Perscription.js";
 import { successResponse ,errorResponse } from "../../Traits/response.js";
-import { Vital } from '../Models/Vital.js';
+import { Vital } from '../../Models/Vital.js';
 
 export const  getPatientInfo =  async (req , res)=>{
    try {
