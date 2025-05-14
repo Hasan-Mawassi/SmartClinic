@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography, Paper, Grid2 } from "@mui/material";
-
+import { calculateAge } from "../../../utils/calculateAge";
 const PatientCard = ({ patient }) => {
   return (
     <Paper
@@ -45,7 +45,7 @@ const PatientCard = ({ patient }) => {
             justifyContent="space-between"
           >
             <Typography variant="body1">
-              <strong>Age & Weight:</strong> {patient.age} / {patient.weight}kg
+              <strong>Age & Weight:</strong> {calculateAge(patient.date_of_birth)} / {patient.weight}kg
             </Typography>
             <Typography variant="body1">
               <strong>Gender:</strong> {patient.gender}
