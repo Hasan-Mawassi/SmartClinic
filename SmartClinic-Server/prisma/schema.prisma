@@ -37,6 +37,12 @@ model Allergy {
   patientId  Int
   @@map("allergies")
 }
+model ChronicDisease {
+  id         Int      @id @default(autoincrement())
+  name       String
+  patient    Patient  @relation(fields: [patientId], references: [id])
+  patientId  Int
+}
 model Doctor {
   id              Int      @id @default(autoincrement())
   name            String
