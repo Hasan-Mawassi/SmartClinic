@@ -12,7 +12,7 @@ export const useAiReport = (patientId) => {
       try {
         const response = await request({
           method: 'POST',
-          route: `patient/doctor/ai/generatereport`,
+          route: `/doctor/ai/generatereport`,
           body:{patientId},
           auth: true,
         });
