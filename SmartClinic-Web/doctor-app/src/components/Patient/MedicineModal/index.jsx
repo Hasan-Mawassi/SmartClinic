@@ -4,6 +4,7 @@ import InputField from "../../Basic/inputField";
 import CustomButton from "../../Basic/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
+import { useState } from "react";
 const style = {
   position: "absolute",
   top: "50%",
@@ -17,6 +18,12 @@ const style = {
 };
 
 export default function MedicineModal({ open, onClose ,onSaveClick}) {
+  const [form, setForm] = useState({
+    medicineName: "",
+    frequency: "",
+    quantity: "",
+    duration: "",
+  });
   return (
     <Modal open={open} onClose={onClose}>
       <Box sx={{ ...style, position: "relative" }}>
