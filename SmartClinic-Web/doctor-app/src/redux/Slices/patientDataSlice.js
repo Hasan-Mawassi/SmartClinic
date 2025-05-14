@@ -11,12 +11,8 @@ const initialState = {
                 }
             ]
         }
-    ]
-        
-       
-            
-        
-    
+    ],
+    vitalData:{}
 }
 
 export const patientDataSlice = createSlice({
@@ -32,10 +28,13 @@ export const patientDataSlice = createSlice({
     setPatientPastMedicines: (state, action) => {
       state.pastMedicines = action.payload;
     },
+    setVotalData: (state, action) => {
+      state.vitalData = action.payload;
+    },
   },
 })
 
 
-export const {setPatientId ,setPatientInfo ,setPatientPastMedicines } = patientDataSlice.actions
+export const {setPatientId ,setPatientInfo ,setPatientPastMedicines,vitalData } = patientDataSlice.actions
 
 export default patientDataSlice.reducer
