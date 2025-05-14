@@ -13,9 +13,9 @@ const Patient = () => {
   const patientId = useSelector((state)=> state.patientData.patientId);
   console.log(patientId)
    const{patientLoading}= usePatientInfo(patientId)
-   console.log(patientLoading)
+  
     const patient = useSelector((state)=> state.patientData.patientInfo );
-      const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
