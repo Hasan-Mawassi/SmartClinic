@@ -7,7 +7,11 @@ import { Grid, Box } from '@mui/material';
 import DoctorVitalsCard from '../../components/Patient/VitalCard';
 import CustomButton from '../../components/Basic/Button';
 import MedicineModal from '../../components/Patient/MedicineModal';
+import { usePatientInfo } from '../../hooks/patient/usePatientInfo';
+import { useSelector } from '@mui/x-charts/internals';
 const Patient = () => {
+  const patientId = useSelector((state)=> state.patientIfo.patientId);
+   const{patientLoading}= usePatientInfo(patientId)
     const patient = {
         name: 'John Doe',
         age: 45,
