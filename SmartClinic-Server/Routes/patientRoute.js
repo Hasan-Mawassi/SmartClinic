@@ -4,5 +4,5 @@ const patientRouter = Router();
 
 patientRouter.get('/patient/getinfo', patientController.getPatientInfo)
 patientRouter.get('/patient/getperscription', patientController.getPatientPrescription)
-patientRouter.get('/patient/getvital', patientController.getPatientPrescription)
+patientRouter.get('/patient/getvital', patientController.getPatietnVital)
 export default patientRouter;
