@@ -24,7 +24,16 @@ export class Vital {
     });
   }
 
-
+ static async latestPatientVital (patientId){
+    return await prisma.vital.findFirst({
+  where: {
+    patientId, 
+  },
+  orderBy: {
+    createdAt: 'desc', 
+  },
+});
+ }
 
 
 }
