@@ -27,6 +27,7 @@ model Patient {
   appointments  Appointment[]
   prescriptions Prescription[]
   vitals  Vital[]
+  Allergy Allergy[]
   @@map("patients")
 }
 model Allergy {
