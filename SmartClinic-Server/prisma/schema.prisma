@@ -29,7 +29,13 @@ model Patient {
   vitals  Vital[]
   @@map("patients")
 }
-
+model Allergy {
+  id         Int      @id @default(autoincrement())
+  name       String
+  patient    Patient  @relation(fields: [patientId], references: [id])
+  patientId  Int
+  @@map("allergies")
+}
 model Doctor {
   id              Int      @id @default(autoincrement())
   name            String
