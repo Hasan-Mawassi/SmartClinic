@@ -5,6 +5,9 @@ import CustomButton from "../../Basic/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
+import { addMedicine } from "../../../Services/apis/addPrescription";
+import { useSelector } from "react-redux";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -17,7 +20,7 @@ const style = {
   p: 4,
 };
 
-export default function MedicineModal({ open, onClose ,onSaveClick}) {
+export default function MedicineModal({ open, onClose }) {
   const [form, setForm] = useState({
     medicineName: "",
     frequency: "",
@@ -27,6 +30,26 @@ export default function MedicineModal({ open, onClose ,onSaveClick}) {
   
   const handleChange = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value });
+  };
+  const patientId =  useSelector((state)=> state.patientData.patientId);
+   const doctorId = useSelector((state) => state.doctorInfo.id)
+  const handleSave = async () => {
+    try {
+      const data = {
+        medicineName: form.medicineName,
+        frequency: form.frequency,
+        quantity: form.quantity,
+        duration: form.duration,
+        patientId:patientId,
+        doctorId,
+      };
+
+      await addMedicine(data);
+     
+      onClose(); 
+    } catch (error) {
+      console.log(error)
+    }
   };
   return (
     <Modal open={open} onClose={onClose}>
