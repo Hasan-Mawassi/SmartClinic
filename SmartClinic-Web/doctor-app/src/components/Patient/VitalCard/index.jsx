@@ -2,8 +2,8 @@ import React from 'react';
 import { Card, CardContent, Grid, Typography, Box } from '@mui/material';
 import { PieChart } from '@mui/x-charts/PieChart';
 
-const DoctorVitalsCard = () => {
-  const healthPercentage = 70;
+const DoctorVitalsCard = ({data}) => {
+  // const healthPercentage = 70;
 
   return (
     <Card sx={{ borderRadius: 3, p: 2 , flexGrow: 1, border: '1px solid #a0a0a0', boxShadow: 0}}>
@@ -14,8 +14,8 @@ const DoctorVitalsCard = () => {
             series={[
               {
                 data: [
-                  { id: 0, value: healthPercentage, color: '#4caf50' },
-                  { id: 1, value: 100 - healthPercentage, color: '#e0e0e0' },
+                  { id: 0, value: data.healthPercentage, color: '#4caf50' },
+                  { id: 1, value: 100 -  data.healthPercentage, color: '#e0e0e0' },
                 ],
                 innerRadius: 50,
                 outerRadius: 80,
@@ -34,7 +34,7 @@ const DoctorVitalsCard = () => {
             textAlign="center"
           >
             <Typography variant="h6" fontWeight="bold">
-              {healthPercentage}%
+              { data.healthPercentage}%
             </Typography>
             <Typography variant="caption">Overall Health</Typography>
           </Box>
@@ -44,16 +44,16 @@ const DoctorVitalsCard = () => {
         <Grid item xs={12} sm={6}>
           <Box display="flex" flexDirection="column" gap={1}>
             <Typography variant="body2">
-              <strong>Heart Rate:</strong> 78 bpm
+              <strong>Heart Rate:</strong> {data.heartRate} bpm
             </Typography>
             <Typography variant="body2">
-              <strong>Blood Pressure:</strong> 120/80 mmHg
+              <strong>Blood Pressure:</strong> {data.bloodPressure} mmHg
             </Typography>
             <Typography variant="body2">
-              <strong>Temperature:</strong> 98.6°F
+              <strong>Temperature:</strong> {data.temperature}°F
             </Typography>
             <Typography variant="body2">
-              <strong>O₂ Saturation:</strong> 97%
+              <strong>Blood Glucose</strong> {data.bloodGlucose}%
             </Typography>
           </Box>
         </Grid>
