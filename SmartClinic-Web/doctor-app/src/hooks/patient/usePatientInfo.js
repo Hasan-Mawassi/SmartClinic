@@ -17,8 +17,11 @@ export const usePatientInfo = (patientId) => {
           auth: true,
         });
 
-        
+        if (!response.error) {
+         console.log(response)
+        } else {
           console.error('Error fetching patient info:', response.message);
+        }
        
       } catch (err) {
         console.error('Unexpected error:', err);
