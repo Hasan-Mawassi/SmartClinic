@@ -20,7 +20,7 @@ export const useAiReport = (patientId) => {
 
         if (!response.error) {
              dispatch(setAiReport(response.data));
-         return response.data
+         
         } else {
           console.error('Error fetching AI Report:', response.message);
           return 'error in ai response'

@@ -25,8 +25,8 @@ const Patient = () => {
     usePatientVitalData(patientId)
     const vitalData =  useSelector((state)=> state.patientData.vitalData );
     const [open, setOpen] = useState(false);
-    const aiReport =useAiReport(patientId) 
-    
+    useAiReport(patientId) 
+    const aiReport = useSelector((state)=> state.patientData.aiReport )
    console.log(aiReport)
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
