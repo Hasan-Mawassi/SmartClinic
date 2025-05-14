@@ -9,12 +9,15 @@ import CustomButton from '../../components/Basic/Button';
 import MedicineModal from '../../components/Patient/MedicineModal';
 import { usePatientInfo } from '../../hooks/patient/usePatientInfo';
 import { useSelector } from 'react-redux';
+import { usePatientPastMedicines } from '../../hooks/patient/usePatientPastMedicines';
 const Patient = () => {
   const patientId = useSelector((state)=> state.patientData.patientId);
   console.log(patientId)
    const{patientLoading}= usePatientInfo(patientId)
-  
+  usePatientPastMedicines(patientId)
     const patient = useSelector((state)=> state.patientData.patientInfo );
+    const pastMedicines = useSelector((state)=> state.patientData.pastMedicines );
+    console.log(pastMedicines)
     const [open, setOpen] = useState(false);
 
     return (
