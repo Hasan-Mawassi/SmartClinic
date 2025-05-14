@@ -27,7 +27,7 @@ const Patient = () => {
     const [open, setOpen] = useState(false);
     useAiReport(patientId) 
     const aiReport = useSelector((state)=> state.patientData.aiReport )
-   console.log(aiReport)
+  
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
             < CustomButton label="Add Medicine" onClick={() => setOpen(true)} variant="contained" color="primary" sx={{ mb: 2,width: '200px',fontSize: '18px' }} />

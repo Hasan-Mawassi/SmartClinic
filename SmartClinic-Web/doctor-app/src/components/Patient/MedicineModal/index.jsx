@@ -16,7 +16,7 @@ const style = {
   p: 4,
 };
 
-export default function MedicineModal({ open, onClose }) {
+export default function MedicineModal({ open, onClose ,onSaveClick}) {
   return (
     <Modal open={open} onClose={onClose}>
       <Box sx={{ ...style, position: "relative" }}>
@@ -63,7 +63,10 @@ export default function MedicineModal({ open, onClose }) {
             variant="outlined"
             fullWidth={true}
           />
-          <CustomButton label={"Save"} onClick={() => {}} sx={{ mt: 2 }} />
+          <Box  justifySelf={'center'}>
+
+          <CustomButton label={"Save"} onClick={onSaveClick} sx={{ mt: 2 }}  />
+          </Box>
         </Box>
       </Box>
     </Modal>
