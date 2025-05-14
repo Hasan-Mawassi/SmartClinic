@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    patientId:null,
+    patientId:2,
 }
 
 export const patientDataSlice = createSlice({
