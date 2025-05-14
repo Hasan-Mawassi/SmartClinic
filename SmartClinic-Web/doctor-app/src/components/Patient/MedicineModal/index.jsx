@@ -6,7 +6,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { addMedicine } from "../../../Services/apis/addPrescription";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setNewMedicine } from "../../../redux/Slices/patientDataSlice";
 
 const style = {
   position: "absolute",
@@ -27,7 +28,7 @@ export default function MedicineModal({ open, onClose }) {
     quantity: "",
     duration: "",
   });
-  
+  const dispatch = useDispatch();
   const handleChange = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value });
   };
@@ -43,7 +44,7 @@ export default function MedicineModal({ open, onClose }) {
         patientId:patientId,
         doctorId,
       };
-
+      dispatch(setNewMedicine(form.medicineName))
       await addMedicine(data);
      
       onClose(); 
