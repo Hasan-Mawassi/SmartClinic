@@ -24,6 +24,10 @@ export default function MedicineModal({ open, onClose ,onSaveClick}) {
     quantity: "",
     duration: "",
   });
+  
+  const handleChange = (field) => (e) => {
+    setForm({ ...form, [field]: e.target.value });
+  };
   return (
     <Modal open={open} onClose={onClose}>
       <Box sx={{ ...style, position: "relative" }}>
