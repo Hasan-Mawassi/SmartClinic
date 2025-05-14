@@ -18,7 +18,8 @@ const initialState = {
     "bloodPressure": "",
     "temperature": 0,
     "bloodGlucose": 0,
-}
+},
+aiReport:''
 }
 
 export const patientDataSlice = createSlice({
@@ -37,10 +38,13 @@ export const patientDataSlice = createSlice({
     setVotalData: (state, action) => {
       state.vitalData = action.payload;
     },
+    setAiReport: (state, action) => {
+      state.vitalData = action.payload;
+    },
   },
 })
 
 
-export const {setPatientId ,setPatientInfo ,setPatientPastMedicines,setVotalData } = patientDataSlice.actions
+export const {setPatientId ,setPatientInfo ,setPatientPastMedicines,setVotalData ,setAiReport} = patientDataSlice.actions
 
 export default patientDataSlice.reducer
