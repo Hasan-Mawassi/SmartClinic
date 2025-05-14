@@ -38,8 +38,8 @@ export const addPatientPrescription = async (req, res)=>{
 
 export const getPatietnVital = async (req , res)=>{
     try {
-        const {patientId} = req.body
-        const patientVitalData = await Vital.latestPatientVital(patientId)
+        const {id} = req.query
+        const patientVitalData = await Vital.latestPatientVital(parseInt(id))
         res.json(patientVitalData)
     } catch (error) {
         console.log(error)
