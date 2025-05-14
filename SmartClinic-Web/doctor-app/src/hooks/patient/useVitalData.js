@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { request } from '../../utils/request.js';
-import { setVitalData } from '../../redux/Slices/patientDataSlice.js'; 
+import { setVotalData } from '../../redux/Slices/patientDataSlice.js';
 
 export const usePatientVitalData = (patientId) => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export const usePatientVitalData = (patientId) => {
         });
 
         if (!response.error) {
-          dispatch(setVitalData(response.data));
+          dispatch(setVotalData(response.data));
         } else {
           console.error('Error fetching vital data:', response.message);
         }
