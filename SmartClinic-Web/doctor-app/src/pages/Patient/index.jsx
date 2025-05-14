@@ -11,6 +11,7 @@ import { usePatientInfo } from '../../hooks/patient/usePatientInfo';
 import { useSelector } from 'react-redux';
 import { usePatientPastMedicines } from '../../hooks/patient/usePatientPastMedicines';
 import { transformPrescriptionsData } from '../../utils/transformPrescriptionsData';
+import { usePatientVitalData } from '../../hooks/patient/useVitalData';
 const Patient = () => {
   const patientId = useSelector((state)=> state.patientData.patientId);
   console.log(patientId)
@@ -20,17 +21,18 @@ const Patient = () => {
 
     const pastMedicines = useSelector((state)=> state.patientData.pastMedicines );
     const { availableDates, medicinesByDate } = transformPrescriptionsData(pastMedicines);
-
+    usePatientVitalData(patientId)
+    const vitalData =  useSelector((state)=> state.patientData.vitalData );
     const [open, setOpen] = useState(false);
-    const data = {
+//     const data = {
     
-    "healthPercentage": 90.2,
-    "heartRate": 90,
-    "bloodPressure": "120/80",
-    "temperature": 36.5,
-    "bloodGlucose": 95,
-    "createdAt": "2025-05-14T11:14:53.916Z"
-}
+//     "healthPercentage": 90.2,
+//     "heartRate": 90,
+//     "bloodPressure": "120/80",
+//     "temperature": 36.5,
+//     "bloodGlucose": 95,
+//     "createdAt": "2025-05-14T11:14:53.916Z"
+// }
 
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
@@ -49,7 +51,7 @@ const Patient = () => {
               <NewMedicineCard
                 medicines={['Metformin 500mg', 'Atorvastatin 20mg', 'Lisinopril 10mg', 'Lisinopril 10mg', 'Lisinopril 10mg']}
               />
-              < DoctorVitalsCard data={data} />
+              < DoctorVitalsCard data={vitalData} />
               </Box>
             </Box>
           </Grid>
