@@ -1,4 +1,4 @@
-import { Vital } from "../../Models/Vital";
+import { Vital } from "../../Models/Vital.js";
 
 
 export const createPatientVital = async (data)=>{
