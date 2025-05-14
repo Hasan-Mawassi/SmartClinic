@@ -11,9 +11,8 @@ export const usePatientPastMedicines = (patientId) => {
     const fetchPastMedicines = async () => {
       try {
         const response = await request({
-          method: 'POST',
-          route: `patient/getperscription`,
-          body: { id: patientId },
+          method: 'GET',
+          route: `patient/getperscription?id=${patientId}`,
           auth: true,
         });
 
