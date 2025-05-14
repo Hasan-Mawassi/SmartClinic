@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { request } from '../../utils/request.js';
-
+import { setPatientInfo } from '../../redux/Slices/patientDataSlice.js';
+import { useDispatch } from 'react-redux';
 
 export const usePatientInfo = (patientId) => {
 
-
+const dispatch = useDispatch();
   const [patientLoading, setPatientLoading] = useState(true);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export const usePatientInfo = (patientId) => {
         });
 
         if (!response.error) {
-         console.log(response)
+        dispatch(setPatientInfo(response.data));
         } else {
           console.error('Error fetching patient info:', response.message);
         }
@@ -33,7 +34,7 @@ export const usePatientInfo = (patientId) => {
     if (patientId) {
       fetchPatientInfo();
     }
-  }, [patientId]);
+  }, [patientId,dispatch]);
 
   return { patientLoading };
 }
