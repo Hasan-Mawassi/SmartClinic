@@ -12,7 +12,13 @@ const initialState = {
             ]
         }
     ],
-    vitalData:{}
+    vitalData:{
+         "healthPercentage": 0,
+    "heartRate": 0,
+    "bloodPressure": "",
+    "temperature": 0,
+    "bloodGlucose": 0,
+}
 }
 
 export const patientDataSlice = createSlice({
