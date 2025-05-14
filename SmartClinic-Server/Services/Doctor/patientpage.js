@@ -1,3 +1,4 @@
+import { Vital } from "../../Models/Vital";
 
 
 export const createPatientVital = async (data)=>{
@@ -12,5 +13,13 @@ export const createPatientVital = async (data)=>{
       bloodGlucose,
     } = data;
 
-    
+    return await Vital.createVital({
+      patientId,
+      doctorId,
+      healthPercent,
+      heartRate,
+      bloodPressure,
+      temperature,
+      bloodGlucose,
+    })
 }
