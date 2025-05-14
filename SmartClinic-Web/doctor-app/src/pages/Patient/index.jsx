@@ -25,7 +25,7 @@ const Patient = () => {
           {/* Left Column */}
           <Grid item xs={12} md={6}>
             <Box display="flex" flexDirection="column" gap={2}>
-              <PatientCard patient={patient} />
+              <PatientCard patient={patient} loading={patientLoading} />
               <Box display="flex" flexDirection="row" gap={2} flexWrap={"wrap"}> 
               <MedicineCard
                 availableDates={['2025-05-09', '2025-05-10']}

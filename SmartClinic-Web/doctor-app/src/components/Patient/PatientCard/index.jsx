@@ -1,9 +1,10 @@
 import React from "react";
-import { Box, Typography, Paper, Grid2 } from "@mui/material";
+import { Box, Typography, Paper, Grid2 ,CircularProgress} from "@mui/material";
 import { calculateAge } from "../../../utils/calculateAge";
-const PatientCard = ({ patient }) => {
+const PatientCard = ({ patient ,loading=false }) => {
   return (
-    <Paper
+    <> 
+   { !loading ?  (<Paper
       elevation={3}
       sx={{ p: 2, borderRadius: 3, width: "100%" , boxShadow: 0,border: "1px solid #ccc",}}
     >
@@ -93,7 +94,12 @@ const PatientCard = ({ patient }) => {
           </Box>
         </Grid2>
       </Grid2>
-    </Paper>
+    </Paper>) :(
+      <Box display="flex" justifyContent="center" mt={5}>
+        <CircularProgress />
+      </Box>
+    )}
+      </>
   );
 };
 
