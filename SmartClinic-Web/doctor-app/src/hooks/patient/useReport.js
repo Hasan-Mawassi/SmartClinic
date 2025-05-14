@@ -18,9 +18,10 @@ export const useAiReport = (patientId) => {
         });
 
         if (!response.error) {
-         console.log(response)
+         return response.data
         } else {
           console.error('Error fetching AI Report:', response.message);
+          return 'error in ai response'
         }
       } catch (err) {
         console.error('Unexpected error fetching AI Report:', err);
