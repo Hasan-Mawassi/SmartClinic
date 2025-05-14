@@ -1,6 +1,6 @@
 import { getPatientReport } from "../Services/Doctor/patientReport.js";
 import { generateOverviewReport } from "../Services/openAi/reportAiGenerator.js";
-
+import { successResponse ,errorResponse } from "../Traits/response.js";
 
 
 export const generatePatientReportAi = async (req, res) => {
@@ -9,9 +9,9 @@ export const generatePatientReportAi = async (req, res) => {
   try {
     const report = await getPatientReport(patientId);
    const generatedReport = await generateOverviewReport(report)
-   res.send(generatedReport)
+   successResponse(res,generatedReport, "report generated" , 200)
   } catch (err) {
     console.log(err)
-    res.status(404).json({ success: false, message: err.message });
+   errorResponse(res,err, 500)
   }
 };
