@@ -15,7 +15,7 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     this.backgroundColor = Colors.blue,
     this.textColor = Colors.white,
-    this.borderRadius = 12.0,
+    this.borderRadius = 8.0,
     this.icon,
     this.isFullWidth = true,
     this.width,
@@ -27,16 +27,12 @@ class CustomButton extends StatelessWidget {
       width: isFullWidth ? double.infinity : width,
       child: ElevatedButton.icon(
         onPressed: onPressed,
-        icon:
-            icon != null
-                ? Icon(icon, color: textColor)
-                : const SizedBox.shrink(),
         label: Text(
           text,
           style: TextStyle(
             color: textColor,
             fontWeight: FontWeight.bold,
-            fontSize: 18,
+            fontSize: 17,
           ),
         ),
         style: ElevatedButton.styleFrom(
