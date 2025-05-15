@@ -73,7 +73,7 @@ export const getPatientAppointments =async ( req, res)=>{
 
 export const deleteAppointment = async (req, res) => {
   try {
-    const appointmentId = req.query;
+    const {id} = req.query;
     const deleteAppointment = await deleteAppointmentService(appointmentId)
     res.json(deleteAppointment)
   } catch (error) {
