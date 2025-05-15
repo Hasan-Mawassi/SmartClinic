@@ -11,7 +11,7 @@ export class Patient {
     }
     
       static async findPatienByEmail(email) {
-        return prisma.doctor.findUnique({
+        return prisma.patient.findUnique({
           where: {
             email,
           },
