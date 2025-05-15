@@ -1,6 +1,7 @@
 import {  useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { request } from '../../utils/request.js';
+import { setUpcommingPatients } from '../../redux/Slices/appointmentSlice.js';
 
 
 
@@ -18,7 +19,7 @@ export const useUpCommingPatients = (patientId) => {
         });
 
         if (!response.error) {
-             dispatch();
+            dispatch(setUpcommingPatients(response.data))
          
         } else {
           console.error('Error fetching AI Report:', response.message);
@@ -27,7 +28,7 @@ export const useUpCommingPatients = (patientId) => {
       } catch (err) {
         console.error('Unexpected error fetching AI Report:', err);
       } finally {
-        console.log("finish AI Report")
+        console.log("finish Upcomming patients")
       }
     };
 
