@@ -9,7 +9,14 @@ export class Patient {
       },
     });
     }
-
+    
+      static async findPatienByEmail(email) {
+        return prisma.doctor.findUnique({
+          where: {
+            email,
+          },
+        });
+      }
     static async getPatientReport (patientId){
         return await prisma.patient.findUnique({
     where: { id: patientId },
