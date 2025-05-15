@@ -22,22 +22,22 @@ class AppointmentTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RoundedCard(
-      margin: const EdgeInsets.symmetric(vertical: 1),
+      margin: const EdgeInsets.symmetric(vertical: 3),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
             // Doctor photo
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                photoUrl,
-                width: 80,
-                height: 100,
-                fit: BoxFit.cover,
-              ),
-            ),
-            const SizedBox(width: 9),
+            // ClipRRect(
+            //   borderRadius: BorderRadius.circular(8),
+            //   child: Image.network(
+            //     photoUrl,
+            //     width: 80,
+            //     height: 100,
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
+            const SizedBox(width: 5),
 
             // Doctor info
             Expanded(
@@ -54,33 +54,44 @@ class AppointmentTile extends StatelessWidget {
                   const SizedBox(height: 4),
                   const Text("You have an appointment"),
                   const SizedBox(height: 6),
+                  // Modified this Row to prevent overflow
                   Row(
                     children: [
-                      Text(date, style: const TextStyle(color: Colors.grey)),
+                      Flexible(
+                        child: Text(
+                          date,
+                          style: const TextStyle(color: Colors.grey),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                       const Text(" | "),
-                      Text(time, style: const TextStyle(color: Colors.grey)),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: CustomOutlinedButton(
-                          text: "Cancel",
-                          onPressed: () {
-                            showCancelConfirmationDialog(
-                              context: context,
-                              onConfirm: () {
-                                print("Appointment cancelled");
-                                // Add your cancellation logic here
-                              },
-                            );
-                          },
+                      Flexible(
+                        child: Text(
+                          time,
+                          style: const TextStyle(color: Colors.grey),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      SizedBox(width: 100),
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 2),
+                          child: CustomOutlinedButton(
+                            text: "Cancel",
+                            onPressed: () {
+                              showCancelConfirmationDialog(
+                                context: context,
+                                onConfirm: () {
+                                  print("Appointment cancelled");
+                                  // Add your cancellation logic here
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  // OutlinedButton(
-                  //   onPressed: onCancel,
-                  //   child: const Text("Cancel"),
-                  // ),
                 ],
               ),
             ),
