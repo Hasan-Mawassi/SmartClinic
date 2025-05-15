@@ -13,6 +13,7 @@ import { usePatientPastMedicines } from '../../hooks/patient/usePatientPastMedic
 import { transformPrescriptionsData } from '../../utils/transformPrescriptionsData';
 import { usePatientVitalData } from '../../hooks/patient/useVitalData';
 import { useAiReport } from '../../hooks/patient/useReport';
+import PatientSelect from '../../components/Patient/upcomingPatients';
 const Patient = () => {
   const patientId = useSelector((state)=> state.patientData.patientId);
   console.log(patientId)
@@ -30,7 +31,11 @@ const Patient = () => {
     const newMedicine = useSelector((state)=> state.patientData.newMedicine )
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
+          <Box display="flex" flexDirection="row" justifyContent={'space-between'}> 
             < CustomButton label="Add Medicine" onClick={() => setOpen(true)} variant="contained" color="primary" sx={{ mb: 2,width: '200px',fontSize: '18px' }} />
+            < PatientSelect  />
+          </Box>
+
             <MedicineModal open={open} onClose={() => setOpen(false)} />
         <Grid container spacing={3}>
           {/* Left Column */}
