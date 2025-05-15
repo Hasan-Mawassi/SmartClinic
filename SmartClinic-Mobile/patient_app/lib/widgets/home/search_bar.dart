@@ -21,8 +21,6 @@ class CustomSearchBar extends StatelessWidget {
       controller: controller,
       onChanged: onChanged,
       decoration: InputDecoration(
-        filled: true,
-        fillColor: AppColors.white,
         hintText: hintText,
         prefixIcon: const Icon(Icons.search),
         suffixIcon:
