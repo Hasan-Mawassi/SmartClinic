@@ -22,7 +22,7 @@ class AppointmentTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RoundedCard(
-      margin: const EdgeInsets.symmetric(vertical: 3),
+      margin: const EdgeInsets.symmetric(vertical: 1),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -60,7 +60,7 @@ class AppointmentTile extends StatelessWidget {
                       const Text(" | "),
                       Text(time, style: const TextStyle(color: Colors.grey)),
                       Padding(
-                        padding: const EdgeInsets.only(left: 2),
+                        padding: const EdgeInsets.only(left: 10),
                         child: CustomOutlinedButton(
                           text: "Cancel",
                           onPressed: () {
