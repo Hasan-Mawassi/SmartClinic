@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import prisma from '../../lib/prisma.js'
 
-export const registerPatient = async({ name, email, password }) => { 
+export const registerPatient = async({ name, email, password ,gender}) => { 
 
         const saltRounds = 10;
         const JWT_SECRET = process.env.JWT_SECRET;
@@ -21,6 +21,7 @@ export const registerPatient = async({ name, email, password }) => {
               password: hashedPassword,
               weight: 0,
               date_of_birth: new Date(),
+              gender
             },
           })
       
