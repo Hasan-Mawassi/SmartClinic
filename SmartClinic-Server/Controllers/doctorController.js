@@ -24,8 +24,10 @@ export const createVital = async (req , res)=>{
 
 export const TodayPatients = async (req , res)=>{
 try {
-    
+    const {doctorId} = req.qeury
+    const appointments = await getTodayAppointmentsService(doctorId);
+    res.json(appointments)
 } catch (error) {
-    
+     console.error('Error fetching today patients:', error);
 }
 }
