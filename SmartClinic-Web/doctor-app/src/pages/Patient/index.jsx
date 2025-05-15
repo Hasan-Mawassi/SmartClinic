@@ -14,6 +14,7 @@ import { transformPrescriptionsData } from '../../utils/transformPrescriptionsDa
 import { usePatientVitalData } from '../../hooks/patient/useVitalData';
 import { useAiReport } from '../../hooks/patient/useReport';
 import PatientSelect from '../../components/Patient/upcomingPatients';
+import { useUpCommingPatients } from '../../hooks/patient/useUpcommingPtients.js';
 const Patient = () => {
   const patientId = useSelector((state)=> state.patientData.patientId);
   console.log(patientId)
@@ -26,10 +27,12 @@ const Patient = () => {
     usePatientVitalData(patientId)
     const vitalData =  useSelector((state)=> state.patientData.vitalData );
     const [open, setOpen] = useState(false);
-    // useAiReport(patientId) 
+    useAiReport(patientId) 
     const aiReport = useSelector((state)=> state.patientData.aiReport )
     const newMedicine = useSelector((state)=> state.patientData.newMedicine )
-    const appointments = []
+    const appointments = useSelector(state => state.appointments.upcommingPatients);
+    const doctorId = useSelector((state) => state.doctorInfo.id)
+    useUpCommingPatients(doctorId)
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
           <Box display="flex" flexDirection="row" justifyContent={'space-between'}> 
