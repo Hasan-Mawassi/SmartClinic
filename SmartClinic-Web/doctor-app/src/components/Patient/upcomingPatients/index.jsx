@@ -5,7 +5,7 @@ const PatientSelect = () => {
 
 
    return (
-    <FormControl fullWidth>
+    <FormControl sx={{width:'20%'}} >
       <InputLabel id="patient-select-label">Upcoming Patients</InputLabel>
       <Select
         labelId="patient-select-label"
