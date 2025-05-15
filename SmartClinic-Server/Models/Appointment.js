@@ -83,4 +83,10 @@ export class Appointment {
                 },
               });
   }
+    static async deleteAppointmentById(id){
+      return  await prisma.appointment.delete({
+      where: { id: id },
+    });
+    }
+
 }
