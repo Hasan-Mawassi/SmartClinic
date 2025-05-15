@@ -47,11 +47,7 @@ class ChatProvider with ChangeNotifier {
       );
       final response = await requestClient.post(
         "ai/chat",
-        data: {
-          "userName": username,
-          "message": userInput,
-          "doctor": _selectedDoctor,
-        },
+        data: {"userName": 2, "message": userInput, "doctor": _selectedDoctor},
       );
       print(response);
       handleAIResponse(response, _messages);

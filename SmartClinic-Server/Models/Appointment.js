@@ -1,6 +1,12 @@
 import prisma from "../lib/prisma.js";
 
 export class Appointment {
+  static async findUnique(id) {
+    return await prisma.appointment.findUnique({
+      where: { id: id },
+    });
+  }
+
   static async upcoming(doctorId) {
     return await prisma.appointment.count({
       where: {
@@ -59,6 +65,33 @@ export class Appointment {
       select: {
         patientId: true,
       },
+    });
+  }
+
+  static async patientAppointmentsById(patientId) {
+    return await prisma.appointment.findMany({
+      where: {
+        patientId: patientId,
+        status: "pending",
+      },
+      select: {
+        id: true,
+        dateTime: true,
+        doctor: {
+          select: {
+            name: true,
+            profilePicture: true,
+          },
+        },
+      },
+      orderBy: {
+        dateTime: "desc",
+      },
+    });
+  }
+  static async deleteAppointmentById(id) {
+    return await prisma.appointment.delete({
+      where: { id: id },
     });
   }
 }

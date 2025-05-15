@@ -80,11 +80,13 @@ export const chatWithBot= async(userName, message, doctor)=> {
               result = { error: "Invalid slot index. Please choose a valid number from the list." };
               break;
             }
-  
+            const doctorId =  doctor.id
+            console.log("doctor=id",doctor.id)
             const booked = await bookAppointmentByIndex(
               session.available,
               args.index,
-              userName
+              userName,
+             doctorId
             );
             clearSession(userName);
             // result = {  booked };
