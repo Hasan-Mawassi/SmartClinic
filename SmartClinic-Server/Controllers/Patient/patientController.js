@@ -3,7 +3,7 @@ import { Perscription } from "../../Models/Perscription.js";
 import { successResponse ,errorResponse } from "../../Traits/response.js";
 import { Vital } from '../../Models/Vital.js';
 import { getPatientReport } from "../../Services/Doctor/patientReport.js";
-import { getPatientAppointmentService } from "../../Services/patient/patientAppointments.js";
+import { deleteAppointmentService, getPatientAppointmentService } from "../../Services/patient/patientAppointments.js";
 
 export const  getPatientInfo =  async (req , res)=>{
    try {
@@ -70,3 +70,13 @@ export const getPatientAppointments =async ( req, res)=>{
     res.status(404).json({ success: false, message: err.message });
   }
 }
+
+export const deleteAppointment = async (req, res) => {
+  try {
+    const appointmentId = req.query;
+    const deleteAppointment = await deleteAppointmentService(appointmentId)
+    res.json(deleteAppointment)
+  } catch (error) {
+    res.send(error)
+  }
+};
