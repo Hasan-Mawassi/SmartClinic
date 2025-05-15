@@ -41,7 +41,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
           }
 
           return ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 6.0),
             itemCount: provider.appointments.length,
             itemBuilder: (context, index) {
               final appointment = provider.appointments[index];
