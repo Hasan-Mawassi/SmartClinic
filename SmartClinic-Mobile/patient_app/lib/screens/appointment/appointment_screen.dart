@@ -66,6 +66,10 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 
                     try {
                       await service.deleteAppointment(appointment.id);
+                      Provider.of<AppointmentProvider>(
+                        context,
+                        listen: false,
+                      ).removeAppointment(appointment.id);
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text("Appointment cancelled")),
                       );
