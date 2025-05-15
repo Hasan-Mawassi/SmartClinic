@@ -10,7 +10,10 @@ class AppointmentProvider with ChangeNotifier {
 
   List<Appointment> get appointments => _appointments;
   bool get isLoading => _isLoading;
-
+void removeAppointment(int id) {
+  _appointments.removeWhere((a) => a.id == id);
+  notifyListeners();
+}
   Future<void> fetchAppointments(String patientId) async {
     try {
       _isLoading = true;
