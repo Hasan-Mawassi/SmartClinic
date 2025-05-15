@@ -13,6 +13,20 @@ export class Appointment {
             },
           });
     }
+
+    static async upcomingToDay(startOfToday, endOfToday, doctorId){
+        return await prisma.appointment.count({
+      where: {
+        doctorId,
+        dateTime: {
+          gte: startOfToday,
+          lte: endOfToday,
+        },
+        status: 'pending',
+      },
+    });
+    }
+
     static async completed (startOfDay, endOfDay,doctorId){
         return  await prisma.appointment.count({
             where: {
