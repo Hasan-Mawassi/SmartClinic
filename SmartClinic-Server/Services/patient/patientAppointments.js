@@ -7,3 +7,14 @@ export const getPatientAppointmentService = async (patientId)=>{
     return appointments;
 
 }
+
+export const deleteAppointmentService = async (appointmentId) =>{
+
+  const appointment = await Appointment.findUnique(appointmentId)
+  if (!appointment) {
+    throw new Error('NotFound');
+  }
+  await Appointment.deleteAppointmentById(appointmentId)
+
+  return { success: true };
+}
