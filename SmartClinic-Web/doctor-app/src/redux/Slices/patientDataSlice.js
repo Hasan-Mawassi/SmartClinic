@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    patientId:2,
+    patientId:null,
     patientInfo:{},
     pastMedicines:[
         {
