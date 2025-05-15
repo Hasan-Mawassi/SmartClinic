@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Patient } from '../../Models/Patient.js';
 
-export const loginDoctorService = async ( email, password ) => {
+export const loginPatientService = async ( email, password ) => {
   const JWT_SECRET = process.env.JWT_SECRET;
 
   // find patient by email
