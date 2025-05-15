@@ -18,7 +18,7 @@ class _MainLayoutState extends State<MainLayout> {
   final List<Widget> _pages = const [
     HomeScreen(),
     MedicineScreen(),
-    AppointmentScreen(),
+    AppointmentScreen(patientId: "2",),
     ProfileScreen(),
   ];
 
