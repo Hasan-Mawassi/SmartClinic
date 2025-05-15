@@ -63,7 +63,7 @@ export const generatePatientReport = async (req, res) => {
 export const getPatientAppointments =async ( req, res)=>{
      const { id } = req.query;
     try {
-    const appointments = await  getPatientAppointmentService(id);
+    const appointments = await  getPatientAppointmentService(parseInt(id));
     res.status(200).json({ success: true, appointments });
   } catch (err) {
     console.log(err)
