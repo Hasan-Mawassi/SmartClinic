@@ -41,13 +41,13 @@ const appointmentPrompt = `
   return aiResponse.output_text;
 }
 
-export const bookAppointmentByIndex=async (available, index, userName)=> {
+export const bookAppointmentByIndex=async (available, index, userName,doctorId)=> {
     const chosen = available[index];
     if (!chosen) return null;
-  console.log(userName)
+  console.log("doctorid",doctorId)
     return await prisma.appointment.create({
         data: {
-          doctorId:1,
+          doctorId,
           patientId:userName,
           dateTime: chosen,
           status : 'pending',
