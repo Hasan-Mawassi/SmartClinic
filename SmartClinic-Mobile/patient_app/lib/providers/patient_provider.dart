@@ -3,13 +3,13 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 
 class PatientProvider extends ChangeNotifier {
-  Int? _patientId;
+  int? _patientId;
   String? _patientName;
 
-  Int? get patientId => _patientId;
+  int? get patientId => _patientId;
   String? get patientName => _patientName;
 
-  void setPatient({required Int id, required String name}) {
+  void setPatient({required int id, required String name}) {
     _patientId = id;
     _patientName = name;
     notifyListeners();
