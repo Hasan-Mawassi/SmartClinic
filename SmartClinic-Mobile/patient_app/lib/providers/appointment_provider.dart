@@ -16,9 +16,9 @@ class AppointmentProvider with ChangeNotifier {
       _isLoading = true;
       notifyListeners();
       final response = await requestClient.get("patient/getAppointments?id=2");
+      print(response);
+      final data = response.data['appointments'] as List;
 
-      final data = response.data as List;
-      
       _appointments = data.map((e) => Appointment.fromJson(e)).toList();
     } catch (e) {
       print("Error fetching appointments: $e");
