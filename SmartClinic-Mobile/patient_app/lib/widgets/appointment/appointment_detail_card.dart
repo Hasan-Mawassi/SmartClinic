@@ -28,16 +28,16 @@ class AppointmentTile extends StatelessWidget {
         child: Row(
           children: [
             // Doctor photo
-            // ClipRRect(
-            //   borderRadius: BorderRadius.circular(8),
-            //   child: Image.network(
-            //     photoUrl,
-            //     width: 80,
-            //     height: 100,
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
-            const SizedBox(width: 5),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(
+                photoUrl,
+                width: 80,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+            const SizedBox(width: 10),
 
             // Doctor info
             Expanded(
@@ -72,7 +72,7 @@ class AppointmentTile extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      SizedBox(width: 100),
+                      SizedBox(width: 28),
                       Flexible(
                         child: Padding(
                           padding: const EdgeInsets.only(left: 2),
