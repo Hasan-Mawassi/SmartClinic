@@ -2,6 +2,7 @@ import { response } from 'express';
 import { Doctor } from '../Models/Doctor.js';
 import { createPatientVital } from '../Services/Doctor/patientpage.js';
 import { successResponse ,errorResponse } from "../Traits/response.js";
+import { getTodayPatientService } from '../Services/Doctor/appointment.js';
 export const getAllDoctors = async (req, res) => {
     try {
         const doctors = await Doctor.allWithSchedules();
@@ -25,9 +26,10 @@ export const createVital = async (req , res)=>{
 export const TodayPatients = async (req , res)=>{
 try {
     const {doctorId} = req.qeury
-    const appointments = await getTodayAppointmentsService(doctorId);
+    const appointments = await getTodayPatientService(parseInt(doctorId));
     res.json(appointments)
 } catch (error) {
      console.error('Error fetching today patients:', error);
+     res.send(error)
 }
 }
