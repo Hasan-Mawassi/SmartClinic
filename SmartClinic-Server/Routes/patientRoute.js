@@ -7,4 +7,6 @@ patientRouter.get('/patient/getperscription', patientController.getPatientPrescr
 patientRouter.get('/patient/getvital', patientController.getPatietnVital)
 patientRouter.get('/patient/getreport', patientController.generatePatientReport)
 patientRouter.get('/patient/getAppointments', patientController.getPatientAppointments)
+patientRouter.delete('/patient/deleteappointment', patientController.deleteAppointment)
+
 export default patientRouter;
