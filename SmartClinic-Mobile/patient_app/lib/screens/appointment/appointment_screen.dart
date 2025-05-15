@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:patient_app/widgets/appointment/appointment_detail_card.dart';
 import 'package:patient_app/constants/app_colors.dart';
 import 'package:patient_app/providers/appointment_provider.dart';
+import 'package:patient_app/services/delete_appointemt_service.dart';
 
 class AppointmentScreen extends StatefulWidget {
   final String patientId;
@@ -60,8 +61,23 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                   doctorName: appointment.doctorName,
                   date: date,
                   time: time,
-                  onCancel: () {
-                    print("Appointment ${appointment.id} canceled");
+                  onCancel: () async {
+                    final service = AppointmentService();
+
+                    try {
+                      await service.deleteAppointment(appointment.id);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text("Appointment cancelled")),
+                      );
+
+                      // Optionally: refresh the list or remove the appointment from state
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Failed to cancel appointment: $e"),
+                        ),
+                      );
+                    }
                   },
                 ),
               );
