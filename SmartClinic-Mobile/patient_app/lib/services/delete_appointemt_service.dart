@@ -1,12 +1,13 @@
 import 'package:patient_app/utils/request.dart';
 
 class AppointmentService {
+  AppointmentService();
+
   final requestClient = RequestClient().dio; // your custom client
-
-  AppointmentService({required requestClient});
-
   Future<void> deleteAppointment(int id) async {
-    final response = await requestClient.delete("appointment/$id");
+    final response = await requestClient.delete(
+      "/patient/deleteappointment?id=$id",
+    );
 
     if (response.statusCode == 200) {
       return;
