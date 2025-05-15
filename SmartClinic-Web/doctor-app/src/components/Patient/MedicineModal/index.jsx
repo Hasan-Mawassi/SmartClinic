@@ -46,7 +46,12 @@ export default function MedicineModal({ open, onClose }) {
       };
       dispatch(setNewMedicine(form.medicineName))
       await addMedicine(data);
-     
+     setForm({
+    medicineName: "",
+    frequency: "",
+    quantity: "",
+    duration: "",
+  })
       onClose(); 
     } catch (error) {
       console.log(error)

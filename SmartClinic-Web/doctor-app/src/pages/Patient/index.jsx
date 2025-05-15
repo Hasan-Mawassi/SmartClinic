@@ -25,7 +25,7 @@ const Patient = () => {
     usePatientVitalData(patientId)
     const vitalData =  useSelector((state)=> state.patientData.vitalData );
     const [open, setOpen] = useState(false);
-    // useAiReport(patientId) 
+    useAiReport(patientId) 
     const aiReport = useSelector((state)=> state.patientData.aiReport )
     const newMedicine = useSelector((state)=> state.patientData.newMedicine )
     return (
