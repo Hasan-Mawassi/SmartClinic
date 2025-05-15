@@ -10,6 +10,7 @@ doctorRouter.get("/app/getdoctors", doctorController.getAllDoctors);
 doctorRouter.get("/doctor/getkpi/:id",dashboardController.kpiData );
 doctorRouter.get("/doctor/graphsdata",dashboardController.graphsData );
 doctorRouter.get("/doctor/appointments",appointmentController.getAppointments );
+doctorRouter.get("/doctor/todaypatients",doctorController.TodayPatients );
 doctorRouter.post("/doctor/createprescription",patientController.addPatientPrescription );
 doctorRouter.post("/doctor/createvital",doctorController.createVital );
 doctorRouter.post("/doctor/ai/generatereport",reportGeneratorAi.generatePatientReportAi);
