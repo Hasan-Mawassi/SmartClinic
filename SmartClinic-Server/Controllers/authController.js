@@ -18,7 +18,8 @@ export const register =async (req, res) => {
 export const LoginPatient =async (req, res) => {
    
   try {
-    const result = await loginPatientService(req.body)
+  const   {email, password} = req.body
+    const result = await loginPatientService(email, password)
     successResponse(res, result, 'User registered successfully', 201)
   } catch (error) {
     console.error('Register error:', error.message)
