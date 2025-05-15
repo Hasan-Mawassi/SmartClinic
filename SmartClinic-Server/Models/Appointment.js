@@ -14,7 +14,7 @@ export class Appointment {
   }
 
   static async upcomingToDay(startOfToday, endOfToday, doctorId) {
-    return await prisma.appointment.count({
+    return await prisma.appointment.findMany({
       where: {
         doctorId,
         dateTime: {
