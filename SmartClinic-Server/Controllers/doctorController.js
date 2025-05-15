@@ -1,3 +1,4 @@
+import { response } from 'express';
 import { Doctor } from '../Models/Doctor.js';
 import { createPatientVital } from '../Services/Doctor/patientpage.js';
 import { successResponse ,errorResponse } from "../Traits/response.js";
@@ -19,4 +20,12 @@ export const createVital = async (req , res)=>{
     console.log(error)
    errorResponse(res,error,500)
  }
+}
+
+export const TodayPatients = async (req , res)=>{
+try {
+    
+} catch (error) {
+    
+}
 }
