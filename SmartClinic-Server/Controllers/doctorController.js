@@ -25,7 +25,7 @@ export const createVital = async (req , res)=>{
 
 export const TodayPatients = async (req , res)=>{
 try {
-    const {doctorId} = req.qeury
+    const {doctorId} = req.query
     const appointments = await getTodayPatientService(parseInt(doctorId));
     res.json(appointments)
 } catch (error) {
