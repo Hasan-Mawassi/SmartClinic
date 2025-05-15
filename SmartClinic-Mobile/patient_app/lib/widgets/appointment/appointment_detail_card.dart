@@ -72,7 +72,7 @@ class AppointmentTile extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      SizedBox(width: 28),
+                      SizedBox(width: 16),
                       Flexible(
                         child: Padding(
                           padding: const EdgeInsets.only(left: 2),
@@ -81,7 +81,7 @@ class AppointmentTile extends StatelessWidget {
                             onPressed: () {
                               showCancelConfirmationDialog(
                                 context: context,
-                                onConfirm:   onCancel ?? () {},
+                                onConfirm: onCancel ?? () {},
                               );
                             },
                           ),
