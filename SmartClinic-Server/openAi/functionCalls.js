@@ -21,13 +21,13 @@
     type: "function",
     function: {
       name: 'bookAppointment',
-      description: 'Book an appointment by choosing a slot index',
+      description: 'Book an appointment by choosing a slot index. make sure to use base 0',
       parameters: {
         type: 'object',
         properties: {
           index: { 
             type: 'number', 
-            description: 'Index of the chosen slot (1-based)',
+            description: 'Index of the chosen slot (0-based)',
             minimum: 1 // Added validation
           },
           doctorId: {
