@@ -26,14 +26,15 @@ const Patient = () => {
     usePatientVitalData(patientId)
     const vitalData =  useSelector((state)=> state.patientData.vitalData );
     const [open, setOpen] = useState(false);
-    useAiReport(patientId) 
+    // useAiReport(patientId) 
     const aiReport = useSelector((state)=> state.patientData.aiReport )
     const newMedicine = useSelector((state)=> state.patientData.newMedicine )
+    const appointments = []
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
           <Box display="flex" flexDirection="row" justifyContent={'space-between'}> 
             < CustomButton label="Add Medicine" onClick={() => setOpen(true)} variant="contained" color="primary" sx={{ mb: 2,width: '200px',fontSize: '18px' }} />
-            < PatientSelect  />
+            < PatientSelect appointments={appointments} />
           </Box>
 
             <MedicineModal open={open} onClose={() => setOpen(false)} />

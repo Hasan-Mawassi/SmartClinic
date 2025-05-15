@@ -1,8 +1,20 @@
 import React from 'react';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { setPatientId } from '../../../redux/Slices/patientDataSlice.js';
 
-const PatientSelect = () => {
 
+const PatientSelect = ({ appointments }) => {
+
+ const dispatch = useDispatch();
+  const [selectedPatientId, setSelectedPatientId] = useState('');
+
+  const handleChange = (event) => {
+    const patientId = event.target.value;
+    setSelectedPatientId(patientId);
+    dispatch(setPatientId(patientId));
+  };
 
    return (
     <FormControl sx={{width:'20%'}} >
@@ -10,17 +22,19 @@ const PatientSelect = () => {
       <Select
         labelId="patient-select-label"
         id="patient-select"
-        // value={}
+          value={selectedPatientId}
         label="Upcoming Patients"
-        // onChange={}
+        onChange={handleChange}
       >
        
+            {appointments.map((appointment) => (
           <MenuItem 
-            key='2'
-            value='patient'
+            key={appointment.patient.id} 
+            value={appointment.patient.id}
           >
-            patient
+            {appointment.patient.name}
           </MenuItem>
+        ))}
    
       </Select>
     </FormControl>
