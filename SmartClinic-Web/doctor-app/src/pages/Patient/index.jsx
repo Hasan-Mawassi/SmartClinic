@@ -13,6 +13,8 @@ import { usePatientPastMedicines } from '../../hooks/patient/usePatientPastMedic
 import { transformPrescriptionsData } from '../../utils/transformPrescriptionsData';
 import { usePatientVitalData } from '../../hooks/patient/useVitalData';
 import { useAiReport } from '../../hooks/patient/useReport';
+import PatientSelect from '../../components/Patient/upcomingPatients';
+import { useUpCommingPatients } from '../../hooks/patient/useUpcommingPtients.js';
 const Patient = () => {
   const patientId = useSelector((state)=> state.patientData.patientId);
   console.log(patientId)
@@ -25,12 +27,19 @@ const Patient = () => {
     usePatientVitalData(patientId)
     const vitalData =  useSelector((state)=> state.patientData.vitalData );
     const [open, setOpen] = useState(false);
-    // useAiReport(patientId) 
+    useAiReport(patientId) 
     const aiReport = useSelector((state)=> state.patientData.aiReport )
     const newMedicine = useSelector((state)=> state.patientData.newMedicine )
+    const appointments = useSelector(state => state.appointments.upcommingPatients);
+    const doctorId = useSelector((state) => state.doctorInfo.id)
+    useUpCommingPatients(doctorId)
     return (
         <Box sx={{ flexGrow: 1, p: 2 }}>
+          <Box display="flex" flexDirection="row" justifyContent={'space-between'}> 
             < CustomButton label="Add Medicine" onClick={() => setOpen(true)} variant="contained" color="primary" sx={{ mb: 2,width: '200px',fontSize: '18px' }} />
+            < PatientSelect appointments={appointments} />
+          </Box>
+
             <MedicineModal open={open} onClose={() => setOpen(false)} />
         <Grid container spacing={3}>
           {/* Left Column */}

@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
- rows:[]
+ rows:[],
+ upcommingPatients:[]
 }
 
 export const appointmentSlice = createSlice({
@@ -10,11 +11,14 @@ export const appointmentSlice = createSlice({
   reducers: {
      setAppointments: (state, action) => {
       state.rows = action.payload;
+    },
+    setUpcommingPatients: (state, action) => {
+      state.upcommingPatients = action.payload;
     }
   },
 })
 
 
-export const { setAppointments } = appointmentSlice.actions
+export const { setAppointments, setUpcommingPatients } = appointmentSlice.actions
 
 export default appointmentSlice.reducer

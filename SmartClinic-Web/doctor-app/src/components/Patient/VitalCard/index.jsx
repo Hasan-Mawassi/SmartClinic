@@ -14,8 +14,8 @@ const DoctorVitalsCard = ({data}) => {
             series={[
               {
                 data: [
-                  { id: 0, value: data.healthPercentage, color: '#4caf50' },
-                  { id: 1, value: 100 -  data.healthPercentage, color: '#e0e0e0' },
+                  { id: 0, value: data?.healthPercentage , color: '#4caf50' },
+                  { id: 1, value: 100 -  data?.healthPercentage, color: '#e0e0e0' },
                 ],
                 innerRadius: 50,
                 outerRadius: 80,
@@ -34,7 +34,7 @@ const DoctorVitalsCard = ({data}) => {
             textAlign="center"
           >
             <Typography variant="h6" fontWeight="bold">
-              { data.healthPercentage}%
+              { data?.healthPercentage}%
             </Typography>
             <Typography variant="caption">Overall Health</Typography>
           </Box>
@@ -44,16 +44,16 @@ const DoctorVitalsCard = ({data}) => {
         <Grid item xs={12} sm={6}>
           <Box display="flex" flexDirection="column" gap={1}>
             <Typography variant="body2">
-              <strong>Heart Rate:</strong> {data.heartRate} bpm
+              <strong>Heart Rate:</strong> {data?.heartRate} bpm
             </Typography>
             <Typography variant="body2">
-              <strong>Blood Pressure:</strong> {data.bloodPressure} mmHg
+              <strong>Blood Pressure:</strong> {data?.bloodPressure} mmHg
             </Typography>
             <Typography variant="body2">
-              <strong>Temperature:</strong> {data.temperature}°F
+              <strong>Temperature:</strong> {data?.temperature}°F
             </Typography>
             <Typography variant="body2">
-              <strong>Blood Glucose</strong> {data.bloodGlucose}%
+              <strong>Blood Glucose</strong> {data?.bloodGlucose}%
             </Typography>
           </Box>
         </Grid>

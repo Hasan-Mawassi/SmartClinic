@@ -1,4 +1,5 @@
 import prisma from '../../lib/prisma.js';
+import { Appointment } from '../../Models/Appointment.js';
 
 export const getDoctorAppointments = async (doctorId) => {
     try {
@@ -31,3 +32,13 @@ export const getDoctorAppointments = async (doctorId) => {
       throw new Error('Failed to fetch appointments');
     }
   };
+
+  export const getTodayPatientService = async (doctorId) => {
+  const startOfToday = new Date();
+  startOfToday.setHours(0, 0, 0, 0);
+
+  const endOfToday = new Date();
+  endOfToday.setHours(23, 59, 59, 999);
+
+  return await Appointment.upcomingToDay(startOfToday, endOfToday,doctorId)
+};
