@@ -27,9 +27,9 @@ export const TodayPatients = async (req , res)=>{
 try {
     const {doctorId} = req.query
     const appointments = await getTodayPatientService(parseInt(doctorId));
-    res.json(appointments)
+     successResponse(res,appointments , "Get upcomming Appointmets succesfully",200)
 } catch (error) {
      console.error('Error fetching today patients:', error);
-     res.send(error)
+      errorResponse(res,error,500)
 }
 }
