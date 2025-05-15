@@ -1,73 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:patient_app/widgets/appointment/appointment_detail_card.dart';
 import 'package:patient_app/constants/app_colors.dart';
-
+import 'package:patient_app/providers/appointment_provider.dart';
 class AppointmentScreen extends StatefulWidget {
-  const AppointmentScreen({super.key});
+   final String patientId;
+
+  const AppointmentScreen({super.key, required this.patientId});
 
   @override
   State<AppointmentScreen> createState() => _AppointmentScreenState();
 }
 
 class _AppointmentScreenState extends State<AppointmentScreen> {
+   @override
+  void initState() {
+  super.initState();
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    Provider.of<AppointmentProvider>(context, listen: false)
+        .fetchAppointments(widget.patientId);
+  });
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(title: const Text("Appointment")),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          AppointmentTile(
-            photoUrl: "https://picsum.photos/150",
-            doctorName: "Dr. Sarah Johnson",
-            date: "12-02-2025",
-            time: "12:00 AM",
-            onCancel: () {
-              print("Appointment canceled");
+      body:  Consumer<AppointmentProvider>(
+        builder: (context, provider, _) {
+          if (provider.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (provider.appointments.isEmpty) {
+            return const Center(child: Text("No appointments found."));
+          }
+
+          return ListView.builder(
+            itemCount: provider.appointments.length,
+            itemBuilder: (context, index) {
+              final appointment = provider.appointments[index];
+              final date = "${appointment.dateTime.day.toString().padLeft(2, '0')}-${appointment.dateTime.month.toString().padLeft(2, '0')}-${appointment.dateTime.year}";
+              final time = TimeOfDay.fromDateTime(appointment.dateTime).format(context);
+
+              return AppointmentTile(
+                photoUrl: appointment.doctorImage,
+                doctorName: appointment.doctorName,
+                date: date,
+                time: time,
+                onCancel: () {
+                  print("Appointment ${appointment.id} canceled");
+                },
+              );
             },
-          ),
-          const SizedBox(height: 10),
-          AppointmentTile(
-            photoUrl: "https://picsum.photos/150",
-            doctorName: "Dr. Sarah Johnson",
-            date: "12-02-2025",
-            time: "12:00 AM",
-            onCancel: () {
-              print("Appointment canceled");
-            },
-          ),
-          const SizedBox(height: 10),
-          AppointmentTile(
-            photoUrl: "https://picsum.photos/150",
-            doctorName: "Dr. Sarah Johnson",
-            date: "12-02-2025",
-            time: "12:00 AM",
-            onCancel: () {
-              print("Appointment canceled");
-            },
-          ),
-          const SizedBox(height: 10),
-          AppointmentTile(
-            photoUrl: "https://picsum.photos/150",
-            doctorName: "Dr. Sarah Johnson",
-            date: "12-02-2025",
-            time: "12:00 AM",
-            onCancel: () {
-              print("Appointment canceled");
-            },
-          ),
-          const SizedBox(height: 10),
-          AppointmentTile(
-            photoUrl: "https://picsum.photos/150",
-            doctorName: "Dr. Sarah Johnson",
-            date: "12-02-2025",
-            time: "12:00 AM",
-            onCancel: () {
-              print("Appointment canceled");
-            },
-          ),
-        ],
+          );
+        },
       ),
     );
   }
