@@ -1,4 +1,4 @@
-import { Appointment } from "../../Models/Appointment"
+import { Appointment } from "../../Models/Appointment.js"
 
 
 export const getPatientAppointmentService = async (patientId)=>{
