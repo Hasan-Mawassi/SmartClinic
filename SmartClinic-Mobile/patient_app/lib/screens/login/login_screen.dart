@@ -5,8 +5,13 @@ import 'package:patient_app/widgets/basic/custom_input_field.dart';
 import 'package:patient_app/widgets/basic/rounded_card.dart';
 import 'package:patient_app/constants/app_colors.dart';
 import 'package:go_router/go_router.dart';
-
+import 'package:patient_app/services/auth_login_service.dart';
+import 'package:patient_app/providers/patient_provider.dart';
+import 'package:provider/provider.dart';
 class LoginScreen extends StatelessWidget {
+  final TextEditingController _emailController = TextEditingController();
+final TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -96,8 +101,39 @@ class LoginScreen extends StatelessWidget {
                       ),
                       CustomButton(
                         text: "Login",
-                        onPressed: () {
-                          context.go('/');
+                        onPressed: () async {
+                          final email = _emailController.text.trim();
+                          final password = _passwordController.text;
+
+                          if (email.isEmpty || password.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Please fill in all fields")),
+                            );
+                            return;
+                          }
+
+                          final authService = AuthService();
+
+                          try {
+                            final response = await authService.login(email, password);
+
+                            // Extract patient data from response
+                            final patientId = response.data['id'];
+                            final patientName = response.data['name'];
+
+                            // Save to provider
+                            Provider.of<PatientProvider>(context, listen: false).setPatient(
+                              id: patientId,
+                              name: patientName,
+                            );
+
+                            // Navigate to home
+                            context.go('/');
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Login failed: ${e.toString()}")),
+                            );
+                          }
                         },
                         backgroundColor: AppColors.primary,
                         textColor: AppColors.white,
