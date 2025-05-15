@@ -21,9 +21,23 @@ class _VoiceMessageWidgetState extends State<VoiceMessageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(_isPlaying ? Icons.pause : Icons.play_arrow),
-      onPressed: _togglePlay,
+    return Container(
+      width: 48,
+      height: 48,
+      decoration: BoxDecoration(
+        color: Colors.grey[300],
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: _togglePlay,
+        child: Center(
+          child: Icon(
+            _isPlaying ? Icons.pause : Icons.play_arrow,
+            color: Colors.black,
+          ),
+        ),
+      ),
     );
   }
 
@@ -49,7 +63,7 @@ class _VoiceMessageWidgetState extends State<VoiceMessageWidget> {
 
       await _audioPlayer.startPlayer(
         fromURI: file.path,
-       codec: Codec.aacMP4,
+        codec: Codec.aacMP4,
         whenFinished: () => setState(() => _isPlaying = false),
       );
     }
