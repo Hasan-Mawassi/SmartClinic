@@ -31,3 +31,5 @@ export const getDoctorAppointments = async (doctorId) => {
       throw new Error('Failed to fetch appointments');
     }
   };
+
+  

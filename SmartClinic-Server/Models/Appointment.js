@@ -1,53 +1,64 @@
 import prisma from "../lib/prisma.js";
 
 export class Appointment {
+  static async upcoming(doctorId) {
+    return await prisma.appointment.count({
+      where: {
+        doctorId,
+        dateTime: {
+          gt: new Date(),
+        },
+        status: "pending",
+      },
+    });
+  }
 
-    static async upcoming (doctorId){
-        return await prisma.appointment.count({
-            where: {
-                doctorId,
-              dateTime: {
-                gt: new Date(), 
-              },
-              status: 'pending',
-            },
-          });
-    }
-
-    static async upcomingToDay(startOfToday, endOfToday, doctorId){
-        return await prisma.appointment.count({
+  static async upcomingToDay(startOfToday, endOfToday, doctorId) {
+    return await prisma.appointment.count({
       where: {
         doctorId,
         dateTime: {
           gte: startOfToday,
           lte: endOfToday,
         },
-        status: 'pending',
+        status: "pending",
+      },
+      orderBy: {
+        dateTime: "asc",
+      },
+      include: {
+        patient: {
+          select: {
+            id: true,
+            name: true,
+            email: true,
+          },
+        },
       },
     });
-    }
+  }
 
-    static async completed (startOfDay, endOfDay,doctorId){
-        return  await prisma.appointment.count({
-            where: {
-               doctorId, 
-              status: 'completed',
-              dateTime: {
-                gte: startOfDay,
-                lte: endOfDay,
-              },
-            },
-          });
-    }
-    static async totalPatients (doctorId){
-        return  await prisma.appointment.findMany({
-            where: {
-                doctorId,
-            },
-            distinct: ['patientId'],
-            select: {
-              patientId: true,
-            },
-          });
-    }
+  static async completed(startOfDay, endOfDay, doctorId) {
+    return await prisma.appointment.count({
+      where: {
+        doctorId,
+        status: "completed",
+        dateTime: {
+          gte: startOfDay,
+          lte: endOfDay,
+        },
+      },
+    });
+  }
+  static async totalPatients(doctorId) {
+    return await prisma.appointment.findMany({
+      where: {
+        doctorId,
+      },
+      distinct: ["patientId"],
+      select: {
+        patientId: true,
+      },
+    });
+  }
 }
