@@ -66,6 +66,7 @@ export class Appointment {
     return await prisma.appointment.findMany({
                 where: {
                   patientId: patientId, 
+                  status:'pending'
                 },
                 select: {
                   id: true,
