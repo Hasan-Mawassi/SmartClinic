@@ -81,10 +81,7 @@ class AppointmentTile extends StatelessWidget {
                             onPressed: () {
                               showCancelConfirmationDialog(
                                 context: context,
-                                onConfirm: () {
-                                  print("Appointment cancelled");
-                                  // Add your cancellation logic here
-                                },
+                                onConfirm:   onCancel ?? () {},
                               );
                             },
                           ),
