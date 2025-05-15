@@ -8,9 +8,10 @@ import 'package:go_router/go_router.dart';
 import 'package:patient_app/services/auth_login_service.dart';
 import 'package:patient_app/providers/patient_provider.dart';
 import 'package:provider/provider.dart';
+
 class LoginScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
-final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,12 +67,14 @@ final TextEditingController _passwordController = TextEditingController();
                       ),
                       SizedBox(height: 20),
                       CustomInputField(
+                        controller: _emailController,
                         hintText: 'Enter your email',
                         icon: Icons.email_outlined,
                         keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(height: 20),
                       CustomInputField(
+                        controller: _passwordController,
                         hintText: 'Enter your password',
                         icon: Icons.lock_outlined,
                         keyboardType: TextInputType.text,
@@ -104,10 +107,13 @@ final TextEditingController _passwordController = TextEditingController();
                         onPressed: () async {
                           final email = _emailController.text.trim();
                           final password = _passwordController.text;
-
+                          print('email $email');
+                          print('password $password');
                           if (email.isEmpty || password.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text("Please fill in all fields")),
+                              const SnackBar(
+                                content: Text("Please fill in all fields"),
+                              ),
                             );
                             return;
                           }
@@ -115,23 +121,31 @@ final TextEditingController _passwordController = TextEditingController();
                           final authService = AuthService();
 
                           try {
-                            final response = await authService.login(email, password);
-
+                            final response = await authService.login(
+                              email,
+                              password,
+                            );
+                            print('response $response');
                             // Extract patient data from response
-                            final patientId = response.data['id'];
-                            final patientName = response.data['name'];
+                            final patient = response.data['data']['patient'];
+
+                            final int patientId = patient['id'];
+                            final patientName = patient['name'];
 
                             // Save to provider
-                            Provider.of<PatientProvider>(context, listen: false).setPatient(
-                              id: patientId,
-                              name: patientName,
-                            );
+                            Provider.of<PatientProvider>(
+                              context,
+                              listen: false,
+                            ).setPatient(id: patientId, name: patientName);
 
                             // Navigate to home
                             context.go('/');
                           } catch (e) {
+                            print('Login failed $e');
                             ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("Login failed: ${e.toString()}")),
+                              SnackBar(
+                                content: Text("Login failed: ${e.toString()}"),
+                              ),
                             );
                           }
                         },
