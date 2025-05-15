@@ -17,8 +17,8 @@ export const  getPatientInfo =  async (req , res)=>{
 
 export const getPatientPrescription =async (req , res)=>{
     try {
-        const { id } = req.body;
-        const prescritions = await Perscription.getPrescriptions(id)
+        const  { id } = req.query;
+        const prescritions = await Perscription.getPrescriptions(parseInt(id))
        successResponse(res, prescritions, 'prescritions info', 200);
     } catch (error) {
          console.error('Error get prescription:', error);
@@ -38,9 +38,9 @@ export const addPatientPrescription = async (req, res)=>{
 
 export const getPatietnVital = async (req , res)=>{
     try {
-        const {patientId} = req.body
-        const patientVitalData = await Vital.latestPatientVital(patientId)
-        res.json(patientVitalData)
+        const {id} = req.query
+        const patientVitalData = await Vital.latestPatientVital(parseInt(id))
+         successResponse(res, patientVitalData, 'patient Vital Data', 200);
     } catch (error) {
         console.log(error)
         errorResponse(res, error, 500)

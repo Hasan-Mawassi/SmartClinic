@@ -4,6 +4,7 @@ import doctorInfoReducer from './Slices/doctorInfoSlice'
 import kpiDataReducer from './Slices/kpiSlice.js'
 import grapsDataRedicer from './Slices/graphsDataSlice.js'
 import appointmentRedicer from './Slices/appointmentSlice.js'
+import patientDataReducer from './Slices/patientDataSlice.js'
 
 const logger = createLogger();
 
@@ -12,7 +13,8 @@ export const store = configureStore({
     doctorInfo:doctorInfoReducer,
     kpisData:kpiDataReducer,
     grapsData:grapsDataRedicer,
-    appointments:appointmentRedicer
+    appointments:appointmentRedicer,
+    patientData: patientDataReducer,
   },
   middleware: (defaultMiddleware) => defaultMiddleware().concat(logger),
 })
