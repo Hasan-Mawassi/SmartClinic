@@ -51,7 +51,7 @@ const rows = [
     startTime: '10:00 AM',
     endTime: '02:00 PM',
     slotDuration: '20 mins',
-    status: 'Present',
+    status: 'Previous',
   },
   {
     id: 3,
