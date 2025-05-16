@@ -55,7 +55,7 @@ export const getGenderStats = async () => {
   
     for (const appt of appointments) {
       const patient = appt.patient;
-      console.log(patient)
+      
       if (!uniquePatients.has(patient.id)) {
         uniquePatients.set(patient.id, patient);
       }
