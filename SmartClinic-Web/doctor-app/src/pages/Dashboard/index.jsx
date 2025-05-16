@@ -66,7 +66,7 @@ const Dashboard = () => {
     </Box>
     <Box sx={{flexGrow: 1, minWidth: 140 }} size={{ xs: 12, sm: 6,md:4 }}>
       <KpiCard
-        title="Completed This Month"
+        title="Completed Today"
         value={kpiData.completedToday}
         icon={<DoneAllIcon fontSize="large" sx={{ color: '#4caf50' }} />}
       />
