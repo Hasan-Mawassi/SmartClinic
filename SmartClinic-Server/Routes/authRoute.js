@@ -5,7 +5,8 @@ import doctorRegisterValidator from "../Requests/authvalidator/doctorRegisterVal
 import { validate } from "../Middleware/validate.js";
 const AuthRouter = Router();
 
-AuthRouter.post("/register", registerValidator, validate, authController.register);
+AuthRouter.post("/patient/register", registerValidator, validate, authController.register);
+AuthRouter.post("/patient/login", authController.LoginPatient);
 AuthRouter.post("/doctor/register",doctorRegisterValidator,validate,  authController.doctorRegister);
 AuthRouter.post("/doctor/login",  authController.loginDoctor);
 

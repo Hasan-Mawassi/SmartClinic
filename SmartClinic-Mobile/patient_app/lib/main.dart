@@ -4,6 +4,7 @@ import 'routes/app_router.dart';
 import 'package:patient_app/providers/chat_provider.dart';
 import 'package:patient_app/providers/doctor_provider.dart';
 import 'package:patient_app/providers/appointment_provider.dart';
+import 'package:patient_app/providers/patient_provider.dart';
 
 void main() {
   runApp(
@@ -12,6 +13,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => ChatProvider()),
       ChangeNotifierProvider(create: (_) => DoctorProvider()),
        ChangeNotifierProvider(create: (_) => AppointmentProvider()),
+       ChangeNotifierProvider(create: (_) => PatientProvider()),
       ],
       child: const MyApp(),
     ), 
