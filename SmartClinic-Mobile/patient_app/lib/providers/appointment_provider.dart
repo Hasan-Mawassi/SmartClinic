@@ -14,11 +14,11 @@ void removeAppointment(int id) {
   _appointments.removeWhere((a) => a.id == id);
   notifyListeners();
 }
-  Future<void> fetchAppointments(String patientId) async {
+  Future<void> fetchAppointments(int patientId) async {
     try {
       _isLoading = true;
       notifyListeners();
-      final response = await requestClient.get("patient/getAppointments?id=2");
+      final response = await requestClient.get("patient/getAppointments?id=$patientId");
       print(response);
       final data = response.data['appointments'] as List;
 
