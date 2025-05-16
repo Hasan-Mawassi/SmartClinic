@@ -25,7 +25,7 @@ const PatientCard = ({ patient ,loading=false }) => {
         <Grid2 >
           <Box
             component="img"
-            src={patient.image}
+            src={patient.image != null ?patient.image :"/user-profile.png" }
             alt="Patient"
             sx={{
               width: 100,
@@ -49,7 +49,7 @@ const PatientCard = ({ patient ,loading=false }) => {
               <strong>Age & Weight:</strong> {calculateAge(patient.date_of_birth)} / {patient.weight}kg
             </Typography>
             <Typography variant="body1">
-              <strong>Gender:</strong> {patient.gender}
+              <strong>Gender:</strong> {patient.gender==0 ? "Female" : "Male"}
             </Typography>
             <Typography variant="body1">
               <strong>Blood Group:</strong> {patient.bloodGroup}
