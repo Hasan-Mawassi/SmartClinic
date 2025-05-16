@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patient_app/providers/patient_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:patient_app/widgets/appointment/appointment_detail_card.dart';
 import 'package:patient_app/constants/app_colors.dart';
@@ -19,10 +20,12 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      final patientId =
+          Provider.of<PatientProvider>(context, listen: false).patientId;
       Provider.of<AppointmentProvider>(
         context,
         listen: false,
-      ).fetchAppointments(widget.patientId);
+      ).fetchAppointments(patientId!);
     });
   }
 
