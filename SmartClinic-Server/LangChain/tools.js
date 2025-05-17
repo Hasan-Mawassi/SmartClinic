@@ -6,7 +6,7 @@ import { extractDateFromText, bookAppointmentByIndex, generateAppointmentList } 
 import { generateAvailableSlots } from '../Services/openAi/slots.js';
 const llm = new ChatOpenAI({
   model: "gpt-4o-mini",
-  temperature: 0
+  temperature: 0,
 });
 
 const textSchema = z.object({
@@ -17,42 +17,40 @@ const get_available_slots = tool(
   async ({ text }) => {
     const date = await extractDateFromText(text);
     const slots = await generateAvailableSlots({
-                  doctorId: 1,
-                  dateISO:date,
-                  startTime: "8:00",
-                  endTime:  "18:00",
-                  slotDurationMinutes: 30
-                });
-    return `available slots ${slots}` 
+      doctorId: 1,
+      dateISO: date,
+      startTime: "8:00",
+      endTime: "18:00",
+      slotDurationMinutes: 30,
+    });
+    return `Available slots on ${date}: ${slots.join(", ")}`;
   },
   {
     name: "get_available_slots",
-    description: `Today is ${new Date().toISOString().split('T')[0]}. Extract the date from the message.
-                     Return it in ISO 8601 format (e.g., 2025-05-05). Reply ONLY with the date.`,
+    description: `Today is ${new Date().toISOString().split("T")[0]}. Extract the date from the message and return available time slots.`,
     schema: textSchema,
   }
 );
- 
+
 const llmWithTools = llm.bindTools([get_available_slots]);
 
-const initialResponse  = await llmWithTools.invoke("What are the date next tuesday");
-const toolCall = initialResponse.tool_calls?.[0];
+export  const  handleChatWithAI = async (userInput)=> {
+  const initialResponse = await llmWithTools.invoke(userInput);
+  const toolCall = initialResponse.tool_calls?.[0];
 
-if (toolCall) {
-  // STEP 2: Run the requested tool manually
-  let toolOutput = "";
+  if (toolCall && toolCall.name === "get_available_slots") {
+    const toolOutput = await get_available_slots.invoke(toolCall.args);
 
-  if (toolCall.name === "get_available_slots") {
-    toolOutput = await get_available_slots.invoke(toolCall.args);
-  }
-  const finalResponse = await llmWithTools.invoke([
+    const finalResponse = await llmWithTools.invoke([
       initialResponse,
-       new ToolMessage({
-    tool_call_id: toolCall.id,     // required
-    content: toolOutput,           // the output from the tool, e.g., "2025-05-20"
-  }),
+      new ToolMessage({
+        tool_call_id: toolCall.id,
+        content: toolOutput,
+      }),
     ]);
-      console.log("✅ Final AI Message:", finalResponse.content);
-} else {
-  console.log("🤖 No tool call. Final AI Message:", initialResponse.content);
+
+    return finalResponse.content;
+  }
+
+  return initialResponse.content;
 }
