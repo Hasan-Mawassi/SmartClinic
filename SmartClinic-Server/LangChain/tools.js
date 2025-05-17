@@ -27,7 +27,7 @@ const get_available_slots = tool(
   },
   {
     name: "get_available_slots",
-    description: `Today is ${new Date().toISOString().split("T")[0]}. Extract the date from the message and return available time slots.`,
+    description: `Today is ${new Date().toISOString().split("T")[0]}. Extract the date from the message and return available time slots in a numbered list.`,
     schema: textSchema,
   }
 );
