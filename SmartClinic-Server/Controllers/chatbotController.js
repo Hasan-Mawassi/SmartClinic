@@ -33,7 +33,7 @@ export const textChatBot = async (req, res) => {
       export const langChainChatbot = async (req , res)=>{
         try {
              const {  message , userId , doctor} = req.body;
-             const result = await handleChatWithAI(message);
+             const result = await handleChatWithAI( userId ,message, doctor);
              res.json(result)
         } catch (error) {
              console.error('Error :', error);
