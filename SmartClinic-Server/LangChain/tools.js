@@ -1,5 +1,7 @@
 import { tool } from "@langchain/core/tools";
 import { ChatOpenAI } from "@langchain/openai";
+import { initChatModel } from "langchain/chat_models/universal";
+
 import { z } from "zod";
 import { ToolMessage } from "@langchain/core/messages"; 
 import { extractDateFromText, bookAppointmentByIndex, generateAppointmentList } from '../Services/openAi/openAiService.js';
@@ -9,21 +11,20 @@ const llm = new ChatOpenAI({
   temperature: 0,
 });
 let available = []; // This holds the available slots for booking
-const doctorId = 1;
-const userId = 6; // Replace with dynamic user
+
 const textSchema = z.object({
   text: z.string().describe("text to extract date from it"),
 
 });
-const get_available_slots = tool(
+const get_available_slots =(doctor)=> tool(
   async ({ text }) => {
     const date = await extractDateFromText(text);
     available = await generateAvailableSlots({
-      doctorId: doctorId,
+      doctorId: doctor.id,
       dateISO: date,
-      startTime: "8:00",
-      endTime: "18:00",
-      slotDurationMinutes:30,
+      startTime: doctor.startTime,
+      endTime: doctor.endTime,
+      slotDurationMinutes: doctor.slotDuration,
     });
 
     // Return slots as a numbered list
@@ -41,13 +42,13 @@ const bookSchema = z.object({
 
 });
 
-const book_appointemnt = tool(
+const book_appointemnt =(userId, doctor) => tool(
   async ({ index }) => {
     if (!available.length) {
       return "No available slots. Ask for available slots first.";
     }
 
-    const result = await bookAppointmentByIndex(available, index, userId, doctorId);
+    const result = await bookAppointmentByIndex(available, index, userId, doctor.id);
 
     return `Appointment booked at ${available[index]}  ${result}`;
   },
@@ -58,9 +59,11 @@ const book_appointemnt = tool(
   }
 );
 
-const llmWithTools = llm.bindTools([get_available_slots, book_appointemnt]);
 
-export const handleChatWithAI = async ( userInput) => {
+
+export const handleChatWithAI = async ( userId,userInput,doctor) => {
+    const llmWithTools = llm.bindTools([ get_available_slots(doctor),
+    book_appointemnt(userId, doctor),]);
   const initialResponse = await llmWithTools.invoke(userInput);
   const toolCall = initialResponse.tool_calls?.[0];
 
@@ -68,9 +71,9 @@ export const handleChatWithAI = async ( userInput) => {
     let toolOutput = "";
 
     if (toolCall.name === "get_available_slots") {
-      toolOutput = await get_available_slots.invoke(toolCall.args);
+      toolOutput = await  get_available_slots(doctor).invoke(toolCall.args);
     } else if (toolCall.name === "book_appointemnt") {
-      toolOutput = await book_appointemnt.invoke(toolCall.args);
+      toolOutput = await book_appointemnt(userId, doctor).invoke(toolCall.args);
     }
 
     const finalResponse = await llmWithTools.invoke([
