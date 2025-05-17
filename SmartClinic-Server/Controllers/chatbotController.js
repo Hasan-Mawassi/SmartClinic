@@ -1,3 +1,4 @@
+import { handleChatWithAI } from "../LangChain/tools.js";
 import { chatWithBot } from "../openAi/assistance.js";
 import { transcribeAudio } from "../Services/openAi/voiceService.js";
 import { successResponse ,errorResponse } from "../Traits/response.js";
@@ -31,7 +32,9 @@ export const textChatBot = async (req, res) => {
 
       export const langChainChatbot = async (req , res)=>{
         try {
-             const { userName, message, doctor} = req.body;
+             const {  message} = req.body;
+             const result = await handleChatWithAI(message);
+             res.json(result)
         } catch (error) {
              console.error('Error in base64 transcription:', error);
         }
