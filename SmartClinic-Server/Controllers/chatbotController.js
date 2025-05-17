@@ -32,10 +32,11 @@ export const textChatBot = async (req, res) => {
 
       export const langChainChatbot = async (req , res)=>{
         try {
-             const {  message} = req.body;
+             const {  message , userId , doctor} = req.body;
              const result = await handleChatWithAI(message);
              res.json(result)
         } catch (error) {
-             console.error('Error in base64 transcription:', error);
+             console.error('Error :', error);
+               res.json(error)
         }
       }
