@@ -1,5 +1,4 @@
 import { tool } from "@langchain/core/tools";
-import { ChatOpenAI } from "@langchain/openai";
 import { gpt } from "./chatModels.js";
 import { z } from "zod";
 import { ToolMessage } from "@langchain/core/messages"; 
