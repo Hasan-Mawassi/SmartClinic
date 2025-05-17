@@ -1,16 +1,12 @@
 import { tool } from "@langchain/core/tools";
 import { ChatOpenAI } from "@langchain/openai";
-import { initChatModel } from "langchain/chat_models/universal";
-
+import { gpt } from "./chatModels.js";
 import { z } from "zod";
 import { ToolMessage } from "@langchain/core/messages"; 
 import { extractDateFromText, bookAppointmentByIndex, generateAppointmentList } from '../Services/openAi/openAiService.js';
 import { generateAvailableSlots } from '../Services/openAi/slots.js';
-const llm = new ChatOpenAI({
-  model: "gpt-4o-mini",
-  temperature: 0,
-});
-let available = []; // This holds the available slots for booking
+
+let available = []; 
 
 const textSchema = z.object({
   text: z.string().describe("text to extract date from it"),
@@ -62,7 +58,7 @@ const book_appointemnt =(userId, doctor) => tool(
 
 
 export const handleChatWithAI = async ( userId,userInput,doctor) => {
-    const llmWithTools = llm.bindTools([ get_available_slots(doctor),
+    const llmWithTools = gpt.bindTools([ get_available_slots(doctor),
     book_appointemnt(userId, doctor),]);
   const initialResponse = await llmWithTools.invoke(userInput);
   const toolCall = initialResponse.tool_calls?.[0];
