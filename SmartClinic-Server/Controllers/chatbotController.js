@@ -28,3 +28,11 @@ export const textChatBot = async (req, res) => {
         //   res.status(500).json({ error: 'Internal server error' });
         }
       };
+
+      export const langChainChatbot = async (req , res)=>{
+        try {
+             const { userName, message, doctor} = req.body;
+        } catch (error) {
+             console.error('Error in base64 transcription:', error);
+        }
+      }
