@@ -3,7 +3,7 @@ import { z } from "zod";
 import {  bookAppointmentByIndex   } from '../Services/openAi/openAiService.js';
 import { generateAvailableSlots} from '../Services/openAi/slots.js';
 import { extractDateFromText } from "./chatModelFunctions.js";
-
+import { timeList } from "../utils/timeList.js";
 
 
 let available = []; 
@@ -23,9 +23,14 @@ export const get_available_slots =(doctor )=> tool(
       endTime: doctor.endTime,
       slotDurationMinutes: doctor.slotDuration,
     });
+  const availableSlots =   timeList(available)
+ return {
+            date: date,
+            message: `Available slots  on ${date}:`,
+            available_slots: availableSlots
+         ,
+        };
 
-    // Return slots as a numbered list
-    return `Available slots on ${date}:\n` + available.map((slot, i) => `${i}. ${slot}`).join("\n");
   },
   {
     name: "get_available_slots",
