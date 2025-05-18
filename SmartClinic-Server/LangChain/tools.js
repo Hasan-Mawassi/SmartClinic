@@ -54,7 +54,13 @@ export const book_appointemnt =(userId, doctor) => tool(
 
     const result = await bookAppointmentByIndex(available, index, userId, doctor.id);
     console.log(result)
-    return `Appointment booked at ${available[index]}  ${result}`;
+    return {
+        appointment_details: {
+                date: new Date(result.dateTime).toISOString().split("T")[0],
+                time: new Date(result.dateTime).toISOString().split("T")[1],
+                status: result.status
+            },
+         };
   },
   {
     name: "book_appointemnt",
