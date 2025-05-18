@@ -41,7 +41,8 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 | Home screen                            | Chatbot  screen                       | Appointment screen                       |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/homeSceen.jpg) | ![fsdaf](./readme/demo/chatbotScreen.jpg) | ![fsdaf](./readme/demo/appointmentsSceen.jpg) |
+| ![Landing](./readme/demo/homeSceen.jpg) | ![fsdaf](./readme/demo/chatbotScreen.jpg) | ![fsdaf](./readme/demo/voiceChatbot.gif) |
+
 
 
 ### Doctor Screens (Web)
@@ -52,7 +53,7 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 | register screen                            | Appointments screen                       |
 | --------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/registerPage.png) | ![fsdaf](./readme/demo/appointmentPage.png) |
+|![Landing](./readme/demo/appointmentPage.png)|  ![fsdaf](./readme/demo/doctorWebsite.gif)  |
 <br><br>
 
 <!-- Development & Testing -->
