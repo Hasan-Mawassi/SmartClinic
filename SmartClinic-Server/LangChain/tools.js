@@ -1,17 +1,19 @@
 import { tool } from "@langchain/core/tools";
-import { gpt } from "./chatModels.js";
 import { z } from "zod";
-import { ToolMessage } from "@langchain/core/messages"; 
-import {  bookAppointmentByIndex } from '../Services/openAi/openAiService.js';
-import { generateAvailableSlots } from '../Services/openAi/slots.js';
+import {  bookAppointmentByIndex   } from '../Services/openAi/openAiService.js';
+import { generateAvailableSlots} from '../Services/openAi/slots.js';
 import { extractDateFromText } from "./chatModelFunctions.js";
-let available = []; 
 
+
+
+let available = []; 
 const textSchema = z.object({
   text: z.string().describe("text to extract date from it"),
 
 });
-const get_available_slots =(doctor)=> tool(
+
+// Get available slots tool
+export const get_available_slots =(doctor )=> tool(
   async ({ text }) => {
     const date = await extractDateFromText(text);
     available = await generateAvailableSlots({
@@ -27,16 +29,18 @@ const get_available_slots =(doctor)=> tool(
   },
   {
     name: "get_available_slots",
-    description: `Today is ${new Date().toISOString().split("T")[0]}. Extract the date from the message and return available time slots in a numbered list.`,
+    description: `Today is ${new Date().toISOString().split("T")[0]}. Extract a date from the user message and return the available time slots for the doctor on that date in a numbered list.`,
     schema: textSchema,
   }
 );
+
 
 const bookSchema = z.object({
   index: z.number().describe("The index of the slot to book, base 0"),
 
 });
 
+// book the selected appointemnt tool
 export const book_appointemnt =(userId, doctor) => tool(
   async ({ index }) => {
     if (!available.length) {
@@ -44,12 +48,12 @@ export const book_appointemnt =(userId, doctor) => tool(
     }
 
     const result = await bookAppointmentByIndex(available, index, userId, doctor.id);
-
+    console.log(result)
     return `Appointment booked at ${available[index]}  ${result}`;
   },
   {
     name: "book_appointemnt",
-    description: `Book an appointment by choosing a slot index. Make sure to use base 0 index from the latest available slots.`,
+   description: `Book a doctor's appointment by selecting an index from the previously listed available slots. Only use this after listing slots.`,
     schema: bookSchema,
   }
 );
