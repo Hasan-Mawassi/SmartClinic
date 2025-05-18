@@ -22,15 +22,15 @@ export const handleChatWithAI = async ( userId,userInput,doctor) => {
       toolOutput = await tools.bookSlot.invoke(toolCall.args);
     }
 
-    const finalResponse = await llmWithTools.invoke([
-      initialResponse,
-      new ToolMessage({
-        tool_call_id: toolCall.id,
-        content: toolOutput,
-      }),
-    ]);
-
-    return finalResponse.content;
+    // const finalResponse = await llmWithTools.invoke([
+    //   initialResponse,
+    //   new ToolMessage({
+    //     tool_call_id: toolCall.id,
+    //     content: toolOutput,
+    //   }),
+    // ]);
+    const finalResponse=  toolOutput
+    return finalResponse;
   }
 
   return initialResponse.content;
