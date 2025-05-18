@@ -1,4 +1,4 @@
-import { handleChatWithAI } from "../LangChain/tools.js";
+import { handleChatWithAI } from "../LangChain/handleChatAi.js";
 import { chatWithBot } from "../openAi/assistance.js";
 import { transcribeAudio } from "../Services/openAi/voiceService.js";
 import { successResponse ,errorResponse } from "../Traits/response.js";
