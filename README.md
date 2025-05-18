@@ -39,7 +39,7 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 ### Patient Screens (Mobile)
 
-| Home screen                            | Chatbot  screen                       | Register screen                       |
+| Home screen                            | Chatbot  screen                       | Appointment screen                       |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/homeSceen.jpg) | ![fsdaf](./readme/demo/chatbotScreen.jpg) | ![fsdaf](./readme/demo/appointmentsSceen.jpg) |
 
