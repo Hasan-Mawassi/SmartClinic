@@ -36,19 +36,23 @@ class ChatProvider with ChangeNotifier {
     );
     _messages.add(message);
     notifyListeners();
-    isVoice ? sendVoiceMessage(text,patientId) : _sendToApi(text,patientId);
+    isVoice ? sendVoiceMessage(text, patientId) : _sendToApi(text, patientId);
     // _sendToApi(text);
   }
 
-  Future<void> _sendToApi(String userInput , int patientId) async {
+  Future<void> _sendToApi(String userInput, int patientId) async {
     final requestClient = RequestClient().dio;
     try {
       print(
         'reqquestClient: $username  userInput: $userInput  doctor: $_selectedDoctor',
       );
       final response = await requestClient.post(
-        "ai/chat",
-        data: {"userName": patientId, "message": userInput, "doctor": _selectedDoctor},
+        "ai/lang/chat",
+        data: {
+          "userName": patientId,
+          "message": userInput,
+          "doctor": _selectedDoctor,
+        },
       );
       print(response);
       handleAIResponse(response, _messages);
@@ -62,7 +66,7 @@ class ChatProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void sendVoiceMessage(String base64Audio,int patientId) async {
+  void sendVoiceMessage(String base64Audio, int patientId) async {
     final requestClient = RequestClient().dio;
     messages.add(Message(sender: Sender.user, text: "[Voice message sent]"));
     notifyListeners();
