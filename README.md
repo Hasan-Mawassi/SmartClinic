@@ -52,7 +52,7 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 | Dashboard screen                            | Patient screen                       |
 | --------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/registerPage.png) | ![fsdaf](./readme/demo/patientpage.png) |
+| ![Landing](./readme/demo/registerPage.png) | ![fsdaf](./readme/demo/appointmentPage.png) |
 <br><br>
 
 <!-- Development & Testing -->
