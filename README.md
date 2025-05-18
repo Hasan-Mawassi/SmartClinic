@@ -46,11 +46,13 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 ### Admin Screens (Web)
 
-| Login screen                            | Register screen                       |
+| Dashboard screen                            | Patient screen                       |
 | --------------------------------------- | ------------------------------------- |
 | ![Landing](./readme/demo/dashboardPage.png) | ![fsdaf](./readme/demo/patientpage.png) |
 
-
+| Dashboard screen                            | Patient screen                       |
+| --------------------------------------- | ------------------------------------- |
+| ![Landing](./readme/demo/registerPage.png) | ![fsdaf](./readme/demo/patientpage.png) |
 <br><br>
 
 <!-- Development & Testing -->
