@@ -10,7 +10,7 @@ export const  extractDateFromText = async(userMessage) => {
     const prompt = `Today is ${today}. Extract the date from the message.
                      Return it in ISO 8601 format (e.g., 2025-05-05). Reply ONLY with the date.`
   const aiResponse = await client.responses.create({
-    model:  "gpt-4.1",
+    model:  "gpt-4o-mini",
     input: [
       {
         role: "developer",
