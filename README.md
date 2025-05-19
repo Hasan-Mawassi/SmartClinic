@@ -36,7 +36,7 @@
 
 | Project Features                         
 | ----------------------------------------- |
-| ![Landing](./readme/demo/SmartClinic-highlights.png) |
+|  <div align="center"><img src="./readme/demo/SmartClinic-highlights.png" width="600" height="600"/></div> |
 <br><br>
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
