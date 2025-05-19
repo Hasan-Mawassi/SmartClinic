@@ -10,7 +10,6 @@ export const kpiData =async (req, res)=>{
       } catch (error) {
         console.error('KPI error:', error);
         errorResponse(res,error,500)
-        // res.status(500).json({ error: 'Internal server error' });
       }
 }
 
