@@ -8,12 +8,17 @@ describe('Auth Endpoints', () => {
     const userData = {
       name: faker.person.fullName(),
       email: faker.internet.email(),
+
+      gender: 1,
+
       gender: faker.number.int(0 , 2),
+
       password: 'testpassword123',
     }
 
     const res = await request(app)
-      .post('/api/v1/auth//patient/register')
+      .post('/api/v1/auth/patient/register')
+
       .send(userData)
 
     expect(res.statusCode).toBe(201)

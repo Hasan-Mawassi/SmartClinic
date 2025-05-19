@@ -46,6 +46,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Deep Clean Docker System
+        run: |
+          docker system prune -a -f --volumes
+          docker volume prune -f
+          docker image prune -a -f
+
+      - name: Cleanup old containers
+        run: |
+          docker compose -f docker-compose.prod.yml down || true
+          docker system prune -af     
       - name: Pull Latest Images
         run: |
           docker pull hasanmawasi/smartclinic-frontend:${{ github.sha }}
