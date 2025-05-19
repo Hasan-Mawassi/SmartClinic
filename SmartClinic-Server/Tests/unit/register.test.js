@@ -1,5 +1,5 @@
 import request from 'supertest'
-import app from '../../App.js' // your Express app
+import app from '../../app.js' // your Express app
 import { faker } from '@faker-js/faker'
 import prisma from '../../lib/prisma.js'; // Or wherever it's initialized
 
