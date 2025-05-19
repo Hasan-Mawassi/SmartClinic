@@ -82,6 +82,9 @@
 <img src="./readme/title8.svg"/>
 
 
+| LangChain Function Calling                                  | LangChain Tool  Creation                   |
+| ----------------------------------------- | -------------------------------------- |
+| ![Landing](./readme/demo/handleChatFunc.png) | ![fsdaf](./readme/demo/tool.png) |
 
 
 <br><br>
