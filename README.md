@@ -78,7 +78,13 @@
 | <img src="./readme/demo/1440x1024.png" width="400" height="250" /> |
 
 <br><br>
+<!-- Ai Powerd App -->
+<img src="./readme/title8.svg"/>
 
+
+
+
+<br><br>
 <!-- Deployment -->
 <img src="./readme/title7.svg"/>
 

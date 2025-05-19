@@ -42,6 +42,7 @@ ${report.recentVital.map(t => `- (${t.date}) heart rate ${t.heartRate} bood pres
 Recent Medications:
 ${report.recentMedications.map(m => `- ${m.name} (${m.dosage}) start date ${m.startDate} `).join("\n") || "None"}
 
-Please write a concise and professional summary of this patient’s current medical condition, including any important risks, make as much as posibile brief report.
+Please write a concise and professional summary of this patient’s current medical condition, including any important risks,
+ make as much as posibile brief report.
   `;
 }
