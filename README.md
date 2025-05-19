@@ -53,7 +53,7 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 | register screen                            | Appointments screen                       |
 | --------------------------------------- | ------------------------------------- |
-| <img src="./readme/demo/appointmentPage.png" width="500" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="500" height="250" /> |
+| <img src="./readme/demo/appointmentPage.png" width="400" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="400" height="250" /> |
 <br><br>
 
 <!-- Development & Testing -->
