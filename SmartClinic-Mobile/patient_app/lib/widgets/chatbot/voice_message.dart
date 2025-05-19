@@ -21,20 +21,25 @@ class _VoiceMessageWidgetState extends State<VoiceMessageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 48,
-      height: 48,
-      decoration: BoxDecoration(
-        color: Colors.grey[300],
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(12),
-        onTap: _togglePlay,
-        child: Center(
-          child: Icon(
-            _isPlaying ? Icons.pause : Icons.play_arrow,
-            color: Colors.black,
+    return Padding(
+      padding: const EdgeInsets.only(left: 90), // Adjust as needed
+      child: FractionallySizedBox(
+        widthFactor: 0.6, // 60% of the available width
+        child: Container(
+          height: 48,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 246, 246, 246),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: _togglePlay,
+            child: Center(
+              child: Icon(
+                _isPlaying ? Icons.pause : Icons.play_arrow,
+                color: Colors.black,
+              ),
+            ),
           ),
         ),
       ),

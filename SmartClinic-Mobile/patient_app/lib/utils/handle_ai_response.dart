@@ -16,24 +16,24 @@ void handleAIResponse(Response response, List<Message> messages) {
         final String date = responseData['date'] ?? '';
         final String slots = responseData['available_slots'] ?? '';
 
-        final String formatted = '\n$prompt\nAvailable slots on $date:\n$slots';
+        final String formatted =
+            '\n$prompt\n\n$slots \n  Please let me know which time works best for you by replying the number next to your preferred option!';
 
         messages.add(Message(text: formatted, sender: Sender.ai));
       } else if (responseData.containsKey('appointment_details')) {
         // Handle booked appointment response
         final details = responseData['appointment_details'];
         final String date = details['date'] ?? '';
-        final String time = details['time'] ?? '';
+        final String time = details['time'].substring(0, 5) ?? '';
 
         final String formatted = '''
             📅 Appointment Details:
             - Date: $date
             - Time: $time
             
-
             📝 Note: You will found your booked   
-                     appointments in appointment
-                     section
+                      appointments in appointment
+                      section
             ''';
 
         messages.add(Message(text: formatted, sender: Sender.ai));

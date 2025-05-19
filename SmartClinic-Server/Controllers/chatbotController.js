@@ -36,3 +36,15 @@ export const textChatBot = async (req, res) => {
             errorResponse(res, error, 500);
         }
       }
+
+       export const langChainVoiceChatbot = async (req , res)=>{
+        try {
+              const { audioBase64, fileType, userName, doctor } = req.body;
+               const textFromAudio= await  transcribeAudio(audioBase64, fileType);
+             const result = await handleChatWithAI( userName ,textFromAudio, doctor);
+            successResponse(res, result, 'Chatbot response', 200);
+        } catch (error) {
+             console.error('Error transcription:', error);
+            errorResponse(res, error, 500);
+        }
+      }

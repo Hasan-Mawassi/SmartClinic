@@ -74,7 +74,7 @@ class ChatProvider with ChangeNotifier {
     // Send base64Audio to your API here
     try {
       final response = await requestClient.post(
-        "ai/voice",
+        "ai/lang/voice",
         data: {
           "userName": patientId,
           "audioBase64": base64Audio,
