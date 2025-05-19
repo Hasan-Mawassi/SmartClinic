@@ -22,6 +22,9 @@
 
 - Smart Clinic Database.
   ![Landing](./readme/demo/SmartClinicERD.png)
+
+- Smart Clinic System Design.
+  ![Landing](./readme/demo/SmartClinicSystem.png)
   <br><br>
 
 <!-- Project Highlights -->
@@ -64,7 +67,7 @@
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
 
-### Add Title Here
+### Development
 
 | Services                                  | Validation                             |
 | ----------------------------------------- | -------------------------------------- |
@@ -75,7 +78,20 @@
 | <img src="./readme/demo/1440x1024.png" width="400" height="250" /> |
 
 <br><br>
+<!-- Ai Powerd App -->
+<img src="./readme/title8.svg"/>
 
+### LangChain
+
+| LangChain Function Calling                                  | LangChain Tool  Creation                   |
+| ----------------------------------------- | -------------------------------------- |
+| ![Landing](./readme/demo/handleChatFunc.png) | ![fsdaf](./readme/demo/tool.png) |
+
+| Report generator prompt                                  | Extract Date from message                  |
+| ----------------------------------------- | -------------------------------------- |
+| ![Landing](./readme/demo/reportPrompt.png) | ![fsdaf](./readme/demo/getDate.png) |
+
+<br><br>
 <!-- Deployment -->
 <img src="./readme/title7.svg"/>
 

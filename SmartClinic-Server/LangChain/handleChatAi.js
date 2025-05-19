@@ -21,14 +21,6 @@ export const handleChatWithAI = async ( userId,userInput,doctor) => {
     } else if (toolCall.name === "book_appointemnt") {
       toolOutput = await tools.bookSlot.invoke(toolCall.args);
     }
-
-    // const finalResponse = await llmWithTools.invoke([
-    //   initialResponse,
-    //   new ToolMessage({
-    //     tool_call_id: toolCall.id,
-    //     content: toolOutput,
-    //   }),
-    // ]);
     const finalResponse=  toolOutput
     return finalResponse;
   }
