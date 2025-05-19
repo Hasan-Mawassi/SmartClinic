@@ -22,6 +22,9 @@
 
 - Smart Clinic Database.
   ![Landing](./readme/demo/SmartClinicERD.png)
+
+- Smart Clinic System Design.
+  ![Landing](./readme/demo/SmartClinicSystem.png)
   <br><br>
 
 <!-- Project Highlights -->
