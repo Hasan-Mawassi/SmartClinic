@@ -36,7 +36,7 @@
 
 | Project Features                         
 | ----------------------------------------- |
-| ![Landing](./readme/demo/controllers.png) |
+| ![Landing](./readme/demo/SmartClinic-highlights.png) |
 <br><br>
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
