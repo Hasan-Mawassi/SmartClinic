@@ -53,9 +53,11 @@
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | <img src="./readme/demo/dashboardPage.png" width="600" height="250" /> | <img src="./readme/demo/patientpage.png" width="600" height="250" /> |
 
-| Appointment screen                                                       | Patient screen GIF                                                     |
+
+| Appointment screen                                                          | Patient  screen  GIF                                                  |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| <img src="./readme/demo/appointmentPage.png" width="600" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="600" height="250" /> |
+| <img src="./readme/demo/appointmentPage.png" width="600" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="500" height="250" /> |
+
 
 <br><br>
 
@@ -88,9 +90,11 @@ CI/CD is handled via **GitHub Actions**, with custom workflows set up to automat
 
 Each push to the corresponding branch triggers the appropriate workflow, enabling **seamless and automated deployment** with minimal manual intervention.
 
+
 | Smart Clinic Pipline                          |
 | --------------------------------------- |
 | ![Landing](./readme/demo/CICD-pipeline.png) |
+
 
 | Postman API 1                           | Postman API 2                         | Postman API 3                         |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
