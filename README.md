@@ -67,7 +67,7 @@
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
 
-### Add Title Here
+### Development
 
 | Services                                  | Validation                             |
 | ----------------------------------------- | -------------------------------------- |
@@ -81,11 +81,15 @@
 <!-- Ai Powerd App -->
 <img src="./readme/title8.svg"/>
 
+### LangChain
 
 | LangChain Function Calling                                  | LangChain Tool  Creation                   |
 | ----------------------------------------- | -------------------------------------- |
 | ![Landing](./readme/demo/handleChatFunc.png) | ![fsdaf](./readme/demo/tool.png) |
 
+| Report generator prompt                                  | Extract Date from message                  |
+| ----------------------------------------- | -------------------------------------- |
+| ![Landing](./readme/demo/reportPrompt.png) | ![fsdaf](./readme/demo/getDate.png) |
 
 <br><br>
 <!-- Deployment -->
