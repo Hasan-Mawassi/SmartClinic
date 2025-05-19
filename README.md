@@ -41,7 +41,7 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 | Home screen                            | Chatbot  screen                       | Appointment screen                       |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/homeSceen.jpg) | ![fsdaf](./readme/demo/chatbotScreen.jpg) | ![fsdaf](./readme/demo/voiceChatbot.gif) |
+| <img src="./readme/demo/homeSceen.jpg" width="200" height="400"/> | <img src="./readme/demo/chatbotScreen.jpg" width="200" height="400"/> | <img src="./readme/demo/voiceChatbot.gif" width="200" height="400"/> |
 
 
 
