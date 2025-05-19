@@ -49,11 +49,11 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 | Dashboard screen                            | Patient screen                       |
 | --------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/dashboardPage.png)  | ![fsdaf](./readme/demo/patientpage.png) |
+| <img src="./readme/demo/dashboardPage.png" width="500" height="250" /> | <img src="./readme/demo/patientpage.png" width="500" height="250" /> |
 
 | register screen                            | Appointments screen                       |
 | --------------------------------------- | ------------------------------------- |
-|![Landing](./readme/demo/appointmentPage.png)|  ![fsdaf](./readme/demo/doctorWebsite.gif)  |
+| <img src="./readme/demo/appointmentPage.png" width="500" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="500" height="250" /> |
 <br><br>
 
 <!-- Development & Testing -->
