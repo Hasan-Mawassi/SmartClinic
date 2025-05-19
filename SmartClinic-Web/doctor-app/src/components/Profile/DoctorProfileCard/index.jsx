@@ -1,11 +1,11 @@
 import React from 'react';
-import { Box, Card, Typography, Button, Grid } from '@mui/material';
+import { Box, Card, Typography, Button, Grid,  } from '@mui/material';
 import InputField from '../../Basic/inputField'; // Make sure this path is correct
 import CustomButton from '../../Basic/Button';
 
 const DoctorProfileCard = () => {
   return (
-    <Card elevation={2} sx={{ p: 4, maxWidth: 600, margin: 'auto' ,boxShadow:0 ,border: '1px solid #a0a0a0'}}>
+    <Card elevation={2} sx={{ p: 4, maxWidth: 600, margin: '' ,boxShadow:0 ,border: '1px solid #a0a0a0'}}>
       <Typography variant="h5" mb={3} textAlign={'center'} fontWeight={600}>
         Doctor Profile
       </Typography>

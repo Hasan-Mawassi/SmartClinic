@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Typography, Paper } from '@mui/material';
 import SmartToyIcon from '@mui/icons-material/SmartToy'; // AI icon
-
+import ReactMarkdown from 'react-markdown';
 const TextCard = ({ title, description }) => {
   return (
     <Paper
@@ -9,7 +9,7 @@ const TextCard = ({ title, description }) => {
       sx={{
         border: '1px solid #a0a0a0',
         width: { xs: '100%' },
-        height: '400px',
+        height: '700px',
         p: 2,
         boxSizing: 'border-box',
       }}
@@ -21,9 +21,9 @@ const TextCard = ({ title, description }) => {
         </Typography>
       </Box>
 
-      <Box sx={{ maxHeight: 300, overflow: 'auto' }}>
+      <Box sx={{ maxHeight: 600, overflow: 'auto' }}>
         <Typography variant="body1" color="text.secondary" sx={{ whiteSpace: 'pre-wrap' }}>
-            {description}
+            <ReactMarkdown>{description}</ReactMarkdown>
         </Typography>
        </Box>
     </Paper>

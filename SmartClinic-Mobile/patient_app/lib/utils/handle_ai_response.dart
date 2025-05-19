@@ -6,53 +6,47 @@ import '../models/messages.dart'; // Adjust path to your Message model
 void handleAIResponse(Response response, List<Message> messages) {
   if (response.statusCode == 200) {
     final data = response.data;
-    final rawMessage = data['data']['message'] ?? 'Sorry, something went wrong.';
 
     try {
-      final parsedMessage = json.decode(rawMessage);
+      final responseData = data['data'];
 
-      if (parsedMessage['available_slots'] != null) {
-        final date = parsedMessage['date'];
-        final prompt = parsedMessage['message'];
-        final slots = parsedMessage['available_slots'] as List<dynamic>;
+      if (responseData.containsKey('available_slots')) {
+        // Handle available slots response
+        final String prompt = responseData['message'] ?? 'Available slots:';
+        final String date = responseData['date'] ?? '';
+        final String slots = responseData['available_slots'] ?? '';
 
-        final formatted =
-            '\n$prompt \n Available slots on $date:\n' +
-            slots
-                .asMap()
-                .entries
-                .map((e) => "${e.key + 1}. ${e.value}")
-                .join('\n');
+        final String formatted =
+            '\n$prompt\n\n$slots \n  Please let me know which time works best for you by replying the number next to your preferred option!';
 
         messages.add(Message(text: formatted, sender: Sender.ai));
-      } else if (parsedMessage['appointment_details'] != null) {
-        final details = parsedMessage['appointment_details'];
-        final date = details['date'];
-        final time = details['time'];
-        final status = details['status'];
-        final note = parsedMessage['message'] ?? "";
+      } else if (responseData.containsKey('appointment_details')) {
+        // Handle booked appointment response
+        final details = responseData['appointment_details'];
+        final String date = details['date'] ?? '';
+        final String time = details['time'].substring(0, 5) ?? '';
 
-        final formatted = '''
-📅 Appointment Details:
-- Date: $date
-- Time: $time
-- Status: $status
+        final String formatted = '''
+            📅 Appointment Details:
+            - Date: $date
+            - Time: $time
+            
+            📝 Note: You will found your booked   
+                      appointments in appointment
+                      section
+            ''';
 
-📝 Note: $note
-''';
         messages.add(Message(text: formatted, sender: Sender.ai));
       } else {
-        messages.add(Message(text: rawMessage, sender: Sender.ai));
+        // Unexpected format
+        final String fallback = data['message'] ?? 'Unexpected response.';
+        messages.add(Message(text: fallback, sender: Sender.ai));
       }
     } catch (e) {
-      messages.add(Message(text: rawMessage, sender: Sender.ai));
+      // Handle parsing or logic error
+      messages.add(
+        Message(text: 'Error parsing response: $e', sender: Sender.ai),
+      );
     }
-  } else {
-    messages.add(
-      Message(
-        text: "Error: ${response.statusCode} ${response.statusMessage}",
-        sender: Sender.ai,
-      ),
-    );
   }
 }

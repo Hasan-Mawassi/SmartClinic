@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/utils/request.dart';
 import 'package:patient_app/utils/handle_ai_response.dart';
-
+import 'package:patient_app/providers/patient_provider.dart';
+import 'package:provider/provider.dart';
 import '../models/messages.dart';
 
 class ChatProvider with ChangeNotifier {
@@ -27,7 +28,7 @@ class ChatProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addUserMessage(String text, {bool isVoice = false}) {
+  void addUserMessage(String text, int patientId, {bool isVoice = false}) {
     final message = Message(
       text: text,
       sender: Sender.user,
@@ -35,20 +36,20 @@ class ChatProvider with ChangeNotifier {
     );
     _messages.add(message);
     notifyListeners();
-    isVoice ? sendVoiceMessage(text) : _sendToApi(text);
+    isVoice ? sendVoiceMessage(text, patientId) : _sendToApi(text, patientId);
     // _sendToApi(text);
   }
 
-  Future<void> _sendToApi(String userInput) async {
+  Future<void> _sendToApi(String userInput, int patientId) async {
     final requestClient = RequestClient().dio;
     try {
       print(
         'reqquestClient: $username  userInput: $userInput  doctor: $_selectedDoctor',
       );
       final response = await requestClient.post(
-        "ai/chat",
+        "ai/lang/chat",
         data: {
-          "userName": username,
+          "userName": patientId,
           "message": userInput,
           "doctor": _selectedDoctor,
         },
@@ -65,7 +66,7 @@ class ChatProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void sendVoiceMessage(String base64Audio) async {
+  void sendVoiceMessage(String base64Audio, int patientId) async {
     final requestClient = RequestClient().dio;
     messages.add(Message(sender: Sender.user, text: "[Voice message sent]"));
     notifyListeners();
@@ -73,9 +74,9 @@ class ChatProvider with ChangeNotifier {
     // Send base64Audio to your API here
     try {
       final response = await requestClient.post(
-        "ai/voice",
+        "ai/lang/voice",
         data: {
-          "userName": username,
+          "userName": patientId,
           "audioBase64": base64Audio,
           "doctor": _selectedDoctor,
           "fileType": "m4a",

@@ -4,7 +4,7 @@ export const voiceChatValidator = checkSchema({
   userName: {
     in: ['body'],
     exists: { errorMessage: 'userName is required' },
-    isString: { errorMessage: 'userName must be a string' },
+    isInt: { errorMessage: 'userName must be a Int' },
     notEmpty: { errorMessage: 'userName cannot be empty' },
   },
   'doctor.id': {

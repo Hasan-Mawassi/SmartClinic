@@ -1,6 +1,5 @@
-// pages/Dashboard.jsx
-import React, { useEffect, useState } from 'react';
-import { Grid2,Box, CircularProgress } from '@mui/material';
+import React from 'react';
+import { Box, CircularProgress } from '@mui/material';
 import KpiCard from '../../components/Basic/KPICard';
 import WelcomeSection from '../../components/Dashboard/Welcome';
 import PeopleIcon from '@mui/icons-material/People';
@@ -9,22 +8,26 @@ import ReportIcon from '@mui/icons-material/Description';
 import DoneAllIcon from '@mui/icons-material/DoneAll';
 import DoctorDashboardCharts from '../../components/Dashboard/DoctorCharts';
 import AppointmentTable from '../../components/Dashboard/AppointmentTable';
+import { useSelector } from 'react-redux'
+import { useKpiData } from '../../hooks/dashboard/useKpiData.js';
+import { useGraphData } from '../../hooks/dashboard/useGraphData.js';
+import { useAppointmentsData } from '../../hooks/dashboard/useAppointmentsData.js';
+
 const Dashboard = () => {
-  const [kpis, setKpis] = useState(null);
+  
+  const doctor = useSelector((state) => state.doctorInfo)
+  const doctorId = doctor.id;
+  const doctorName = doctor.name;
+  const grapsData = useSelector((state) => state.grapsData)
 
-  useEffect(() => {
-   
-    setTimeout(() => {
-      setKpis({
-        totalPatients: 124,
-        upcomingAppointments: 8,
-        pendingReports: 5,
-        completedConsultations: 42
-      });
-    }, 800);
-  }, []);
+  const { kpiLoading } = useKpiData(doctorId);
+  const { graphloading } = useGraphData(doctorId);
 
-  if (!kpis) {
+  const kpiData = useSelector((state) => state.kpisData);
+  const { loading } = useAppointmentsData(doctorId);
+  const appointments = useSelector(state => state.appointments.rows);
+
+  if (kpiLoading && graphloading && loading) {
     return (
       <Box display="flex" justifyContent="center" mt={5}>
         <CircularProgress />
@@ -35,33 +38,36 @@ const Dashboard = () => {
   return (
     <> 
     <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1, p: 2 }}> 
-    <WelcomeSection />
+    <WelcomeSection
+    name={doctorName}
+    patients={kpiData.upcomingAppointments}
+    />
     <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'} >
     <Box  sx={{flexGrow: 1, minWidth: 140 }}  size={{ xs: 12, sm: 6 ,md:3}}>
       <KpiCard
         title="Total Patients"
-        value={kpis.totalPatients}
+        value={kpiData.totalPatients}
         icon={<PeopleIcon fontSize="large" color="primary" />}
       />
     </Box>
     <Box sx={{flexGrow: 1, minWidth: 140 }} size={{ xs: 12, sm: 6,md:3 }}>
       <KpiCard
         title="Upcoming Appointments"
-        value={kpis.upcomingAppointments}
+        value={kpiData.upcomingAppointments}
         icon={<EventIcon fontSize="large" color="secondary" />}
       />
     </Box>
     <Box sx={{flexGrow: 1, minWidth: 140 }} size={{ xs: 12, sm: 6,md:3 }}>
       <KpiCard
         title="Pending Reports"
-        value={kpis.pendingReports}
+        value={kpiData.pendingReports}
         icon={<ReportIcon fontSize="large" sx={{ color: '#fb8c00' }} />}
       />
     </Box>
     <Box sx={{flexGrow: 1, minWidth: 140 }} size={{ xs: 12, sm: 6,md:4 }}>
       <KpiCard
-        title="Completed This Month"
-        value={kpis.completedConsultations}
+        title="Completed Today"
+        value={kpiData.completedToday}
         icon={<DoneAllIcon fontSize="large" sx={{ color: '#4caf50' }} />}
       />
     </Box>
@@ -69,13 +75,19 @@ const Dashboard = () => {
     </Box>
     <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'}>
 
-    <DoctorDashboardCharts />
+    <DoctorDashboardCharts 
+    patientsData={grapsData.patientsData}
+    genderData={grapsData.genderData}
+    ageData={grapsData.ageData}
+    />
     </Box>
     
     </Box>
     <Box p={2}  spacing={3} display={'flex'} gap={3} flexWrap={'wrap'}>
 
-    <AppointmentTable />
+    <AppointmentTable 
+    rows={appointments}
+    />
     </Box>
     </>
   );

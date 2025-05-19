@@ -4,8 +4,8 @@ export const textChatValidator = checkSchema({
   userName: {
     in: ['body'],
     exists: { errorMessage: 'userName is required' },
-    isString: { errorMessage: 'userName must be a string' },
-    trim: true,
+     isInt: { errorMessage: 'userName must be an integer' },
+    toInt: true,
   },
   message: {
     in: ['body'],

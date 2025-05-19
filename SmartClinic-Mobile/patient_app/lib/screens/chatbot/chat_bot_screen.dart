@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:patient_app/constants/app_colors.dart';
+import 'package:patient_app/providers/patient_provider.dart';
 import 'package:patient_app/widgets/chatbot/custom_list_tile.dart';
 import 'package:patient_app/widgets/chatbot/chat_input_field.dart';
 import 'package:patient_app/widgets/chatbot/message_widget.dart';
@@ -23,6 +24,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   bool _isRecording = false;
 
   Future<void> _handleVoiceInput() async {
+    final patientId = Provider.of<PatientProvider>(context, listen: false).patientId;
     if (_isRecording) {
       final base64 = await VoiceRecorderService.instance.stop();
       setState(() => _isRecording = false);
@@ -31,7 +33,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
         Provider.of<ChatProvider>(
           context,
           listen: false,
-        ).addUserMessage(base64, isVoice: true);
+        ).addUserMessage(base64, patientId!, isVoice: true);
       }
     } else {
       await VoiceRecorderService.instance.start();
@@ -141,21 +143,29 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
               controller: _chatController,
               onSend: () {
                 final text = _chatController.text.trim();
+                final patientId =
+                    Provider.of<PatientProvider>(
+                      context,
+                      listen: false,
+                    ).patientId;
                 if (text.isNotEmpty) {
                   Provider.of<ChatProvider>(
                     context,
                     listen: false,
-                  ).addUserMessage(text); // SEND TO PROVIDER
+                  ).addUserMessage(text, patientId!); // SEND TO PROVIDER
                   _chatController.clear();
                 }
               },
               onVoice: () {
+                Provider.of<ChatProvider>(context, listen: false);
                 _handleVoiceInput(); // Handle voice input
               },
               onVoiceStart: () async {
+                 Provider.of<ChatProvider>(context, listen: false);
                 await VoiceRecorderService.instance.start();
               },
               onVoiceStop: () async {
+                 Provider.of<ChatProvider>(context, listen: false);
                 await VoiceRecorderService.instance.stop();
               },
             ),
