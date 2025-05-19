@@ -37,20 +37,23 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
-### User Screens (Mobile)
+### Patient Screens (Mobile)
 
-| Login screen                            | Register screen                       | Register screen                       |
+| Home screen                            | Chatbot  screen                       | Appointment screen                       |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| <img src="./readme/demo/homeSceen.jpg" width="200" height="400"/> | <img src="./readme/demo/chatbotScreen.jpg" width="200" height="400"/> | <img src="./readme/demo/voiceChatbot.gif" width="200" height="400"/> |
 
 
-### Admin Screens (Web)
 
-| Login screen                            | Register screen                       |
+### Doctor Screens (Web)
+
+| Dashboard screen                            | Patient screen                       |
 | --------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| <img src="./readme/demo/dashboardPage.png" width="500" height="250" /> | <img src="./readme/demo/patientpage.png" width="500" height="250" /> |
 
-
+| register screen                            | Appointments screen                       |
+| --------------------------------------- | ------------------------------------- |
+| <img src="./readme/demo/appointmentPage.png" width="400" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="400" height="250" /> |
 <br><br>
 
 <!-- Development & Testing -->
