@@ -34,6 +34,10 @@
 - **Interactive Doctor Dashboard:** From appointment tracking to real-time patient analytics by age, gender, and history the doctor’s dashboard turns complex data into actionable insights at a glance.
   <br><br>
 
+| Project Features                         
+| ----------------------------------------- |
+| ![Landing](./readme/demo/controllers.png) |
+<br><br>
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
@@ -49,7 +53,7 @@
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | <img src="./readme/demo/dashboardPage.png" width="600" height="250" /> | <img src="./readme/demo/patientpage.png" width="600" height="250" /> |
 
-| Appointment screen                                                          | Patient  screen  GIF                                                  |
+| Appointment screen                                                       | Patient screen GIF                                                     |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | <img src="./readme/demo/appointmentPage.png" width="600" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="600" height="250" /> |
 
