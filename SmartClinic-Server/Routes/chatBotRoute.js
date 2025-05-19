@@ -8,5 +8,6 @@ const chatRouter = Router();
 chatRouter.post("/chat",textChatValidator,validate, chatBotContrller.textChatBot);
 chatRouter.post("/lang/chat", textChatValidator,validate,chatBotContrller.langChainChatbot);
 chatRouter.post("/voice",voiceChatValidator,validate, chatBotContrller.voiceTranscribe);
+chatRouter.post("/lang/voice",voiceChatValidator,validate, chatBotContrller.langChainVoiceChatbot);
 
 export default chatRouter;
