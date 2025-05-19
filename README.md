@@ -64,7 +64,7 @@ Each patient comes with an AI-generated health snapshot  summarizing key medical
 
 | Services                            | Validation                       | Testing                        |
 | --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| ![Landing](./readme/demo/controllers.png) | ![fsdaf](./readme/demo/validation.png) | ![fsdaf](./readme/demo/1440x1024.png) |
 
 
 <br><br>
