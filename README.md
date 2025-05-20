@@ -73,7 +73,7 @@
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
 
-### Development
+### Development & Testing
 
 | Services                                  | Validation                             |
 | ----------------------------------------- | -------------------------------------- |
