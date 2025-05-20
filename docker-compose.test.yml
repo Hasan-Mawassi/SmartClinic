@@ -21,7 +21,7 @@ services:
       NODE_ENV: test
     depends_on:
       - db
-    command: npm test
+    command: node --experimental-vm-modules node_modules/.bin/jest
 
 volumes:
   postgres_test_data:
