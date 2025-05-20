@@ -1,7 +1,7 @@
 import request from 'supertest';
-import app from '../../app.js';
+import app from '../../App.js';
 import { faker } from '@faker-js/faker';
-
+import prisma from '../../lib/prisma.js'; 
 describe('Patient Auth Feature Test', () => {
   const password = 'testpassword123';
   const email = faker.internet.email();
@@ -36,4 +36,10 @@ describe('Patient Auth Feature Test', () => {
     expect(loginRes.body.data).toHaveProperty('token');
     expect(loginRes.body.data.patient).toHaveProperty('email', email);
   });
+  afterAll(async () => {
+      await prisma.$disconnect();
+    });
 });
+
+
+  
