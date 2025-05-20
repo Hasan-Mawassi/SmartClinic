@@ -12,8 +12,7 @@ export const useGraphData = (doctorId) => {
       try {
         const response = await request({
           method: 'GET',
-          route: `/doctor/graphsdata`,
-          body:{id:doctorId},
+          route: `/doctor/graphsdata?id=${doctorId}`,
           auth: true,
         });
 
