@@ -61,8 +61,8 @@
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | <img src="./readme/demo/appointmentPage.png" width="600" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="500" height="250" /> |
 
-
-<br><br>
+| Appointment screen        |
+| ![Landing](./readme/demo/responsive.gif) |
 
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
@@ -116,8 +116,16 @@ Each push to the corresponding branch triggers the appropriate workflow, enablin
 | ![Landing](./readme/demo/CICD-pipeline.png) |
 
 
-| Postman API 1                           | Postman API 2                         | Postman API 3                         |
-| --------------------------------------- | ------------------------------------- | ------------------------------------- |
-| ![Landing](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) | ![fsdaf](./readme/demo/1440x1024.png) |
+| Chatbot response                           | 
+| --------------------------------------- 
+| ![Landing](./readme/demo/chatbotres.png) |
+
+| Doctor Graphs data response                   |
+| ------------------------------------- |
+| ![fsdaf](./readme/demo/getgraphdata.png) |
+
+| Patient Prescription                        |
+| ------------------------------------- |
+| ![fsdaf](./readme/demo/getprescription.png) |
 
 <br><br>
