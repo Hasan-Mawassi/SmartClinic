@@ -1,8 +1,9 @@
 import { seedPatients } from "./seeders/patientSeeder.js"
+import { seedDoctors } from "./seeders/seedDoctors.js";
 
 try {
     console.log('Seeding started...')
-  
+    await seedDoctors(10);
     await seedPatients(10)
   
     console.log('✅ Seeding finished.')
