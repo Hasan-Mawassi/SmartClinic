@@ -94,4 +94,16 @@ export class Appointment {
       where: { id: id },
     });
   }
+
+  static async countDoctorAppointment(doctorId ,start,  end){
+    return  await prisma.appointment.count({
+      where: {
+        doctorId : doctorId,
+        dateTime: {
+          gte: start,
+          lte: end,
+        },
+      },
+    });
+  }
 }

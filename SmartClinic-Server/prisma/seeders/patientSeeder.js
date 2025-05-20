@@ -26,6 +26,22 @@ export async function seedPatients(count = 5) {
       })
     );
 
-    await Promise.all([...allergies, ...diseases]);
+    // Add vitals
+    const vitals = Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => {
+      const doctor = faker.number.int({ min: 1, max: 3 });
+      return prisma.vital.create({
+        data: {
+          patientId: patient.id,
+          doctorId: doctor,
+          healthPercentage: faker.number.float({ min: 50, max: 100, precision: 0.01 }),
+          heartRate: faker.number.int({ min: 60, max: 100 }),
+          bloodPressure: `${faker.number.int({ min: 90, max: 140 })}/${faker.number.int({ min: 60, max: 90 })}`,
+          temperature: faker.number.float({ min: 36.0, max: 39.0, precision: 0.1 }),
+          bloodGlucose: faker.number.float({ min: 70, max: 180, precision: 0.1 }),
+        },
+      });
+    });
+
+    await Promise.all([...allergies, ...diseases, ...vitals]);
   }
 }
