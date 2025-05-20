@@ -30,7 +30,13 @@ export const registerDoctor = async({
               profilePicture,
             }
           )
-      
+            const schedule = await prisma.schedule.create({data:{
+            startTime:"8:00",
+            endTime:"18:00",
+            slotDuration:30,
+            doctorId:doctor.id,
+            offdays:[]
+          }})
           // Generate token
           const token = jwt.sign({ id: doctor.id, email: doctor.email }, JWT_SECRET, {
             expiresIn: '1h',
