@@ -1,4 +1,5 @@
 import { seedPatients } from "./seeders/patientSeeder.js"
+import { seedAppointmentsAndPrescriptions } from "./seeders/seedAppointmentAndPrescription.js";
 import { seedDoctors } from "./seeders/seedDoctors.js";
 
 try {
