@@ -20,6 +20,6 @@ app.get('/', (req, res) => {
 
 // Set the server to listen on a port
 app.listen(5000,'0.0.0.0', () => {
-  // console.log('Server is running ...');
+  console.log('Server is running ...');
 });
 export default app;
