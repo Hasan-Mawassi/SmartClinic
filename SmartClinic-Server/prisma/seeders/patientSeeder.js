@@ -1,6 +1,6 @@
 import prisma from '../../lib/prisma.js'
 import { patientFactory } from '../factories/patientFactory.js'
-
+import { faker } from '@faker-js/faker'
 export async function seedPatients(count = 5) {
   for (let i = 0; i < count; i++) {
     const patientData = patientFactory();
