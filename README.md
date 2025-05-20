@@ -61,14 +61,14 @@
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | <img src="./readme/demo/dashboardPage.png" width="600" height="250" /> | <img src="./readme/demo/patientpage.png" width="600" height="250" /> |
 
-| Mobile  view                                                             | Patient screen GIF                                                     |
+| Responsive Website                                                               | Patient screen GIF                                                     |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| <img src="./readme/demo/patientresponsive.jpg" width="200" height="400" /> | ![Landing](./readme/demo/doctorWebsite.gif) |
+| ![Landing](./readme/demo/responsive.gif) | ![Landing](./readme/demo/doctorWebsite.gif) |
 
 
-| Responsive Website                        | Dashboard mobile view                        |
+| Patient mobile view                       | Dashboard mobile view                        |
 | ---------------------------------------- | ---------------------------------------- |
-| ![Landing](./readme/demo/responsive.gif) | <img src="./readme/demo/responsivepage.jpg" width="200" height="400"/> |
+| <img src="./readme/demo/patientresponsive.jpg" width="200" height="400" /> | <img src="./readme/demo/responsivepage.jpg" width="200" height="400"/> |
 
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
