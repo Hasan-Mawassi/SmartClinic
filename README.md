@@ -61,7 +61,8 @@
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | <img src="./readme/demo/appointmentPage.png" width="600" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="500" height="250" /> |
 
-| Appointment screen        |
+| Responsive screen        |
+| ------------------------------------------------------------------------ | 
 | ![Landing](./readme/demo/responsive.gif) |
 
 <!-- Development & Testing -->
