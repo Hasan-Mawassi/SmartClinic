@@ -24,7 +24,7 @@
   ![Landing](./readme/demo/SmartClinicERD.png)
 
 - Smart Clinic System Design.
-  ![Landing](./readme/demo/SmartClinicSystem.png)
+  ![Landing](./readme/demo/System-Design.png)
   <br><br>
 
 <!-- Project Highlights -->
@@ -39,7 +39,7 @@
 
 | Project Features                         
 | ----------------------------------------- |
-|  <div align="center"><img src="./readme/demo/SmartClinic-highlights.png" width="600" height="600"/></div> |
+|  <div align="center"><img src="./readme/demo/SmartClinic-highlights1.png"/></div> |
 <br><br>
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
@@ -73,9 +73,13 @@
 | ----------------------------------------- | -------------------------------------- |
 | ![Landing](./readme/demo/controllers.png) | ![fsdaf](./readme/demo/validation.png) |
 
-| Testing                                                            |
-| ------------------------------------------------------------------ |
-| <img src="./readme/demo/1440x1024.png" width="400" height="250" /> |
+| Chatbot Feature test                                | Create Patient Vital Unit test                             |
+| ----------------------------------------- | -------------------------------------- |
+| ![Landing](./readme/demo/Chatbot-test.png) | ![fsdaf](./readme/demo/createVitaltest.png) |
+
+| Testing                                       |
+| --------------------------------------------- |
+| ![Landing](./readme/demo/test.png) |
 
 <br><br>
 <!-- Ai Powerd App -->
