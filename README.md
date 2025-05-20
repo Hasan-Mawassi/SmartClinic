@@ -63,9 +63,10 @@
 
 | Mobile  view                                                       | Patient screen GIF                                                     |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+
 | <img src="./readme/demo/patientresponsive.jpg" width="200" height="400" /> | <img src="./readme/demo/doctorWebsite.gif" width="500" height="350" /> |
 
-| Responsive screen                        | Dashboard mobile view                        |
+| Responsive Website                        | Dashboard mobile view                        |
 | ---------------------------------------- | ---------------------------------------- |
 | ![Landing](./readme/demo/responsive.gif) | <img src="./readme/demo/responsivepage.jpg" width="200" height="400"/> |
 
