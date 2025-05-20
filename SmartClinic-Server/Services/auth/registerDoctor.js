@@ -35,7 +35,6 @@ export const registerDoctor = async({
             endTime:"18:00",
             slotDuration:30,
             doctorId:doctor.id,
-            offdays:[]
           }})
           // Generate token
           const token = jwt.sign({ id: doctor.id, email: doctor.email }, JWT_SECRET, {
