@@ -1,7 +1,7 @@
 import request from 'supertest'
-import app from '../../App.js' // your Express app
+import app from '../../app.js'
 import { faker } from '@faker-js/faker'
-import prisma from '../../lib/prisma.js'; // Or wherever it's initialized
+import prisma from '../../lib/prisma.js'; 
 
 describe('Auth Endpoints', () => {
   it('should register a new user', async () => {

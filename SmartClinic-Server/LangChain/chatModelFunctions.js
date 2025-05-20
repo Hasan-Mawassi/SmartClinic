@@ -10,6 +10,6 @@ export const  extractDateFromText = async(userMessage) => {
   new SystemMessage(prompt),
   new HumanMessage(userMessage),
 ]);
-console.log(aiResponse)
+// console.log(aiResponse)
   return aiResponse.content; 
 } 
