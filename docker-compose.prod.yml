@@ -30,7 +30,7 @@ services:
     image: hasanmawasi/smartclinic-frontend:${TAG}
     container_name: frontend
     restart: always
-    env:
+    environment:
       VITE_BASE_URL: ${VITE_BASE_URL}
     ports:
       -  "80:80"
