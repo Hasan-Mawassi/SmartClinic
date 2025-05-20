@@ -6,17 +6,8 @@ import { allowedOrigins } from './utils/allowedOrigin.js';
 const app = express();
 env.config();
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-}));
-
+  origin: '*'
+}))
 app.use(express.json()); 
 
 app.use(Routes)
