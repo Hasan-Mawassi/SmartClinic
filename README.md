@@ -61,9 +61,10 @@
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | <img src="./readme/demo/dashboardPage.png" width="600" height="250" /> | <img src="./readme/demo/patientpage.png" width="600" height="250" /> |
 
-| Appointment screen                                                       | Patient screen GIF                                                     |
+| Mobile  view                                                       | Patient screen GIF                                                     |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| <img src="./readme/demo/appointmentPage.png" width="600" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="480" height="250" /> |
+
+| <img src="./readme/demo/patientresponsive.jpg" width="200" height="400" /> | <img src="./readme/demo/doctorWebsite.gif" width="500" height="350" /> |
 
 | Responsive Website                        | Dashboard mobile view                        |
 | ---------------------------------------- | ---------------------------------------- |
