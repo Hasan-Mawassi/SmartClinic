@@ -66,9 +66,9 @@
 | ![Landing](./readme/demo/responsive.gif) | ![Landing](./readme/demo/doctorWebsite.gif) |
 
 
-| Patient mobile view                       | Dashboard mobile view                        |
-| ---------------------------------------- | ---------------------------------------- |
-| <img src="./readme/demo/patientresponsive.jpg" width="200" height="400" /> | <img src="./readme/demo/responsivepage.jpg" width="200" height="400"/> |
+| Patient mobile view                       | Dashboard mobile view                        | Dashboard mobile view                        | 
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| <img src="./readme/demo/patientresponsive.jpg" width="200" height="400" /> | <img src="./readme/demo/responsivepage.jpg" width="200" height="400"/> | <img src="./readme/demo/graphsresponsive.jpg" width="200" height="400"/> |
 
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
