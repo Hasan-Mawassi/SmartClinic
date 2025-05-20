@@ -51,9 +51,9 @@
 | ----------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | <img src="./readme/demo/homeSceen.jpg" width="200" height="400"/> | <img src="./readme/demo/chatbotScreen.jpg" width="200" height="400"/> | <img src="./readme/demo/voiceChatbot.gif" width="200" height="400"/> |
 
-| Medicine screen                        |
-| ---------------------------------------- |
-| <img src="./readme/demo/medicinePage.jpg" width="200" height="400"/>  |
+| Medicine screen                        | Text Chatbot Gif                        | Profile screen                        |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| <img src="./readme/demo/medicinePage.jpg" width="200" height="400"/>  | <img src="./readme/demo/textchatgif.gif" width="200" height="400"/>  | <img src="./readme/demo/profilescreen.jpg" width="200" height="400"/>  |
 
 ### Doctor Screens (Web)
 
