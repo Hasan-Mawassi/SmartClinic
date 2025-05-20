@@ -37,10 +37,11 @@
 - **Interactive Doctor Dashboard:** From appointment tracking to real-time patient analytics by age, gender, and history the doctor’s dashboard turns complex data into actionable insights at a glance.
   <br><br>
 
-| Project Features                         
+| Project Features  
 | ----------------------------------------- |
-|  <div align="center"><img src="./readme/demo/SmartClinic-highlights1.png"/></div> |
+| <div align="center"><img src="./readme/demo/SmartClinic-highlights1.png"/></div> |
 <br><br>
+
 <!-- Demo -->
 <img src="./readme/title5.svg"/>
 
@@ -50,20 +51,23 @@
 | ----------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | <img src="./readme/demo/homeSceen.jpg" width="200" height="400"/> | <img src="./readme/demo/chatbotScreen.jpg" width="200" height="400"/> | <img src="./readme/demo/voiceChatbot.gif" width="200" height="400"/> |
 
+| Medicine screen                        |
+| ---------------------------------------- |
+| <img src="./readme/demo/medicinePage.jpg" width="200" height="400"/>  |
+
 ### Doctor Screens (Web)
 
 | Dashboard screen                                                       | Patient screen                                                       |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | <img src="./readme/demo/dashboardPage.png" width="600" height="250" /> | <img src="./readme/demo/patientpage.png" width="600" height="250" /> |
 
-
-| Appointment screen                                                          | Patient  screen  GIF                                                  |
+| Appointment screen                                                       | Patient screen GIF                                                     |
 | ------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
 | <img src="./readme/demo/appointmentPage.png" width="600" height="250" /> | <img src="./readme/demo/doctorWebsite.gif" width="500" height="250" /> |
 
-| Responsive screen        |
-| ------------------------------------------------------------------------ | 
-| ![Landing](./readme/demo/responsive.gif) |
+| Responsive screen                        | Dashboard mobile view                        |
+| ---------------------------------------- | ---------------------------------------- |
+| ![Landing](./readme/demo/responsive.gif) | <img src="./readme/demo/responsivepage.jpg" width="200" height="400"/> |
 
 <!-- Development & Testing -->
 <img src="./readme/title6.svg"/>
@@ -74,29 +78,31 @@
 | ----------------------------------------- | -------------------------------------- |
 | ![Landing](./readme/demo/controllers.png) | ![fsdaf](./readme/demo/validation.png) |
 
-| Chatbot Feature test                                | Create Patient Vital Unit test                             |
-| ----------------------------------------- | -------------------------------------- |
+| Chatbot Feature test                       | Create Patient Vital Unit test              |
+| ------------------------------------------ | ------------------------------------------- |
 | ![Landing](./readme/demo/Chatbot-test.png) | ![fsdaf](./readme/demo/createVitaltest.png) |
 
-| Testing                                       |
-| --------------------------------------------- |
+| Testing                            |
+| ---------------------------------- |
 | ![Landing](./readme/demo/test.png) |
 
 <br><br>
+
 <!-- Ai Powerd App -->
 <img src="./readme/title8.svg"/>
 
 ### LangChain
 
-| LangChain Function Calling                                  | LangChain Tool  Creation                   |
-| ----------------------------------------- | -------------------------------------- |
+| LangChain Function Calling                   | LangChain Tool Creation          |
+| -------------------------------------------- | -------------------------------- |
 | ![Landing](./readme/demo/handleChatFunc.png) | ![fsdaf](./readme/demo/tool.png) |
 
-| Report generator prompt                                  | Extract Date from message                  |
-| ----------------------------------------- | -------------------------------------- |
+| Report generator prompt                    | Extract Date from message           |
+| ------------------------------------------ | ----------------------------------- |
 | ![Landing](./readme/demo/reportPrompt.png) | ![fsdaf](./readme/demo/getDate.png) |
 
 <br><br>
+
 <!-- Deployment -->
 <img src="./readme/title7.svg"/>
 
@@ -111,22 +117,20 @@ CI/CD is handled via **GitHub Actions**, with custom workflows set up to automat
 
 Each push to the corresponding branch triggers the appropriate workflow, enabling **seamless and automated deployment** with minimal manual intervention.
 
-
-| Smart Clinic Pipline                          |
-| --------------------------------------- |
+| Smart Clinic Pipline                        |
+| ------------------------------------------- |
 | ![Landing](./readme/demo/CICD-pipeline.png) |
 
-
-| Chatbot response                           | 
-| --------------------------------------- 
+| Chatbot response |
+| ---------------------------------------
 | ![Landing](./readme/demo/chatbotres.png) |
 
-| Doctor Graphs data response                   |
-| ------------------------------------- |
+| Doctor Graphs data response              |
+| ---------------------------------------- |
 | ![fsdaf](./readme/demo/getgraphdata.png) |
 
 | Patient Prescription                        |
-| ------------------------------------- |
+| ------------------------------------------- |
 | ![fsdaf](./readme/demo/getprescription.png) |
 
 <br><br>
