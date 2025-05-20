@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL =  import.meta.env.VITE_BASE_URL
+axios.defaults.baseURL =  import.meta.env.VITE_BASE_URL || "http://localhost:5000/api/v1"
 
 export const request = async ({
   method,
