@@ -2,10 +2,18 @@ import express from 'express';
 import env from 'dotenv';
 import Routes from './Routes/route.js';
 import cors from 'cors'
+import { allowedOrigins } from './utils/allowedOrigin.js';
 const app = express();
 env.config();
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
 }));
 
