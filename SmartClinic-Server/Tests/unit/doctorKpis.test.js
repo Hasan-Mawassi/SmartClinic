@@ -1,6 +1,6 @@
 import request from 'supertest';
-import app from '../../app.js';
-
+import app from '../../App.js';
+import prisma from '../../lib/prisma.js'; 
 describe('GET /api/v1/doctor/getkpi', () => {
   it("should return KPI data for the doctor", async () => {
     const doctorId = 2;
@@ -24,4 +24,8 @@ describe('GET /api/v1/doctor/getkpi', () => {
     expect(typeof data.upcomingAppointments).toBe('number');
     expect(typeof data.completedToday).toBe('number');
   });
+  afterAll(async () => {
+      await prisma.$disconnect();
+    });
+    
 });

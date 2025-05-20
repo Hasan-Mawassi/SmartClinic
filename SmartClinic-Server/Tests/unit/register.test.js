@@ -1,5 +1,5 @@
 import request from 'supertest'
-import app from '../../app.js'
+import app from '../../App.js'
 import { faker } from '@faker-js/faker'
 import prisma from '../../lib/prisma.js'; 
 
@@ -25,9 +25,8 @@ describe('Auth Endpoints', () => {
     expect(res.body.data).toHaveProperty('token')
     expect(res.body.data.user.email).toBe(userData.email)
   })
+  afterAll(async () => {
+      await prisma.$disconnect();
+    });
+    
 })
-
-afterAll(async () => {
-    await prisma.$disconnect();
-  });
-  

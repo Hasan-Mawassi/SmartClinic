@@ -1,7 +1,7 @@
 import request from 'supertest'
-import app from '../../app.js' 
+import app from '../../App.js' 
 import { faker } from '@faker-js/faker'
-
+import prisma from '../../lib/prisma.js'; 
 describe('POST /doctor/createvital', () => {
   it('should create a new vital record successfully', async () => {
       const payload = {
@@ -37,4 +37,9 @@ describe('POST /doctor/createvital', () => {
 
     expect(new Date(data.createdAt)).toBeInstanceOf(Date);
   });
+  afterAll(async () => {
+      await prisma.$disconnect();
+    });
+    
 });
+
