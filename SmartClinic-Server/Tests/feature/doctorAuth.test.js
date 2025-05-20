@@ -3,7 +3,7 @@ import app from '../../app.js';
 import { faker } from '@faker-js/faker';
 
 describe('Feature Test: Doctor Register and Login', () => {
-  const password = '123123'; // Use same password for register and login
+  const password = '123123'; 
   const email = faker.internet.email();
   const name = faker.person.fullName();
 
