@@ -1,6 +1,7 @@
 import { startOfMonth, endOfMonth } from 'date-fns';
 import prisma from '../../lib/prisma.js';
 import { months } from '../../utils/months.js';
+import { Appointment } from '../../Models/Appointment.js';
 
 export const getMonthlyPatientsData = async (doctorId) => {
   const currentYear = new Date().getFullYear();
@@ -10,15 +11,7 @@ export const getMonthlyPatientsData = async (doctorId) => {
     const start = startOfMonth(new Date(currentYear, number));
     const end = endOfMonth(new Date(currentYear, number));
 
-    const count = await prisma.appointment.count({
-      where: {
-        doctorId,
-        dateTime: {
-          gte: start,
-          lte: end,
-        },
-      },
-    });
+    const count = await Appointment.countDoctorAppointment(doctorId, start , end)
 
     monthlyData.push({
       month: label,
@@ -28,10 +21,22 @@ export const getMonthlyPatientsData = async (doctorId) => {
 
   return monthlyData;
 };
-export const getGenderStats = async () => {
-    
-    const femaleCount = await prisma.patient.count({ where: { gender: 0 } });
-    const maleCount = await  prisma.patient.count({ where: { gender: 1 } });
+export const getGenderStats = async (doctorId) => {
+ const patients = await prisma.patient.findMany({
+    where: {
+      appointments: {
+        some: {
+          doctorId: doctorId
+        }
+      }
+    },
+    select: {
+      gender: true
+    }
+  });
+
+  const femaleCount = patients.filter(p => p.gender === 0).length;
+  const maleCount = patients.filter(p => p.gender === 1).length;
 
     return [
       {label: 'female', value: femaleCount},

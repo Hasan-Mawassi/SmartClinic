@@ -15,10 +15,10 @@ export const kpiData =async (req, res)=>{
 
 export const graphsData = async (req, res) => {
     try {
-        const {id} = req.params;
-        const data = await getMonthlyPatientsData()
-        const genderData = await getGenderStats()
-        const ageAnalysis = await getPatientAgeAnalysis(id)
+        const {id} = req.query;
+        const data = await getMonthlyPatientsData(parseInt(id))
+        const genderData = await getGenderStats(parseInt(id))
+        const ageAnalysis = await getPatientAgeAnalysis(parseInt(id))
         const graphsRecord ={data,genderData,ageAnalysis}
         successResponse(res, graphsRecord, 'graphs Data', 200);
     } catch (error) {
