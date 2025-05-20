@@ -73,9 +73,13 @@
 | ----------------------------------------- | -------------------------------------- |
 | ![Landing](./readme/demo/controllers.png) | ![fsdaf](./readme/demo/validation.png) |
 
-| Testing                                                            |
-| ------------------------------------------------------------------ |
-| <img src="./readme/demo/1440x1024.png" width="400" height="250" /> |
+| Chatbot Feature test                                | Create Patient Vital Unit test                             |
+| ----------------------------------------- | -------------------------------------- |
+| ![Landing](./readme/demo/Chatbot-test.png) | ![fsdaf](./readme/demo/createVitaltest.png) |
+
+| Testing                                       |
+| --------------------------------------------- |
+| ![Landing](./readme/demo/test.png) |
 
 <br><br>
 <!-- Ai Powerd App -->
