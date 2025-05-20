@@ -24,7 +24,7 @@
   ![Landing](./readme/demo/SmartClinicERD.png)
 
 - Smart Clinic System Design.
-  ![Landing](./readme/demo/SmartClinicSystem.png)
+  ![Landing](./readme/demo/System-Design.png)
   <br><br>
 
 <!-- Project Highlights -->
