@@ -1,6 +1,6 @@
 import request from 'supertest';
 import app from '../../App.js';
-
+import prisma from '../../lib/prisma.js'; 
 describe('GET /api/v1/patient/getperscription', () => {
   it("should return patient's prescription grouped by date", async () => {
     const patientId = 2;

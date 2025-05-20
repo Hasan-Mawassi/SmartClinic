@@ -1,6 +1,6 @@
 import request from 'supertest'
 import app from '../../App.js'
-
+import prisma from '../../lib/prisma.js'; 
 describe('GET /api/v1/doctor/appointments', () => {
   it("should return the doctor's appointments", async () => {
     const doctorId = 1;
