@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../app.js';
+import app from '../../App.js';
 import { faker } from '@faker-js/faker';
 
 describe('Feature Test: Doctor Register and Login', () => {
@@ -38,4 +38,10 @@ describe('Feature Test: Doctor Register and Login', () => {
     expect(loginRes.body).toHaveProperty('data.token');
     expect(loginRes.body.data.doctor).toHaveProperty('email', email);
   });
+
+  afterAll(async () => {
+    await prisma.$disconnect();
+  });
+  
 });
+

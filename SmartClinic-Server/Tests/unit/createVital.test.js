@@ -1,5 +1,5 @@
 import request from 'supertest'
-import app from '../../app.js' 
+import app from '../../App.js' 
 import { faker } from '@faker-js/faker'
 
 describe('POST /doctor/createvital', () => {
@@ -37,4 +37,9 @@ describe('POST /doctor/createvital', () => {
 
     expect(new Date(data.createdAt)).toBeInstanceOf(Date);
   });
+  afterAll(async () => {
+      await prisma.$disconnect();
+    });
+    
 });
+

@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../app.js'; 
+import app from '../../App.js'; 
 
 describe('GET /api/v1/doctor/graphsdata', () => {
   it('should return graph data arrays for a doctor', async () => {
@@ -20,4 +20,8 @@ describe('GET /api/v1/doctor/graphsdata', () => {
     expect(Array.isArray(res.body.data.genderData)).toBe(true);
     expect(Array.isArray(res.body.data.ageAnalysis)).toBe(true);
   });
+  afterAll(async () => {
+      await prisma.$disconnect();
+    });
+    
 });

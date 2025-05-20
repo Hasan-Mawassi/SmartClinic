@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../app.js'; 
+import app from '../../App.js'; 
 import { faker } from '@faker-js/faker';
 
 describe('Chatbot - Ask for available appointments', () => {
@@ -40,4 +40,8 @@ describe('Chatbot - Ask for available appointments', () => {
   expect(slotsArray.length).toBeGreaterThan(0);
   expect(typeof slotsArray[0]).toBe('string');
 }, 10000);
+  afterAll(async () => {
+    await prisma.$disconnect();
+    server.close();
+  });
 });

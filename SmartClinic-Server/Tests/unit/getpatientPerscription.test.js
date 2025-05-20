@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../app.js';
+import app from '../../App.js';
 
 describe('GET /api/v1/patient/getperscription', () => {
   it("should return patient's prescription grouped by date", async () => {
@@ -20,4 +20,8 @@ describe('GET /api/v1/patient/getperscription', () => {
       expect(Array.isArray(entry.prescriptions)).toBe(true);
     });
   });
+  afterAll(async () => {
+      await prisma.$disconnect();
+    });
+    
 });

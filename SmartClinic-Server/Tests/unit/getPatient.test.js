@@ -1,5 +1,5 @@
 import request from 'supertest'
-import app from '../../app.js'
+import app from '../../App.js'
 
 describe('GET /api/v1/doctor/todaypatients', () => {
   it('should return today\'s patients for the doctor', async () => {
@@ -15,4 +15,9 @@ describe('GET /api/v1/doctor/todaypatients', () => {
     expect(res.body).toHaveProperty('data');
     expect(Array.isArray(res.body.data)).toBe(true);
   });
+  afterAll(async () => {
+      await prisma.$disconnect();
+    });
+    
 });
+
