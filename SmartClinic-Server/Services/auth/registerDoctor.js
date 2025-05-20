@@ -2,6 +2,8 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import prisma from '../../lib/prisma.js'
 import { Doctor } from '../../Models/Doctor.js';
+import { Schedule } from '../../Models/Schedule.js';
+
 
 export const registerDoctor = async({
                          name,
@@ -30,7 +32,7 @@ export const registerDoctor = async({
               profilePicture,
             }
           )
-      
+            await Schedule.createInitialShedule(doctor.id)
           // Generate token
           const token = jwt.sign({ id: doctor.id, email: doctor.email }, JWT_SECRET, {
             expiresIn: '1h',

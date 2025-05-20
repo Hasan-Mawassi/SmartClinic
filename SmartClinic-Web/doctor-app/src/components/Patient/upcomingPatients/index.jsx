@@ -17,7 +17,7 @@ const PatientSelect = ({ appointments }) => {
   };
 
    return (
-    <FormControl sx={{width:'20%'}} >
+    <FormControl sx={{width:'200px'}} >
       <InputLabel id="patient-select-label">Upcoming Patients</InputLabel>
       <Select
         labelId="patient-select-label"

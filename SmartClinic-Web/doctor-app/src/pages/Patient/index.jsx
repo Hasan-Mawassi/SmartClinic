@@ -34,9 +34,10 @@ const Patient = () => {
     const doctorId = useSelector((state) => state.doctorInfo.id)
     useUpCommingPatients(doctorId)
     return (
-        <Box sx={{ flexGrow: 1, p: 2 }}>
-          <Box display="flex" flexDirection="row" justifyContent={'space-between'}> 
-            < CustomButton label="Add Medicine" onClick={() => setOpen(true)} variant="contained" color="primary" sx={{ mb: 2,width: '200px',fontSize: '18px' }} />
+        <Box sx={{ flexGrow: 1, p: 2 ,gap:5, my:1}}>
+          <Box display="flex" flexDirection="row" justifyContent={'space-between'} flexWrap={"wrap"} > 
+            < CustomButton label="Add Medicine" onClick={() => setOpen(true)} variant="contained" color="primary" sx={{ mb: 2,width: '120px', flexGrow:1, maxWidth:'150px' , fontSize: '18px' }} />
+        
             < PatientSelect appointments={appointments} />
           </Box>
 
