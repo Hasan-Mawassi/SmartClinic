@@ -12,7 +12,7 @@ export const useAppointmentsData = (doctorId) => {
       try {
         const response = await request({
           method: 'GET',
-          route: `/doctor/appointments`, 
+          route: `/doctor/appointments?id=${doctorId}`, 
           body:{doctorId},
           auth: true,
         });
