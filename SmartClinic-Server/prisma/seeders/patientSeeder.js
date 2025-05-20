@@ -28,11 +28,11 @@ export async function seedPatients(count = 5) {
 
     // Add vitals
     const vitals = Array.from({ length: faker.number.int({ min: 1, max: 3 }) }, () => {
-      const doctor = faker.helpers.arrayElement(doctors);
+      const doctor = faker.number.int({ min: 1, max: 3 });
       return prisma.vital.create({
         data: {
           patientId: patient.id,
-          doctorId: doctor.id,
+          doctorId: doctor,
           healthPercentage: faker.number.float({ min: 50, max: 100, precision: 0.01 }),
           heartRate: faker.number.int({ min: 60, max: 100 }),
           bloodPressure: `${faker.number.int({ min: 90, max: 140 })}/${faker.number.int({ min: 60, max: 90 })}`,
