@@ -1,7 +1,7 @@
 import prisma from '../../lib/prisma.js'
 import { patientFactory } from '../factories/patientFactory.js'
 
-export async function seedPatient(count = 5) {
+export async function seedPatients(count = 5) {
   for (let i = 0; i < count; i++) {
     const patientData = patientFactory();
     const patient = await prisma.patient.create({ data: patientData });
