@@ -1,6 +1,5 @@
 import request from 'supertest';
 import app from '../../App.js'; 
-import { faker } from '@faker-js/faker';
 import prisma from '../../lib/prisma.js'; 
 describe('Chatbot - Ask for available appointments', () => {
   it('should return available appointment slots for a given doctor and date', async () => {

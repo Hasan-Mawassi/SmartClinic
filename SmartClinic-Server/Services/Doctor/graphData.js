@@ -2,6 +2,7 @@ import { startOfMonth, endOfMonth } from 'date-fns';
 import prisma from '../../lib/prisma.js';
 import { months } from '../../utils/months.js';
 import { Appointment } from '../../Models/Appointment.js';
+import { Patient } from '../../Models/Patient.js';
 
 export const getMonthlyPatientsData = async (doctorId) => {
   const currentYear = new Date().getFullYear();
@@ -22,18 +23,7 @@ export const getMonthlyPatientsData = async (doctorId) => {
   return monthlyData;
 };
 export const getGenderStats = async (doctorId) => {
- const patients = await prisma.patient.findMany({
-    where: {
-      appointments: {
-        some: {
-          doctorId: doctorId
-        }
-      }
-    },
-    select: {
-      gender: true
-    }
-  });
+ const patients = await Patient.getPatientGender(doctorId)
 
   const femaleCount = patients.filter(p => p.gender === 0).length;
   const maleCount = patients.filter(p => p.gender === 1).length;

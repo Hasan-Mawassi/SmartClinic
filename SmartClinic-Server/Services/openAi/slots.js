@@ -16,8 +16,7 @@ export async function generateAvailableSlots({ doctorId, dateISO, startTime, end
 
   const start = new Date(Date.UTC(year, month - 1, day, startHour, startMinute));
   const end = new Date(Date.UTC(year, month - 1, day, endHour, endMinute));
-// console.log('Start:', start.toISOString());
-// console.log('End:', end.toISOString());
+
   const booked = await prisma.appointment.findMany({
     where: {
       doctorId,
@@ -29,7 +28,7 @@ export async function generateAvailableSlots({ doctorId, dateISO, startTime, end
     },
     select: { dateTime: true },
   });
-// console.log("booked>",booked)
+
   const bookedTimes = new Set(booked.map(a => new Date(a.dateTime).getTime()));
   const slots = [];
 

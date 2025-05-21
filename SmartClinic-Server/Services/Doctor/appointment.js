@@ -1,13 +1,8 @@
-import prisma from '../../lib/prisma.js';
 import { Appointment } from '../../Models/Appointment.js';
 
 export const getDoctorAppointments = async (doctorId) => {
     try {
-      const appointments = await prisma.appointment.findMany({
-        where: { doctorId },
-        include: { patient: true },
-        orderBy: { dateTime: 'asc' },
-      });
+      const appointments = await  Appointment.getDoctorAppointmentsWithPatient(doctorId)
   
       return appointments.map(appt => {
         const dateObj = new Date(appt.dateTime);
