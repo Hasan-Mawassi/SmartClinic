@@ -1,4 +1,3 @@
-import prisma from '../../lib/prisma.js';
 import { Appointment } from '../../Models/Appointment.js';
 
 export const getDoctorAppointments = async (doctorId) => {
