@@ -3,7 +3,7 @@ import { Appointment } from '../../Models/Appointment.js';
 
 export const getDoctorAppointments = async (doctorId) => {
     try {
-      const appointments = Appointment.getDoctorAppointmentsWithPatient(doctorId)
+      const appointments = await  Appointment.getDoctorAppointmentsWithPatient(doctorId)
   
       return appointments.map(appt => {
         const dateObj = new Date(appt.dateTime);
