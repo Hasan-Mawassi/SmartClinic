@@ -117,7 +117,10 @@ CI/CD is handled via **GitHub Actions**, with custom workflows set up to automat
 - **Production Server**: For live deployment, ensuring high availability and performance.
 
 Each push to the corresponding branch triggers the appropriate workflow, enabling **seamless and automated deployment** with minimal manual intervention.
-- Public Wibsite http://13.37.226.34/ 
+
+-Production Server http://13.37.226.34/ 
+
+-Staging Server http://15.237.74.109/
  - Use email: smartclinic@gmail.com  pass: 123123  to view dashboard data
 
 | Smart Clinic Pipline                        |
