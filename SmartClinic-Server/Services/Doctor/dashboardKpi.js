@@ -1,4 +1,3 @@
-import prisma from '../../lib/prisma.js';
 import { startOfDay, endOfDay } from 'date-fns';
 import { Appointment } from '../../Models/Appointment.js';
 
