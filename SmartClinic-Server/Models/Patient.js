@@ -34,4 +34,19 @@ export class Patient {
     }, 
     })
     }
+
+    static async getPatientGender(doctorId){
+      return await prisma.patient.findMany({
+          where: {
+            appointments: {
+              some: {
+                doctorId: doctorId
+              }
+            }
+          },
+          select: {
+            gender: true
+          }
+        });
+    }
 }
