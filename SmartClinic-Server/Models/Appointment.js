@@ -106,4 +106,13 @@ export class Appointment {
       },
     });
   }
+  static async getDoctorAppointmentsWithPatient(doctorId){
+   return   await prisma.appointment.findMany({
+            where: { doctorId },
+            include: { patient: true },
+            orderBy: { dateTime: 'asc' },
+          });
+      
+  }
+
 }
